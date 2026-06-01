@@ -1,0 +1,9 @@
+wip:
+  enter_threshold: 3
+stale_timeout_min: 30
+max_cycles: 3
+timeout_min: 30
+backoff:
+  initial_sec: 2
+  max_sec: 300
+min_coverage_pct: 0

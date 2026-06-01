@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "seu-modelo-aqui",
+  "small_model": "seu-modelo-small-aqui",
+  "compaction": { "auto": true, "prune": true, "reserved": 10000 },
+  "instructions": [".mettri/identidade.md"],
+  "agent": {
+    "plan": { "prompt": "{file:./.opencode/agents/plan.md}", "permission": { "edit": "deny", "bash": "deny" } },
+    "tarefas": {
+      "description": "Cria, gere e acompanha tarefas — SPEC.md, claims, branches, HTML, PRs",
+      "prompt": "{file:./.opencode/agents/tarefas.md}",
+      "permission": { "edit": { ".mettri/tarefas/**": "allow", ".mettri/claims.yaml": "allow", ".karma/tarefas.html": "allow" }, "bash": { "git checkout": "allow", "git checkout -b": "allow", "git push -u": "allow", "gh pr create": "allow", "mkdir": "allow", "Move-Item": "allow", "Rename-Item": "allow", "move": "allow", "node .karma\\scripts\\next-id\\next-id.mjs": "allow", "node .karma\\scripts\\sync-html\\sync-html.mjs": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow", "task": "allow" }
+    },
+    "testador": {
+      "description": "Testa E2E — Puppeteer + CDP, escreve testes antes da feature existir",
+      "prompt": "{file:./.opencode/agents/testador.md}",
+      "permission": { "edit": { ".karma/e2e-tests/**": "allow", ".karma/.mettri/tarefas/**": "allow", ".karma/.mettri/test-memory.md": "allow" }, "bash": { "taskkill": "allow", "Get-Process": "allow", "node": "allow", "Start-Process": "allow", "cd ..": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
+    },
+    "implementador": {
+      "description": "Lê briefing → implementa → gate-runner → trail.md",
+      "mode": "subagent",
+      "hidden": true,
+      "prompt": "{file:./.opencode/agents/implementador.md}",
+      "permission": { "edit": "allow", "bash": { "cd ..": "allow", "npm run build": "allow", "npm run lint": "allow", "npm run type-check": "allow", "npm run test:unit": "allow", "npx vitest": "allow", "git diff": "allow", "git add": "allow", "git commit": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
+    },
+    "avaliador": {
+      "description": "Verifica spec vs código vs sabotagens — adversarial, tenta quebrar",
+      "mode": "subagent",
+      "hidden": true,
+      "prompt": "{file:./.opencode/agents/avaliador.md}",
+      "permission": { "edit": "deny", "bash": { "git diff": "allow", "npm run lint": "allow", "npm run type-check": "allow", "npm run build": "allow", "npm run test:unit": "allow", "npm run test:unit -- --coverage": "allow", "cd ..": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
+    },
+    "sonhador": {
+      "description": "Consolida trails → memory.md + detecta padrões cross-tarefa",
+      "mode": "subagent",
+      "hidden": true,
+      "prompt": "{file:./.opencode/agents/sonhador.md}",
+      "permission": { "edit": { ".mettri/**": "allow" }, "bash": "deny", "read": "allow", "glob": "allow", "grep": "allow" }
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "skill": "allow",
+    "task": "allow"
+  }
+}
