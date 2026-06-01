@@ -1,0 +1,19 @@
+version: '2.0'
+agentes:
+  - id: karma
+    tipo: orquestrador
+    descricao: Agente principal — Karma orquestrador
+dominios:
+  DOMINIO_A:
+    lock: null
+    lease_inicio: null
+    heartbeat: null
+    tarefa: null
+  DOMINIO_B:
+    lock: null
+    lease_inicio: null
+    heartbeat: null
+    tarefa: null
+wip_global: 3
+stale_timeout_min: 30
+historico: []
