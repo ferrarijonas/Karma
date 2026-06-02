@@ -8,7 +8,7 @@ Lema: **teste define o contrato, código satisfaz o teste.**
 ## ⚠️ Restrições
 
 1. **Modelo NÃO é multimodal** — sem visão. Só AX tree, DOM, `page.evaluate()`.
-2. **Extensão Chrome (Mettri)** — shadow DOM (`#mettri-shadow-host` → `host.shadowRoot`), API em `window.Mettri`.
+2. **Extensão Chrome** — shadow DOM (`#app-shadow-host` → `host.shadowRoot`), API em `window.AppAPI`.
 3. **Playwright MCP injeta `--disable-extensions`** — usar Puppeteer + CDP (comprovado T-006).
 4. **WA Web classes CSS mudam** — nunca confiar. Usar data attributes próprios no shadow DOM.
 
@@ -29,8 +29,8 @@ const browser = await puppeteer.connect({ browserURL: 'http://localhost:9222' })
 
 ## 🎯 Hierarquia de seletores (tentar nesta ordem)
 
-1. `host.shadowRoot.querySelector('[data-*]')` — data attributes do Mettri
-2. `window.Mettri.module.getModules()` — API interna
+1. `host.shadowRoot.querySelector('[data-*]')` — data attributes do app
+2. `window.AppAPI.getModules()` — API interna
 3. `page.evaluate(() => [...host.shadowRoot.querySelectorAll('*')].find(el => el.textContent.includes('X')))` — texto visível
 4. AX tree snapshot (MCP ou evaluate)
 5. CSS selector do shadow DOM (só se você controla)
@@ -57,7 +57,7 @@ Mapeamento obrigatório para o sistema de auto-cura do Karma:
 | **N1** | Timeout, Chrome não respondeu, WA Web lento | Retry com backoff: 2s, 4s, 8s (max 3x) |
 | **N2** | Seletor não achou, elemento não existe, assert falhou | Log detalhado + FAIL. Não retentar — é determinístico |
 | **N3** | 3+ falhas N2 consecutivas na mesma execução | Handoff: escreva `reavaliacao.md` na pasta da tarefa explicando o problema |
-| **N4** | Chrome não abre, CDP não conecta, extensão não carrega | Avise o Jonas: "precisa abrir Chrome com --remote-debugging-port=9222" |
+| **N4** | Chrome não abre, CDP não conecta, extensão não carrega | Avise o desenvolvedor: "precisa abrir Chrome com --remote-debugging-port=9222" |
 
 Regra: **N1 retenta, N2 falha rápido, N3 documenta, N4 chama humano.**
 
@@ -67,7 +67,7 @@ Quando um seletor N2 falhar, tente antes de declarar FAIL:
 ```javascript
 // Despeja todos os textos visíveis do shadow DOM pra inferir onde está o elemento
 const dump = await page.evaluate(() => {
-  const h = document.querySelector('#mettri-shadow-host');
+  const h = document.querySelector('#app-shadow-host');
   if (!h?.shadowRoot) return [];
   return [...h.shadowRoot.querySelectorAll('[data-module-id]')].map(el => ({
     id: el.getAttribute('data-module-id'),
@@ -105,4 +105,4 @@ Cada resultado DEVE ter estes campos (validação runtime no template):
 - Timeout: 30s por teste
 - Máx 200 ações por execução
 - NUNCA force-kill Chrome que você não abriu
-- Se WA Web pedir QR code: PARE, avise o Jonas
+- Se WA Web pedir QR code: PARE, avise o desenvolvedor

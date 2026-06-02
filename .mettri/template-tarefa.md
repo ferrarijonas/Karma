@@ -3,7 +3,7 @@
 Antes de adicionar qualquer tarefa no TAREFAS.md, garantir que contenha:
 
 1. **O que já existe?** — arquivos, scripts, configs relacionados (ex: `eslint.config.js`, `scripts/inspect-*.mjs`)
-2. **Onde verificar/input?** — arquivos/diretórios que a tarefa vai usar (ex: `src/modules/*`, `ZenSpecKit/Mettri/Specs/`)
+2. **Onde verificar/input?** — arquivos/diretórios que a tarefa vai usar (ex: `src/modules/*`, `docs/specs/`)
 3. **O que produzir/output?** — arquivo novo, relatório, alteração (ex: script, INDICE.md, relatório)
 4. **Onde salvar?** — pasta específica (ex: `scripts/`, `docs/`, `.mettri/`)
 5. **Como validar?** — como testar o resultado (ex: rodar script, verificar output)
