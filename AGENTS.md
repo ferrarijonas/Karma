@@ -68,7 +68,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 ### Fase 2 — Despacho
 
-1. Se `tarefa`: **Delega despacho ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-despacho" })` — @tarefas faz scan, filtra, ordena, registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
+1. Se `tarefa`: **Delega análise ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-despacho" })` — @tarefas faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** o despacho: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
 2. @sonhador anterógrado: carrega SPEC.md + sabotagens/{dominio}.md + memórias relevantes do memory.md + prepara contexto para o implementador.
 3. **Briefing rápido** — escreva 2-3 linhas no prompt: o que fazer, o que NÃO tocar, sabotagem crítica. O implementador lê SPEC.md e ZenSpec direto do arquivo.
 4. Dispara @implementador: `Task({ agent: "implementador", prompt: "{ spec_path, zen_spec_ref + 2 linhas de direcionamento }" })`
@@ -114,9 +114,9 @@ Implementador (Task tool — recebe briefing inline no prompt):
 
 ### Fase 5 — Consolidar
 
-1. **Delega consolidação ao @tarefas:** `Task({ agent: "tarefas", prompt: "consolidar {id}" })` — @tarefas escreve relatório, atualiza SPEC, move diretório, libera claim, desbloqueia dependentes, atualiza HTML. **Não cria PR ainda.** Retorna `{ id, status, relatorio_path }`.
+1. **Delega consolidação ao @tarefas:** `Task({ agent: "tarefas", prompt: "consolidar {id}" })` — @tarefas escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, atualiza HTML. Retorna `{ id, status, relatorio_path }`.
 2. **Merge se aprovado** — Mostre o resumo (diff contra main + relatório) e pergunte **"Merge autorizado?"**
-   - Se sim: `Task({ agent: "tarefas", prompt: "criar-pr {id}" })` → depois `gh pr merge --squash` (ou `git merge --no-ff` se não houver PR)
+   - Se sim: Karma cria o PR (`gh pr create --title "T-{id}: {titulo}" --body "$(cat relatorio.md)"`) e faz merge (`gh pr merge --squash` ou `git merge --no-ff` se não houver PR)
    - Se não: branch `tarefa/T-{id}` fica no repositório, aguarda decisão manual
 3. @sonhador (sob demanda): se N≥3 tarefas concluídas no mesmo domínio → gera hipóteses cross-tarefa
 

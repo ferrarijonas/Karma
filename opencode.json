@@ -7,9 +7,9 @@
   "agent": {
     "plan": { "prompt": "{file:./.opencode/agents/plan.md}", "permission": { "edit": "deny", "bash": "deny" } },
     "tarefas": {
-      "description": "Cria, gere e acompanha tarefas — SPEC.md, claims, branches, HTML, PRs",
+      "description": "Planeja, especifica e gere tarefas — SPEC.md, relatorios, analise",
       "prompt": "{file:./.opencode/agents/tarefas.md}",
-      "permission": { "edit": { ".mettri/tarefas/**": "allow", ".mettri/claims.yaml": "allow", ".karma/tarefas.html": "allow" }, "bash": { "git checkout": "allow", "git checkout -b": "allow", "git push -u": "allow", "gh pr create": "allow", "mkdir": "allow", "Move-Item": "allow", "Rename-Item": "allow", "move": "allow", "node .karma\\scripts\\next-id\\next-id.mjs": "allow", "node .karma\\scripts\\sync-html\\sync-html.mjs": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow", "task": "allow" }
+      "permission": { "edit": { ".mettri/tarefas/**": "allow", ".mettri/claims.yaml": "allow", ".karma/tarefas.html": "allow" }, "write": { ".mettri/tarefas/**/*.md": "allow" }, "bash": { "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow", "task": "deny" }
     },
     "testador": {
       "description": "Testa E2E — Puppeteer + CDP, escreve testes antes da feature existir",
