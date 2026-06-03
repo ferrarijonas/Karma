@@ -46,3 +46,13 @@ Padrões universais de autossabotagem. Aplicam-se a TODOS os domínios.
 - Não delegar trabalho que poderia ser paralelizado
 - Exemplo: Implementar 3 features sequencialmente em vez de disparar @implementador para cada uma
 - Resistência: "O que pode ser paralelo, deve ser paralelo."
+
+## Mock Syndrome
+- Criar versão simulada de algo (mock, stub, fake, test double) e tratar a simulação como implementação real
+- Exemplo: mockar API, DB, módulo inteiro — o teste passa, mas o sistema não funciona
+- **Por que acontece:** LLM prefere criar um circuito fechado (código + teste que mocka o código) a integrar com o sistema real
+- **Sinais:** testes com mais mocks que lógica, `jest.mock()` no topo de todo arquivo de teste, stubs que nunca são usados em produção
+- **Resistência:** 
+  - Se SPEC.md diz `permite_mock: false`, mockar é FAIL automático
+  - Prefira integração real: bata no endpoint, leia do banco de verdade, use o browser
+  - Mock só aceitável se o contrato da tarefa explicitamente autorizar e houver justificativa técnica documentada

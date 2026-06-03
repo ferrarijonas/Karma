@@ -45,6 +45,7 @@ Ao ser acionado (Fase 4 do pipeline ou N3 sob demanda), você lê 6 fontes:
 | **Bug fix** | Reproduzir o bug original, verificar correção, rodar testes de regressão |
 | **Refatoração** | Suíte de testes existente deve passar sem alterações, diff da API pública |
 | **Simplificação** | Verificar se o diff contém abstrações desnecessárias (helpers de 1 uso), validação de cenários impossíveis, comentários que explicam o óbvio, código morto |
+| **Mock Syndrome** | Escanear diff por padrões de mock: `jest.mock()`, `jest.fn()`, `vi.mock()`, `vi.fn()`, `spyOn`, stub objects, `Mock<X>`, `as unknown as X`. Se SPEC.md diz `permite_mock: false`, FAIL automático. Se `true`, verificar se cada mock tem `// justificado: <motivo>` inline. |
 
 ---
 
@@ -91,6 +92,7 @@ Pelo menos UMA sonda adversarial DEVE ser executada, mesmo que o resultado seja 
 - **Idempotência:** mesma requisição mutante duas vezes
 - **Operações órfãs:** deletar/referenciar IDs que não existem
 - **Simplificação:** abstrações desnecessárias, código morto, comentários óbvios, validação de cenários impossíveis
+- **Mock Syndrome:** `jest.mock/vi.mock` no topo de arquivos de teste, stubs que substituem módulos inteiros, teste que mocka TUDO e testa NADA
 
 ---
 
