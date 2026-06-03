@@ -69,18 +69,17 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 ### Fase 2 — Despacho
 
 1. Se `tarefa`: **Delega análise ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-despacho" })` — @tarefas faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** o despacho: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
-2. @sonhador anterógrado: carrega SPEC.md + sabotagens/{dominio}.md + memórias relevantes do memory.md + prepara contexto para o implementador.
-3. **Briefing rápido** — escreva 2-3 linhas no prompt: o que fazer, o que NÃO tocar, sabotagem crítica. O implementador lê SPEC.md e ZenSpec direto do arquivo.
-4. Dispara @implementador: `Task({ agent: "implementador", prompt: "{ spec_path, zen_spec_ref + 2 linhas de direcionamento }" })`
-5. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
+2. @sonhador anterógrado: carrega SPEC.md + sabotagens/{dominio}.md + memórias relevantes do memory.md
+3. Dispara @implementador: `Task({ agent: "implementador", prompt: "{ spec_path, zen_spec_ref }" })` — o implementador lê SPEC.md direto (ele é o briefing)
+4. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
 
 **Fenomenologia:** FOCO — o agente escolhe um paciente, prepara o prontuário e o entrega ao cirurgião.
 
-**Gate:** @tarefas retornou tarefa? spec carregada? briefing enviado? WIP ok? → Fase 3.
+**Gate:** @tarefas retornou tarefa? spec carregada? WIP ok? → Fase 3.
 
 ### Fase 3 — Agir
 
-Implementador (Task tool — recebe briefing inline no prompt):
+Implementador (Task tool — recebe spec_path no prompt e lê SPEC.md como briefing):
 
 - LOOP: implementa (read→edit→bash) → gate-runner (lint→type-check→build→test)
 - **Antes do primeiro edit:** considere reversibilidade e raio de impacto. O custo de pausar para confirmar é baixo. O custo de uma ação indesejada é alto.
