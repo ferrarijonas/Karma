@@ -24,6 +24,7 @@ escopo:
 spec_ref: ""
 tipo_output: "codigo"
 migracao_necessaria: false
+permite_mock: false
 ---
 
 # {DDMM-001}: {titulo}
@@ -65,6 +66,14 @@ migracao_necessaria: false
 - [ ] build passa
 - [ ] testes passam
 - [ ] Nenhum arquivo fora do escopo modificado
+
+## Mock Policy
+
+- `permite_mock: {false | true}` — definido no YAML frontmatter
+- **false (padrão):** nenhum mock é permitido. Testes devem usar integração real (bater em endpoint, ler banco de verdade, usar browser). Se precisar mockar, justifique e peça aprovação.
+- **true:** mocks permitidos apenas para: (1) ambiente de CI sem acesso ao recurso real, (2) teste de unidade de função pura que depende de I/O não disponível, (3) simulação de erro externo não reproduzível. Documente cada mock com `// justificado: <motivo>`.
+
+---
 
 ## Sabotagens Herdadas
 

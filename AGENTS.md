@@ -106,9 +106,10 @@ Implementador (Task tool — recebe briefing inline no prompt):
 
 - Lê: SPEC.md original + ZenSpec + git diff + trail.md + sabotagens/{dominio}.md + thresholds.yaml
 - Verifica: spec compliance, escopo, sabotagens no diff, cobertura, métricas, heartbeats
-- **Gate trust:** se trail.md mostra último gate GREEN, pula re-execução de build/test (confia no trail)
-- @sonhador retrógrado: após veredito PASS, consolida trail → memory.md + novas armadilhas
-- Veredito: PASS → Fase 5 | FAIL → volta Fase 3 (máx 3 ciclos)
+- **Gate trust:** se trail.md mostra último gate GREEN, pula re-execução de build/test (confia no trail). A verificação adversarial continua — trust é só para build/test, não para análise.
+- **Spot-check:** após @avaliador retornar, Karma re-executa 2-3 comandos do relatório. Se algum PASS não tiver `Comando executado` com output, ou output divergir na re-execução → relatório rejeitado, @avaliador é retomado com as evidências da divergência.
+- @sonhador retrógrado: após veredito PASS + spot-check aprovado, consolida trail → memory.md + novas armadilhas
+- Veredito: PASS + spot-check pass → Fase 5 | FAIL ou spot-check falhou → volta Fase 3 (máx 3 ciclos)
 
 **Fenomenologia:** AUTO-EXAME — o agente submete seu trabalho a um olhar externo e adversário.
 

@@ -96,6 +96,36 @@ Quando o gate-runner retornar **RED**, classifique o erro e aplique a cura corre
 
 ---
 
+## Viés de Simplificação
+
+Você tem um viés natural de complicar — abstrair cedo demais, preparar para cenários que não existem, "aproveitar pra melhorar" o que não precisa. Resista.
+
+### Regras de Ouro
+
+1. **Não adicione features, refatore ou "melhore" além do que foi pedido.** Um bug fix não precisa do código ao redor limpo. Uma feature simples não precisa de config extra.
+
+2. **Não crie helpers, utilities ou abstrações para operações de uso único.** Três linhas similares são melhores que uma abstração prematura.
+
+3. **Não adicione error handling, fallbacks ou validação para cenários que não podem acontecer.** Confie no código interno e nas garantias do framework. Só valide nas bordas do sistema (input do usuário, APIs externas).
+
+4. **Tente a abordagem mais simples primeiro.** Se funcionar, pare. Só complique se houver evidência de que precisa.
+
+5. **NÃO comente o óbvio.** Só adicione comentário quando o PORQUÊ não é óbvio: uma constraint oculta, um invariante sutil, um workaround para um bug específico. Se remover o comentário não confundir um leitor futuro, não escreva.
+
+6. **Mínima complexidade não significa pular a linha de chegada.** Teste, verifique, entregue funcionando. Simplicidade é sobre o que você NÃO adiciona, não sobre o que você deixa de verificar.
+
+### Auto-detecção
+
+Antes de cada checkpoint, pergunte-se:
+- "Isso resolve APENAS o que foi pedido?"
+- "Eu criei algo que só serve para um caso?"
+- "Esse comentário explica algo que o código já não diz?"
+- "Se eu remover essa abstração, o código ainda funciona?"
+
+Se respondeu "não" a qualquer uma → simplifique antes de continuar.
+
+---
+
 ## Regras
 
 1. **NUNCA modificar arquivos fora do escopo do briefing.** Se o briefing diz `nao_tocar: ["src/ui/", "src/storage/"]`, você NÃO toca nesses diretórios. Zero exceções.

@@ -20,6 +20,18 @@
 - {tarefa similar}: {aprendizado relevante}
 - {tarefa similar}: {aprendizado relevante}
 
+## Viés de Simplificação
+
+> Regra de ouro: resolva APENAS o que foi pedido. Nada além.
+
+- Não crie abstrações para uso único. Três linhas similares > uma factory.
+- Não adicione validação/fallback para cenários que não podem acontecer.
+- Não refatore código ao redor. Só mexa no que o escopo pede.
+- Não comente o óbvio. Só comente o PORQUÊ não óbvio.
+- Tente o mais simples primeiro. Só complique se falhar.
+
+---
+
 ## Informação Técnica
 
 - **Arquivos relevantes:**
