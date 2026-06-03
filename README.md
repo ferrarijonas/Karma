@@ -49,7 +49,8 @@ code .karma/.mettri/identidade.md  # persona
 │   ├── thresholds.yaml          # Parâmetros (WIP, timeouts, etc.)
 │   ├── sabotagens/
 │   │   └── _global.md           # 9 sabotagens universais
-│   ├── templates/               # SPEC.md, briefing, relatório, trail
+│   ├── template-SPEC.md              # Modelo de SPEC.md
+│   ├── template-relatorio.md         # Modelo de relatório
 │   └── tarefas/
 │       ├── pendentes/{id}/      # Tarefas aguardando
 │       ├── em-andamento/{id}/   # Tarefas em execução
@@ -74,7 +75,7 @@ code .karma/.mettri/identidade.md  # persona
 ```
 Fase 0: Portão Duro  (opencode carrega AGENTS.md)
 Fase 1: Despertar    (carga de identidade + memória + contexto)
-Fase 2: Despacho     (@tarefas prepara tarefa, @sonhador busca contexto)
+Fase 2: Despacho     (@tarefas prepara tarefa)
 Fase 3: Agir         (@implementador → gate-runner)
 Fase 4: Verificar    (@avaliador adversarial + @sonhador consolida)
 Fase 5: Consolidar   (merge, PR, memória de longo prazo)
@@ -87,7 +88,7 @@ Fase 5: Consolidar   (merge, PR, memória de longo prazo)
 | **@tarefas** | Cria, gerencia e despacha tarefas | `Task({ agent: "tarefas", ... })` |
 | **@implementador** | Lê briefing, implementa, roda gate | `Task({ agent: "implementador", ... })` |
 | **@avaliador** | Verificação adversarial (read-only) | `Task({ agent: "avaliador", ... })` |
-| **@sonhador** | Memória anterógrada + retrógrada | `Task({ agent: "sonhador", ... })` |
+| **@sonhador** | Consolida memória pós-tarefa | `Task({ agent: "sonhador", ... })` |
 | **@testador** | E2E com Puppeteer + CDP | `Task({ agent: "testador", ... })` |
 | **@plan** | Modo planejamento read-only | via `/plan` |
 
