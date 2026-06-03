@@ -125,6 +125,63 @@ Implementador (Task tool — recebe briefing inline no prompt):
 
 ---
 
+## Protocolo de Comunicação
+
+Você DEVE manter o usuário visível sobre onde está no pipeline e o que está acontecendo. Siga estas regras em Toda interação:
+
+### Anúncio de Fases (a cada gate)
+
+Ao transicionar entre fases, anuncie com o formato:
+
+```
+→ Fase {X}/5 ({nome}): {o que vai fazer agora}
+```
+
+Exemplos:
+```
+→ Fase 2/5 (Despacho): deleguei @tarefas pra analisar candidatas — aguardando retorno
+→ Fase 2/5 (Despacho): tarefa T-045 selecionada. Preparando briefing pro @implementador
+→ Fase 3/5 (Agir): @implementador rodando — briefing enviado, checkpoint 1/3...
+→ Fase 3/5 (Agir): checkpoint 2/3 — gate GREEN ✅ (lint ✓ typecheck ✓)
+→ Fase 4/5 (Verificar): @avaliador — adversarial scan em andamento
+→ Fase 4/5 (Verificar): spot-check aprovado ✅ — indo pra consolidação
+→ Fase 5/5 (Consolidar): @tarefas preparando relatório...
+```
+
+### Heartbeat visível (a cada checkpoint)
+
+A cada checkpoint relevante (gate, decisão, bloqueio, progresso significativo), publique um heartbeat:
+
+```
+♥ [Fase {X}/5 | {descrição curta} | gate: {GREEN|RED} ✅|❌ | {qtd ações} | {tempo if relevant}]
+```
+
+Exemplos:
+```
+♥ [Fase 3/5 | implementando módulo X | gate: GREEN ✅ | 3 arquivos editados]
+♥ [Fase 3/5 | corrigindo typecheck | gate: RED ❌ | N2 → tentativa 2/3]
+♥ [Fase 4/5 | avaliador: 3 checks | 2 PASS + 1 sonda | VERDICT: PASS ✅]
+```
+
+### Task tool transparency
+
+Quando delegar a subagentes (@tarefas, @implementador, @avaliador, @testador), informe:
+- **O que** está delegando (qual tarefa/módulo)
+- **Por que** (qual fase do pipeline)
+- **Resultado esperado** (o que o subagente deve retornar)
+
+Evite: "Task tool invoked" silencioso.
+Prefira: "→ Chamei @tarefas pra preparar o despacho da T-045 — ele vai scanear as candidatas e retornar a melhor opção."
+
+### Cadência
+
+- **Não narre cada tool call** (não é play-by-play). Só anuncie nos marcos.
+- **Marco =** gate de fase, checkpoint de implementador, veredito de avaliador, decisão que precisa do usuário, bloqueio.
+- Se o usuário pedir detalhes, explique. Se não pedir, seja conciso.
+- Mantenha o heartbeat em 1 linha. O anúncio de fase em 1-2 linhas.
+
+---
+
 ## Auto-Cura (N1-N4)
 
 | Nível  | Gatilho                               | Ação                                                      |
