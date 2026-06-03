@@ -1,0 +1,1377 @@
+- generic [ref=e1]:
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e10]:
+          - generic [ref=e13]:
+            - button "Conversas" [pressed] [ref=e14] [cursor=pointer]:
+              - generic [ref=e18]:
+                - img
+            - generic:
+              - status:
+                - generic: "6"
+          - generic [ref=e21]:
+            - button "Status" [ref=e22] [cursor=pointer]:
+              - generic [ref=e26]:
+                - img
+            - generic:
+              - status:
+                - generic: Atualizações no status
+          - button "Canais" [ref=e30] [cursor=pointer]:
+            - generic [ref=e34]:
+              - img
+          - button "Comunidades" [ref=e38] [cursor=pointer]:
+            - generic [ref=e42]:
+              - img
+          - separator [ref=e43]
+          - generic [ref=e46]:
+            - button "Ferramentas" [ref=e47] [cursor=pointer]:
+              - generic [ref=e51]:
+                - img
+            - generic:
+              - status
+          - button "Anunciar" [ref=e55] [cursor=pointer]:
+            - generic [ref=e59]:
+              - img
+        - generic [ref=e61]:
+          - button "Mídia" [ref=e65] [cursor=pointer]:
+            - generic [ref=e69]:
+              - img
+          - button "Configurações" [ref=e73] [cursor=pointer]:
+            - generic [ref=e77]:
+              - img
+          - button "Perfil" [ref=e81] [cursor=pointer]:
+            - img [ref=e83]
+    - generic [ref=e84]:
+      - banner [ref=e85]:
+        - banner [ref=e86]:
+          - generic [ref=e87]:
+            - heading "WhatsApp" [level=2] [ref=e89]:
+              - generic "WhatsApp" [ref=e93]:
+                - img "wa-wordmark-refreshed"
+            - generic [ref=e95]:
+              - button "Nova conversa" [ref=e99] [cursor=pointer]:
+                - generic [ref=e103]:
+                  - img
+              - button "Mais opções" [ref=e106] [cursor=pointer]:
+                - generic [ref=e110]:
+                  - img
+      - generic [ref=e111]:
+        - generic [ref=e118]:
+          - generic [ref=e120]:
+            - img
+          - textbox "Pesquisar ou começar uma nova conversa" [ref=e122]
+        - tablist "chat-list-filters" [ref=e123]:
+          - tab "Tudo" [ref=e125] [cursor=pointer]:
+            - generic [ref=e131]: Tudo
+          - tab "Não lidas" [ref=e133] [cursor=pointer]:
+            - generic [ref=e139]: Não lidas
+          - tab "Favoritas" [ref=e141] [cursor=pointer]:
+            - generic [ref=e147]: Favoritas
+          - tab "Grupos" [ref=e149] [cursor=pointer]:
+            - generic [ref=e155]: Grupos
+          - tab "Etiquetas" [ref=e158] [cursor=pointer]:
+            - generic [ref=e160]:
+              - generic [ref=e164]: Etiquetas
+              - generic [ref=e166]:
+                - img
+        - generic [ref=e167]:
+          - button "Arquivadas" [ref=e168] [cursor=pointer]:
+            - generic [ref=e169]:
+              - generic [ref=e173]:
+                - img
+              - group [ref=e175]:
+                - generic [ref=e177]: Arquivadas
+              - generic "1 mensagem não lida" [ref=e180]:
+                - generic [ref=e181]: "1"
+          - grid "Lista de conversas" [ref=e184]:
+            - 'row "1 mensagem não lida UberCentral Contabilidade 12:51 Atendimento finalizado! ✅ 📲 Agradecemos por escolher a Ubercentral! Nosso horário de atendimento é de segunda a sexta-feira, das 8h às 12h e das 13h às 17h30. Quer saber mais sobre nós? Siga nosso perfil nas redes sociais: 👉 Instagram: https://www.instagram.com/ubercentral_/reels/" [ref=e3496]':
+              - 'gridcell "1 mensagem não lida UberCentral Contabilidade 12:51 Atendimento finalizado! ✅ 📲 Agradecemos por escolher a Ubercentral! Nosso horário de atendimento é de segunda a sexta-feira, das 8h às 12h e das 13h às 17h30. Quer saber mais sobre nós? Siga nosso perfil nas redes sociais: 👉 Instagram: https://www.instagram.com/ubercentral_/reels/" [ref=e3497]':
+                - generic [ref=e242] [cursor=pointer]:
+                  - img [ref=e247]
+                  - generic [ref=e248]:
+                    - gridcell "1 mensagem não lida UberCentral Contabilidade 12:51" [ref=e3498]:
+                      - generic [ref=e250]:
+                        - generic [ref=e3499]: 1 mensagem não lida
+                        - generic "UberCentral Contabilidade" [ref=e253]
+                      - generic [ref=e255]: 12:51
+                    - generic [ref=e256]:
+                      - 'generic "‪Atendimento finalizado! ✅ 📲 Agradecemos por escolher a Ubercentral! Nosso horário de atendimento é de segunda a sexta-feira, das 8h às 12h e das 13h às 17h30. Quer saber mais sobre nós? Siga nosso perfil nas redes sociais: 👉 Instagram: https://www.instagram.com/ubercentral_/reels/‬" [ref=e3500]':
+                        - generic [ref=e3501]:
+                          - text: Atendimento finalizado!
+                          - img "✅" [ref=e3502]
+                          - img "📲" [ref=e3503]
+                          - text: "Agradecemos por escolher a Ubercentral! Nosso horário de atendimento é de segunda a sexta-feira, das 8h às 12h e das 13h às 17h30. Quer saber mais sobre nós? Siga nosso perfil nas redes sociais:"
+                          - img "👉" [ref=e3504]
+                          - text: "Instagram: https://www.instagram.com/ubercentral_/reels/"
+                      - gridcell [ref=e3505]:
+                        - generic [ref=e3509]: "1"
+            - row "Jonas Ferrari 12:48 Oiii" [ref=e2509]:
+              - gridcell "Jonas Ferrari 12:48 Oiii" [ref=e2510]:
+                - generic [ref=e632] [cursor=pointer]:
+                  - img [ref=e637]
+                  - generic [ref=e638]:
+                    - gridcell "Jonas Ferrari 12:48" [ref=e2511]:
+                      - generic "Jonas Ferrari" [ref=e643]
+                      - generic [ref=e645]: 12:48
+                    - generic [ref=e646]:
+                      - generic "‪Oiii‬" [ref=e2512]:
+                        - generic [ref=e2513]: Oiii
+                      - gridcell [ref=e3510]:
+                        - button [ref=e3512]:
+                          - generic [ref=e3513]:
+                            - img
+            - 'row "+55 34 9146-4810 12:42 Você reagiu com 🙏 a: \" Foto\"" [ref=e2514]':
+              - 'gridcell "+55 34 9146-4810 12:42 Você reagiu com 🙏 a: \" Foto\"" [ref=e2515]':
+                - generic [ref=e188] [cursor=pointer]:
+                  - generic [ref=e194]:
+                    - img
+                  - generic [ref=e195]:
+                    - gridcell "+55 34 9146-4810 12:42" [ref=e2508]:
+                      - generic "+55 34 9146-4810" [ref=e201]
+                      - generic [ref=e203]: 12:42
+                    - generic [ref=e204]:
+                      - generic "‪Foto‬" [ref=e206]:
+                        - generic [ref=e2516]:
+                          - text: Você reagiu com
+                          - img "🙏" [ref=e2517]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e208]:
+                          - img
+                        - generic [ref=e209]: Foto"
+                      - gridcell
+            - 'row "Quênia - TABAJARAS 12:39 Você reagiu com 🙏 a: \" Grata.\"" [ref=e215]':
+              - 'gridcell "Quênia - TABAJARAS 12:39 Você reagiu com 🙏 a: \" Grata.\"" [ref=e216]':
+                - generic [ref=e218] [cursor=pointer]:
+                  - img [ref=e223]
+                  - generic [ref=e224]:
+                    - gridcell "Quênia - TABAJARAS 12:39" [ref=e225]:
+                      - generic "Quênia - TABAJARAS" [ref=e229]
+                      - generic [ref=e231]: 12:39
+                    - generic [ref=e232]:
+                      - generic "‪Grata.‬" [ref=e234]:
+                        - generic [ref=e235]:
+                          - text: Você reagiu com
+                          - img "🙏" [ref=e236]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e238]: Grata."
+                      - gridcell
+            - row "+55 34 9677-3779 12:35 Na sexta não. Vou abrir amanhã, folgar sexta ;)" [ref=e261]:
+              - gridcell "+55 34 9677-3779 12:35 Na sexta não. Vou abrir amanhã, folgar sexta ;)" [ref=e262]:
+                - generic [ref=e264] [cursor=pointer]:
+                  - generic [ref=e270]:
+                    - img
+                  - generic [ref=e271]:
+                    - gridcell "+55 34 9677-3779 12:35" [ref=e272]:
+                      - generic "+55 34 9677-3779" [ref=e276]
+                      - generic [ref=e278]: 12:35
+                    - generic [ref=e279]:
+                      - generic "‪Na sexta não. Vou abrir amanhã, folgar sexta ;)‬" [ref=e281]:
+                        - generic [ref=e283]:
+                          - img
+                        - generic [ref=e284]: Na sexta não. Vou abrir amanhã, folgar sexta ;)
+                      - gridcell
+            - row "Joseane 12:34 Oi Jose, pra hoje não. Vou assar eles amanhã." [ref=e285]:
+              - gridcell "Joseane 12:34 Oi Jose, pra hoje não. Vou assar eles amanhã." [ref=e286]:
+                - generic [ref=e288] [cursor=pointer]:
+                  - img [ref=e293]
+                  - generic [ref=e294]:
+                    - gridcell "Joseane 12:34" [ref=e295]:
+                      - generic "Joseane" [ref=e299]
+                      - generic [ref=e301]: 12:34
+                    - generic [ref=e302]:
+                      - generic "‪Oi Jose, pra hoje não. Vou assar eles amanhã.‬" [ref=e304]:
+                        - generic [ref=e306]:
+                          - img
+                        - generic [ref=e307]: Oi Jose, pra hoje não. Vou assar eles amanhã.
+                      - gridcell
+            - row "+55 61 8417-4842 12:32 Vlwww" [ref=e308]:
+              - gridcell "+55 61 8417-4842 12:32 Vlwww" [ref=e309]:
+                - generic [ref=e311] [cursor=pointer]:
+                  - img [ref=e316]
+                  - generic [ref=e317]:
+                    - gridcell "+55 61 8417-4842 12:32" [ref=e318]:
+                      - generic "+55 61 8417-4842" [ref=e322]
+                      - generic [ref=e324]: 12:32
+                    - generic [ref=e325]:
+                      - generic "‪Vlwww‬" [ref=e327]:
+                        - generic [ref=e329]:
+                          - img
+                        - generic [ref=e330]: Vlwww
+                      - gridcell
+            - row "+55 21 99359-0073 12:32 Combinei com o Celso, vai dar certto!" [ref=e331]:
+              - gridcell "+55 21 99359-0073 12:32 Combinei com o Celso, vai dar certto!" [ref=e332]:
+                - generic [ref=e334] [cursor=pointer]:
+                  - img [ref=e339]
+                  - generic [ref=e340]:
+                    - gridcell "+55 21 99359-0073 12:32" [ref=e341]:
+                      - generic "+55 21 99359-0073" [ref=e345]
+                      - generic [ref=e347]: 12:32
+                    - generic [ref=e348]:
+                      - generic "‪Combinei com o Celso, vai dar certto!‬" [ref=e350]:
+                        - generic [ref=e352]:
+                          - img
+                        - generic [ref=e353]: Combinei com o Celso, vai dar certto!
+                      - gridcell
+            - 'row "+55 34 9224-3662 12:27 Reagiu com 🙏 a: \" Sim, pode buscar agora.\"" [ref=e354]':
+              - 'gridcell "+55 34 9224-3662 12:27 Reagiu com 🙏 a: \" Sim, pode buscar agora.\"" [ref=e355]':
+                - generic [ref=e357] [cursor=pointer]:
+                  - img [ref=e362]
+                  - generic [ref=e363]:
+                    - gridcell "+55 34 9224-3662 12:27" [ref=e364]:
+                      - generic "+55 34 9224-3662" [ref=e368]
+                      - generic [ref=e370]: 12:27
+                    - generic [ref=e371]:
+                      - generic "‪Sim, pode buscar agora.‬" [ref=e373]:
+                        - generic [ref=e374]:
+                          - text: Reagiu com
+                          - img "🙏" [ref=e375]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e377]: Sim, pode buscar agora."
+                      - gridcell
+            - row "Helena Ribeiro 12:26 A, blz." [ref=e378]:
+              - gridcell "Helena Ribeiro 12:26 A, blz." [ref=e379]:
+                - generic [ref=e381] [cursor=pointer]:
+                  - img [ref=e386]
+                  - generic [ref=e387]:
+                    - gridcell "Helena Ribeiro 12:26" [ref=e388]:
+                      - generic "Helena Ribeiro" [ref=e392]
+                      - generic [ref=e394]: 12:26
+                    - generic [ref=e395]:
+                      - generic "‪A, blz.‬" [ref=e397]:
+                        - generic [ref=e399]:
+                          - img
+                        - generic [ref=e400]: A, blz.
+                      - gridcell
+            - row "1 mensagem não lida Juliana Lima Afonso 08:19 Mensagem apagada" [ref=e401]:
+              - gridcell "1 mensagem não lida Juliana Lima Afonso 08:19 Mensagem apagada" [ref=e402]:
+                - generic [ref=e404] [cursor=pointer]:
+                  - img [ref=e409]
+                  - generic [ref=e410]:
+                    - gridcell "1 mensagem não lida Juliana Lima Afonso 08:19" [ref=e411]:
+                      - generic [ref=e412]:
+                        - generic [ref=e413]: 1 mensagem não lida
+                        - generic "Juliana Lima Afonso" [ref=e416]
+                      - generic [ref=e418]: 08:19
+                    - generic [ref=e419]:
+                      - generic "‪Mensagem apagada‬" [ref=e421]:
+                        - generic [ref=e423]:
+                          - img
+                        - generic [ref=e424]: Mensagem apagada
+                      - gridcell [ref=e425]:
+                        - generic [ref=e429]: "1"
+            - row "Marcel Ontem Devem ser umas 30 pessoas. Mas penso que uns 3 pães já são suficiente se forem maiores né?" [ref=e430]:
+              - gridcell "Marcel Ontem Devem ser umas 30 pessoas. Mas penso que uns 3 pães já são suficiente se forem maiores né?" [ref=e431]:
+                - generic [ref=e433] [cursor=pointer]:
+                  - img [ref=e438]
+                  - generic [ref=e439]:
+                    - gridcell "Marcel Ontem" [ref=e440]:
+                      - generic "Marcel" [ref=e444]
+                      - generic [ref=e446]: Ontem
+                    - generic [ref=e447]:
+                      - generic "‪Devem ser umas 30 pessoas. Mas penso que uns 3 pães já são suficiente se forem maiores né?‬" [ref=e449]:
+                        - generic [ref=e450]: Devem ser umas 30 pessoas. Mas penso que uns 3 pães já são suficiente se forem maiores né?
+                      - gridcell
+            - 'row "Auxiliar_padeiro: Emilly Ontem Pra amanhã?" [ref=e451]':
+              - 'gridcell "Auxiliar_padeiro: Emilly Ontem Pra amanhã?" [ref=e452]':
+                - generic [ref=e454] [cursor=pointer]:
+                  - img [ref=e459]
+                  - generic [ref=e460]:
+                    - 'gridcell "Auxiliar_padeiro: Emilly Ontem" [ref=e461]':
+                      - 'generic "Auxiliar_padeiro: Emilly" [ref=e465]'
+                      - generic [ref=e467]: Ontem
+                    - generic [ref=e468]:
+                      - generic "‪Pra amanhã?‬" [ref=e470]:
+                        - generic [ref=e471]: Pra amanhã?
+                      - gridcell
+            - 'row "+55 34 9829-0101 Ontem Reagiu com 👍 a: \" Opa! O Pão está pronto!\"" [ref=e472]':
+              - 'gridcell "+55 34 9829-0101 Ontem Reagiu com 👍 a: \" Opa! O Pão está pronto!\"" [ref=e473]':
+                - generic [ref=e475] [cursor=pointer]:
+                  - img [ref=e480]
+                  - generic [ref=e481]:
+                    - gridcell "+55 34 9829-0101 Ontem" [ref=e482]:
+                      - generic "+55 34 9829-0101" [ref=e486]
+                      - generic [ref=e488]: Ontem
+                    - generic [ref=e489]:
+                      - generic "‪Opa! O Pão está pronto!‬" [ref=e491]:
+                        - generic [ref=e492]:
+                          - text: Reagiu com
+                          - img "👍" [ref=e493]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e495]: Opa! O Pão está pronto!"
+                      - gridcell
+            - row "+55 34 9119-1030 Ontem Tô indo, perdão 😊" [ref=e496]:
+              - gridcell "+55 34 9119-1030 Ontem Tô indo, perdão 😊" [ref=e497]:
+                - generic [ref=e499] [cursor=pointer]:
+                  - img [ref=e504]
+                  - generic [ref=e505]:
+                    - gridcell "+55 34 9119-1030 Ontem" [ref=e506]:
+                      - generic "+55 34 9119-1030" [ref=e510]
+                      - generic [ref=e512]: Ontem
+                    - generic [ref=e513]:
+                      - generic "‪Tô indo, perdão 😊‬" [ref=e515]:
+                        - generic [ref=e516]:
+                          - text: Tô indo, perdão
+                          - img "😊" [ref=e517]
+                      - gridcell
+            - row "+55 34 9902-4948 Ontem Vlwww" [ref=e518]:
+              - gridcell "+55 34 9902-4948 Ontem Vlwww" [ref=e519]:
+                - generic [ref=e521] [cursor=pointer]:
+                  - img [ref=e526]
+                  - generic [ref=e527]:
+                    - gridcell "+55 34 9902-4948 Ontem" [ref=e528]:
+                      - generic "+55 34 9902-4948" [ref=e532]
+                      - generic [ref=e534]: Ontem
+                    - generic [ref=e535]:
+                      - generic "‪Vlwww‬" [ref=e537]:
+                        - generic [ref=e539]:
+                          - img
+                        - generic [ref=e540]: Vlwww
+                      - gridcell
+            - row "+55 37 8846-5592 Ontem Já consigo receber a partir de agora" [ref=e541]:
+              - gridcell "+55 37 8846-5592 Ontem Já consigo receber a partir de agora" [ref=e542]:
+                - generic [ref=e544] [cursor=pointer]:
+                  - generic [ref=e550]:
+                    - img
+                  - generic [ref=e551]:
+                    - gridcell "+55 37 8846-5592 Ontem" [ref=e552]:
+                      - generic "+55 37 8846-5592" [ref=e556]
+                      - generic [ref=e558]: Ontem
+                    - generic [ref=e559]:
+                      - generic "‪Já consigo receber a partir de agora‬" [ref=e561]:
+                        - generic [ref=e562]: Já consigo receber a partir de agora
+                      - gridcell
+            - row "Cintia Ontem Estou chegando" [ref=e563]:
+              - gridcell "Cintia Ontem Estou chegando" [ref=e564]:
+                - generic [ref=e566] [cursor=pointer]:
+                  - img [ref=e571]
+                  - generic [ref=e572]:
+                    - gridcell "Cintia Ontem" [ref=e573]:
+                      - generic "Cintia" [ref=e577]
+                      - generic [ref=e579]: Ontem
+                    - generic [ref=e580]:
+                      - generic "‪Estou chegando‬" [ref=e582]:
+                        - generic [ref=e583]: Estou chegando
+                      - gridcell
+            - row "+55 34 9924-4238 Ontem Combinado!" [ref=e584]:
+              - gridcell "+55 34 9924-4238 Ontem Combinado!" [ref=e585]:
+                - generic [ref=e587] [cursor=pointer]:
+                  - img [ref=e592]
+                  - generic [ref=e593]:
+                    - gridcell "+55 34 9924-4238 Ontem" [ref=e594]:
+                      - generic "+55 34 9924-4238" [ref=e598]
+                      - generic [ref=e600]: Ontem
+                    - generic [ref=e601]:
+                      - generic "‪Combinado!‬" [ref=e603]:
+                        - generic [ref=e604]: Combinado!
+                      - gridcell
+            - row "Iara Ontem Mensagem apagada" [ref=e605]:
+              - gridcell "Iara Ontem Mensagem apagada" [ref=e606]:
+                - generic [ref=e608] [cursor=pointer]:
+                  - generic [ref=e614]:
+                    - img
+                  - generic [ref=e615]:
+                    - gridcell "Iara Ontem" [ref=e616]:
+                      - generic "Iara" [ref=e620]
+                      - generic [ref=e622]: Ontem
+                    - generic [ref=e623]:
+                      - generic "‪Mensagem apagada‬" [ref=e625]:
+                        - generic [ref=e627]:
+                          - img
+                        - generic [ref=e628]: Mensagem apagada
+                      - gridcell
+            - row "+55 34 9898-9784 Ontem Ta bom 👍🏻" [ref=e652]:
+              - gridcell "+55 34 9898-9784 Ontem Ta bom 👍🏻" [ref=e653]:
+                - generic [ref=e655] [cursor=pointer]:
+                  - generic [ref=e661]:
+                    - img
+                  - generic [ref=e662]:
+                    - gridcell "+55 34 9898-9784 Ontem" [ref=e663]:
+                      - generic "+55 34 9898-9784" [ref=e667]
+                      - generic [ref=e669]: Ontem
+                    - generic [ref=e670]:
+                      - generic "‪Ta bom 👍🏻‬" [ref=e672]:
+                        - generic [ref=e673]:
+                          - text: Ta bom
+                          - img "👍🏻" [ref=e674]
+                      - gridcell
+            - row "+55 34 9991-9311 Ontem Estou indo buscar" [ref=e675]:
+              - gridcell "+55 34 9991-9311 Ontem Estou indo buscar" [ref=e676]:
+                - generic [ref=e678] [cursor=pointer]:
+                  - img [ref=e683]
+                  - generic [ref=e684]:
+                    - gridcell "+55 34 9991-9311 Ontem" [ref=e685]:
+                      - generic "+55 34 9991-9311" [ref=e689]
+                      - generic [ref=e691]: Ontem
+                    - generic [ref=e692]:
+                      - generic "‪Estou indo buscar‬" [ref=e694]:
+                        - generic [ref=e695]: Estou indo buscar
+                      - gridcell
+            - row "+55 34 9974-4770 Ontem Posso sim, reservei pra você!" [ref=e696]:
+              - gridcell "+55 34 9974-4770 Ontem Posso sim, reservei pra você!" [ref=e697]:
+                - generic [ref=e699] [cursor=pointer]:
+                  - img [ref=e704]
+                  - generic [ref=e705]:
+                    - gridcell "+55 34 9974-4770 Ontem" [ref=e706]:
+                      - generic "+55 34 9974-4770" [ref=e710]
+                      - generic [ref=e712]: Ontem
+                    - generic [ref=e713]:
+                      - generic "‪Posso sim, reservei pra você!‬" [ref=e715]:
+                        - generic [ref=e717]:
+                          - img
+                        - generic [ref=e718]: Posso sim, reservei pra você!
+                      - gridcell
+            - row "+55 34 8415-7490 Ontem Ok!" [ref=e719]:
+              - gridcell "+55 34 8415-7490 Ontem Ok!" [ref=e720]:
+                - generic [ref=e722] [cursor=pointer]:
+                  - img [ref=e727]
+                  - generic [ref=e728]:
+                    - gridcell "+55 34 8415-7490 Ontem" [ref=e729]:
+                      - generic "+55 34 8415-7490" [ref=e733]
+                      - generic [ref=e735]: Ontem
+                    - generic [ref=e736]:
+                      - generic "‪Ok!‬" [ref=e738]:
+                        - generic [ref=e740]:
+                          - img
+                        - generic [ref=e741]: Ok!
+                      - gridcell [ref=e3129]:
+                        - button [ref=e3131]:
+                          - generic [ref=e3132]:
+                            - img
+            - row "Dani - MARTINS Ontem Figurinha" [ref=e2519]:
+              - gridcell "Dani - MARTINS Ontem Figurinha" [ref=e2520]:
+                - generic [ref=e745] [cursor=pointer]:
+                  - img [ref=e3134]
+                  - generic [ref=e752]:
+                    - gridcell "Dani - MARTINS Ontem" [ref=e753]:
+                      - generic [ref=e755]:
+                        - generic "Dani - MARTINS" [ref=e757]
+                        - generic [ref=e761]:
+                          - img
+                      - generic [ref=e763]: Ontem
+                    - generic [ref=e764]:
+                      - generic "‪Figurinha‬" [ref=e766]:
+                        - generic [ref=e768]:
+                          - img
+                        - generic [ref=e769]: Figurinha
+                      - gridcell [ref=e2523]:
+                        - button [ref=e2525]:
+                          - generic [ref=e2526]:
+                            - img
+            - 'row "+55 34 9145-3319 Ontem Reagiu com 👍 a: \" Opa! Certinho! Reservado, estão prontos, vou fatiar na hora!\"" [ref=e770]':
+              - 'gridcell "+55 34 9145-3319 Ontem Reagiu com 👍 a: \" Opa! Certinho! Reservado, estão prontos, vou fatiar na hora!\"" [ref=e771]':
+                - generic [ref=e773] [cursor=pointer]:
+                  - img [ref=e778]
+                  - generic [ref=e779]:
+                    - gridcell "+55 34 9145-3319 Ontem" [ref=e780]:
+                      - generic "+55 34 9145-3319" [ref=e784]
+                      - generic [ref=e786]: Ontem
+                    - generic [ref=e787]:
+                      - generic "‪Opa! Certinho! Reservado, estão prontos, vou fatiar na hora!‬" [ref=e789]:
+                        - generic [ref=e790]:
+                          - text: Reagiu com
+                          - img "👍" [ref=e791]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e793]: Opa! Certinho! Reservado, estão prontos, vou fatiar na hora!"
+                      - gridcell
+            - row "+55 34 9153-1560 Ontem Deu certo, voltou!" [ref=e794]:
+              - gridcell "+55 34 9153-1560 Ontem Deu certo, voltou!" [ref=e795]:
+                - generic [ref=e797] [cursor=pointer]:
+                  - img [ref=e802]
+                  - generic [ref=e803]:
+                    - gridcell "+55 34 9153-1560 Ontem" [ref=e804]:
+                      - generic "+55 34 9153-1560" [ref=e808]
+                      - generic [ref=e810]: Ontem
+                    - generic [ref=e811]:
+                      - generic "‪Deu certo, voltou!‬" [ref=e813]:
+                        - generic [ref=e815]:
+                          - img
+                        - generic [ref=e816]: Deu certo, voltou!
+                      - gridcell
+            - 'row "+55 34 9147-7932 Ontem Reagiu com 👍 a: \" Oiii, deu certinho, recebi teu pedido!\"" [ref=e817]':
+              - 'gridcell "+55 34 9147-7932 Ontem Reagiu com 👍 a: \" Oiii, deu certinho, recebi teu pedido!\"" [ref=e818]':
+                - generic [ref=e820] [cursor=pointer]:
+                  - img [ref=e825]
+                  - generic [ref=e826]:
+                    - gridcell "+55 34 9147-7932 Ontem" [ref=e827]:
+                      - generic "+55 34 9147-7932" [ref=e831]
+                      - generic [ref=e833]: Ontem
+                    - generic [ref=e834]:
+                      - generic "‪Oiii, deu certinho, recebi teu pedido!‬" [ref=e836]:
+                        - generic [ref=e837]:
+                          - text: Reagiu com
+                          - img "👍" [ref=e838]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e840]: Oiii, deu certinho, recebi teu pedido!"
+                      - gridcell
+            - row "Jonas | Cursos Ontem winehome_02JUN26.pdf" [ref=e841]:
+              - gridcell "Jonas | Cursos Ontem winehome_02JUN26.pdf" [ref=e842]:
+                - generic [ref=e844] [cursor=pointer]:
+                  - img [ref=e849]
+                  - generic [ref=e850]:
+                    - gridcell "Jonas | Cursos Ontem" [ref=e851]:
+                      - generic "Jonas | Cursos" [ref=e855]
+                      - generic [ref=e857]: Ontem
+                    - generic [ref=e858]:
+                      - generic "‪winehome_02JUN26.pdf‬" [ref=e860]:
+                        - generic [ref=e862]:
+                          - img
+                        - generic [ref=e864]:
+                          - img
+                        - generic [ref=e865]: winehome_02JUN26.pdf
+                      - gridcell
+            - row "Consumer Ontem Sua solicitação de atendimento foi encerrada. Caso precise de ajuda, responda esta mensagem para continuar o atendimento. Você também pode avaliar este atendimento." [ref=e870]:
+              - gridcell "Consumer Ontem Sua solicitação de atendimento foi encerrada. Caso precise de ajuda, responda esta mensagem para continuar o atendimento. Você também pode avaliar este atendimento." [ref=e871]:
+                - generic [ref=e873] [cursor=pointer]:
+                  - img [ref=e878]
+                  - generic [ref=e879]:
+                    - gridcell "Consumer Ontem" [ref=e880]:
+                      - generic "Consumer" [ref=e884]
+                      - generic [ref=e886]: Ontem
+                    - generic [ref=e887]:
+                      - generic "‪Sua solicitação de atendimento foi encerrada. Caso precise de ajuda, responda esta mensagem para continuar o atendimento. Você também pode avaliar este atendimento.‬" [ref=e889]:
+                        - generic [ref=e890]: Sua solicitação de atendimento foi encerrada. Caso precise de ajuda, responda esta mensagem para continuar o atendimento. Você também pode avaliar este atendimento.
+                      - gridcell
+            - row "+55 61 3243-7964 segunda-feira Olá! 😊 A *Semana do MEI* foi um sucesso, e você fez parte disso! Agora queremos te ouvir para tornar as próximas edições ainda melhores. A pesquisa *é rápida*, simples de responder e leva só alguns minutinhos. Sua opinião *faz a diferença*. Vamos lá? 💙 Envie SAIR para deixar de receber nossas mensagens" [ref=e891]:
+              - gridcell "+55 61 3243-7964 segunda-feira Olá! 😊 A *Semana do MEI* foi um sucesso, e você fez parte disso! Agora queremos te ouvir para tornar as próximas edições ainda melhores. A pesquisa *é rápida*, simples de responder e leva só alguns minutinhos. Sua opinião *faz a diferença*. Vamos lá? 💙 Envie SAIR para deixar de receber nossas mensagens" [ref=e892]:
+                - generic [ref=e894] [cursor=pointer]:
+                  - img [ref=e899]
+                  - generic [ref=e900]:
+                    - gridcell "+55 61 3243-7964 segunda-feira" [ref=e901]:
+                      - generic "+55 61 3243-7964" [ref=e905]
+                      - generic [ref=e907]: segunda-feira
+                    - generic [ref=e908]:
+                      - generic "‪Olá! 😊 A *Semana do MEI* foi um sucesso, e você fez parte disso! Agora queremos te ouvir para tornar as próximas edições ainda melhores. A pesquisa *é rápida*, simples de responder e leva só alguns minutinhos. Sua opinião *faz a diferença*. Vamos lá? 💙 Envie SAIR para deixar de receber nossas mensagens‬" [ref=e910]:
+                        - generic [ref=e911]:
+                          - text: Olá!
+                          - img "😊" [ref=e912]
+                          - text: A *Semana do MEI* foi um sucesso, e você fez parte disso! Agora queremos te ouvir para tornar as próximas edições ainda melhores. A pesquisa *é rápida*, simples de responder e leva só alguns minutinhos. Sua opinião *faz a diferença*. Vamos lá?
+                          - img "💙" [ref=e913]
+                          - text: Envie SAIR para deixar de receber nossas mensagens
+                      - gridcell
+            - row "Adriana Muniz Retamal segunda-feira Foto" [ref=e914]:
+              - gridcell "Adriana Muniz Retamal segunda-feira Foto" [ref=e915]:
+                - generic [ref=e917] [cursor=pointer]:
+                  - img [ref=e922]
+                  - generic [ref=e923]:
+                    - gridcell "Adriana Muniz Retamal segunda-feira" [ref=e924]:
+                      - generic "Adriana Muniz Retamal" [ref=e928]
+                      - generic [ref=e930]: segunda-feira
+                    - generic [ref=e931]:
+                      - generic "‪Foto‬" [ref=e933]:
+                        - generic [ref=e935]:
+                          - img
+                        - generic [ref=e936]: Foto
+                      - gridcell
+            - row "+55 34 8835-7455 segunda-feira Ok" [ref=e937]:
+              - gridcell "+55 34 8835-7455 segunda-feira Ok" [ref=e938]:
+                - generic [ref=e940] [cursor=pointer]:
+                  - img [ref=e945]
+                  - generic [ref=e946]:
+                    - gridcell "+55 34 8835-7455 segunda-feira" [ref=e947]:
+                      - generic "+55 34 8835-7455" [ref=e951]
+                      - generic [ref=e953]: segunda-feira
+                    - generic [ref=e954]:
+                      - generic "‪Ok‬" [ref=e956]:
+                        - generic [ref=e957]: Ok
+                      - gridcell
+            - row "+55 31 8955-6190 sábado Foto" [ref=e958]:
+              - gridcell "+55 31 8955-6190 sábado Foto" [ref=e959]:
+                - generic [ref=e961] [cursor=pointer]:
+                  - img [ref=e966]
+                  - generic [ref=e967]:
+                    - gridcell "+55 31 8955-6190 sábado" [ref=e968]:
+                      - generic "+55 31 8955-6190" [ref=e972]
+                      - generic [ref=e974]: sábado
+                    - generic [ref=e975]:
+                      - generic "‪Foto‬" [ref=e977]:
+                        - generic [ref=e979]:
+                          - img
+                        - generic [ref=e981]:
+                          - img
+                        - generic [ref=e982]: Foto
+                      - gridcell
+            - row "+55 34 9979-2213 sábado Bom dia! Vcs estão abertos hj?" [ref=e983]:
+              - gridcell "+55 34 9979-2213 sábado Bom dia! Vcs estão abertos hj?" [ref=e984]:
+                - generic [ref=e986] [cursor=pointer]:
+                  - img [ref=e991]
+                  - generic [ref=e992]:
+                    - gridcell "+55 34 9979-2213 sábado" [ref=e993]:
+                      - generic "+55 34 9979-2213" [ref=e997]
+                      - generic [ref=e999]: sábado
+                    - generic [ref=e1000]:
+                      - generic "‪Bom dia! Vcs estão abertos hj?‬" [ref=e1002]:
+                        - generic [ref=e1003]: Bom dia! Vcs estão abertos hj?
+                      - gridcell
+            - row "+55 34 8428-3994 sexta-feira Na Antônio" [ref=e1004]:
+              - gridcell "+55 34 8428-3994 sexta-feira Na Antônio" [ref=e1005]:
+                - generic [ref=e1007] [cursor=pointer]:
+                  - img [ref=e1012]
+                  - generic [ref=e1013]:
+                    - gridcell "+55 34 8428-3994 sexta-feira" [ref=e1014]:
+                      - generic "+55 34 8428-3994" [ref=e1018]
+                      - generic [ref=e1020]: sexta-feira
+                    - generic [ref=e1021]:
+                      - generic "‪Na Antônio‬" [ref=e1023]:
+                        - generic [ref=e1024]: Na Antônio
+                      - gridcell
+            - row "+55 34 8835-4806 sexta-feira 🥰 🥰" [ref=e1025]:
+              - gridcell "+55 34 8835-4806 sexta-feira 🥰 🥰" [ref=e1026]:
+                - generic [ref=e1028] [cursor=pointer]:
+                  - img [ref=e1033]
+                  - generic [ref=e1034]:
+                    - gridcell "+55 34 8835-4806 sexta-feira" [ref=e1035]:
+                      - generic "+55 34 8835-4806" [ref=e1039]
+                      - generic [ref=e1041]: sexta-feira
+                    - generic [ref=e1042]:
+                      - generic "‪🥰🥰‬" [ref=e1044]:
+                        - generic [ref=e1045]:
+                          - img "🥰" [ref=e1046]
+                          - img "🥰" [ref=e1047]
+                      - gridcell
+            - row "Atendimento Bee Delivery sexta-feira Começou a mover" [ref=e1048]:
+              - gridcell "Atendimento Bee Delivery sexta-feira Começou a mover" [ref=e1049]:
+                - generic [ref=e1051] [cursor=pointer]:
+                  - img [ref=e1056]
+                  - generic [ref=e1057]:
+                    - gridcell "Atendimento Bee Delivery sexta-feira" [ref=e1058]:
+                      - generic "Atendimento Bee Delivery" [ref=e1062]
+                      - generic [ref=e1064]: sexta-feira
+                    - generic [ref=e1065]:
+                      - generic "‪Começou a mover‬" [ref=e1067]:
+                        - generic [ref=e1069]:
+                          - img
+                        - generic [ref=e1070]: Começou a mover
+                      - gridcell
+            - 'row "+55 34 8855-7003 sexta-feira Você reagiu com 🙏 a: \" segue comprovante\"" [ref=e1071]':
+              - 'gridcell "+55 34 8855-7003 sexta-feira Você reagiu com 🙏 a: \" segue comprovante\"" [ref=e1072]':
+                - generic [ref=e1074] [cursor=pointer]:
+                  - img [ref=e1079]
+                  - generic [ref=e1080]:
+                    - gridcell "+55 34 8855-7003 sexta-feira" [ref=e1081]:
+                      - generic "+55 34 8855-7003" [ref=e1085]
+                      - generic [ref=e1087]: sexta-feira
+                    - generic [ref=e1088]:
+                      - generic "‪segue comprovante‬" [ref=e1090]:
+                        - generic [ref=e1091]:
+                          - text: Você reagiu com
+                          - img "🙏" [ref=e1092]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e1095]:
+                          - img
+                        - generic [ref=e1096]: segue comprovante"
+                      - gridcell
+            - row "+55 34 9264-1717 sexta-feira Bom final de semana!!" [ref=e1097]:
+              - gridcell "+55 34 9264-1717 sexta-feira Bom final de semana!!" [ref=e1098]:
+                - generic [ref=e1100] [cursor=pointer]:
+                  - img [ref=e1105]
+                  - generic [ref=e1106]:
+                    - gridcell "+55 34 9264-1717 sexta-feira" [ref=e1107]:
+                      - generic "+55 34 9264-1717" [ref=e1111]
+                      - generic [ref=e1113]: sexta-feira
+                    - generic [ref=e1114]:
+                      - generic "‪Bom final de semana!!‬" [ref=e1116]:
+                        - generic [ref=e1118]:
+                          - img
+                        - generic [ref=e1119]: Bom final de semana!!
+                      - gridcell
+            - row "Paulinha sexta-feira Valeu Jonas." [ref=e1120]:
+              - gridcell "Paulinha sexta-feira Valeu Jonas." [ref=e1121]:
+                - generic [ref=e1123] [cursor=pointer]:
+                  - img [ref=e1128]
+                  - generic [ref=e1129]:
+                    - gridcell "Paulinha sexta-feira" [ref=e1130]:
+                      - generic "Paulinha" [ref=e1134]
+                      - generic [ref=e1136]: sexta-feira
+                    - generic [ref=e1137]:
+                      - generic "‪Valeu Jonas.‬" [ref=e1139]:
+                        - generic [ref=e1140]: Valeu Jonas.
+                      - gridcell
+            - row "+55 34 9188-2002 sexta-feira Ok! Bom final de semana!" [ref=e1141]:
+              - gridcell "+55 34 9188-2002 sexta-feira Ok! Bom final de semana!" [ref=e1142]:
+                - generic [ref=e1144] [cursor=pointer]:
+                  - img [ref=e1149]
+                  - generic [ref=e1150]:
+                    - gridcell "+55 34 9188-2002 sexta-feira" [ref=e1151]:
+                      - generic "+55 34 9188-2002" [ref=e1155]
+                      - generic [ref=e1157]: sexta-feira
+                    - generic [ref=e1158]:
+                      - generic "‪Ok! Bom final de semana!‬" [ref=e1160]:
+                        - generic [ref=e1162]:
+                          - img
+                        - generic [ref=e1163]: Ok! Bom final de semana!
+                      - gridcell
+            - row "Amor sexta-feira Quero" [ref=e1164]:
+              - gridcell "Amor sexta-feira Quero" [ref=e1165]:
+                - generic [ref=e1167] [cursor=pointer]:
+                  - img [ref=e1172]
+                  - generic [ref=e1173]:
+                    - gridcell "Amor sexta-feira" [ref=e1174]:
+                      - generic "Amor" [ref=e1178]
+                      - generic [ref=e1180]: sexta-feira
+                    - generic [ref=e1181]:
+                      - generic "‪Quero‬" [ref=e1183]:
+                        - generic [ref=e1185]:
+                          - img
+                        - generic [ref=e1186]: Quero
+                      - gridcell
+            - row "Lorena SARAIVA sexta-feira https://www.beedelivery.com.br/tracking/50431485" [ref=e1187]:
+              - gridcell "Lorena SARAIVA sexta-feira https://www.beedelivery.com.br/tracking/50431485" [ref=e1188]:
+                - generic [ref=e1190] [cursor=pointer]:
+                  - img [ref=e1195]
+                  - generic [ref=e1196]:
+                    - gridcell "Lorena SARAIVA sexta-feira" [ref=e1197]:
+                      - generic "Lorena SARAIVA" [ref=e1201]
+                      - generic [ref=e1203]: sexta-feira
+                    - generic [ref=e1204]:
+                      - generic "‪https://www.beedelivery.com.br/tracking/50431485‬" [ref=e1206]:
+                        - generic [ref=e1208]:
+                          - img
+                        - generic [ref=e1209]: https://www.beedelivery.com.br/tracking/50431485
+                      - gridcell
+            - row "+55 34 9140-1800 sexta-feira Obrigada!!" [ref=e1210]:
+              - gridcell "+55 34 9140-1800 sexta-feira Obrigada!!" [ref=e1211]:
+                - generic [ref=e1213] [cursor=pointer]:
+                  - img [ref=e1218]
+                  - generic [ref=e1219]:
+                    - gridcell "+55 34 9140-1800 sexta-feira" [ref=e1220]:
+                      - generic "+55 34 9140-1800" [ref=e1224]
+                      - generic [ref=e1226]: sexta-feira
+                    - generic [ref=e1227]:
+                      - generic "‪Obrigada!!‬" [ref=e1229]:
+                        - generic [ref=e1230]: Obrigada!!
+                      - gridcell
+            - row "+55 34 9111-5225 sexta-feira Feito!" [ref=e1231]:
+              - gridcell "+55 34 9111-5225 sexta-feira Feito!" [ref=e1232]:
+                - generic [ref=e1234] [cursor=pointer]:
+                  - img [ref=e1239]
+                  - generic [ref=e1240]:
+                    - gridcell "+55 34 9111-5225 sexta-feira" [ref=e1241]:
+                      - generic "+55 34 9111-5225" [ref=e1245]
+                      - generic [ref=e1247]: sexta-feira
+                    - generic [ref=e1248]:
+                      - generic "‪Feito!‬" [ref=e1250]:
+                        - generic [ref=e1252]:
+                          - img
+                        - generic [ref=e1253]: Feito!
+                      - gridcell
+            - 'row "Jerusa sexta-feira Você reagiu com 😂 a: \" Tudo tranquilo de ansiedade por aqui!!\"" [ref=e1254]':
+              - 'gridcell "Jerusa sexta-feira Você reagiu com 😂 a: \" Tudo tranquilo de ansiedade por aqui!!\"" [ref=e1255]':
+                - generic [ref=e1257] [cursor=pointer]:
+                  - img [ref=e1262]
+                  - generic [ref=e1263]:
+                    - gridcell "Jerusa sexta-feira" [ref=e1264]:
+                      - generic "Jerusa" [ref=e1268]
+                      - generic [ref=e1270]: sexta-feira
+                    - generic [ref=e1271]:
+                      - generic "‪Tudo tranquilo de ansiedade por aqui!!‬" [ref=e1273]:
+                        - generic [ref=e1274]:
+                          - text: Você reagiu com
+                          - img "😂" [ref=e1275]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e1277]: Tudo tranquilo de ansiedade por aqui!!"
+                      - gridcell
+            - row "Luciana Arslan sexta-feira Obg" [ref=e1278]:
+              - gridcell "Luciana Arslan sexta-feira Obg" [ref=e1279]:
+                - generic [ref=e1281] [cursor=pointer]:
+                  - img [ref=e1286]
+                  - generic [ref=e1287]:
+                    - gridcell "Luciana Arslan sexta-feira" [ref=e1288]:
+                      - generic "Luciana Arslan" [ref=e1292]
+                      - generic [ref=e1294]: sexta-feira
+                    - generic [ref=e1295]:
+                      - generic "‪Obg‬" [ref=e1297]:
+                        - generic [ref=e1298]: Obg
+                      - gridcell
+            - 'row "Inia sexta-feira Você reagiu com 🙏 a: \" Obrigada\"" [ref=e1299]':
+              - 'gridcell "Inia sexta-feira Você reagiu com 🙏 a: \" Obrigada\"" [ref=e1300]':
+                - generic [ref=e1302] [cursor=pointer]:
+                  - img [ref=e1307]
+                  - generic [ref=e1308]:
+                    - gridcell "Inia sexta-feira" [ref=e1309]:
+                      - generic "Inia" [ref=e1313]
+                      - generic [ref=e1315]: sexta-feira
+                    - generic [ref=e1316]:
+                      - generic "‪Obrigada‬" [ref=e1318]:
+                        - generic [ref=e1319]:
+                          - text: Você reagiu com
+                          - img "🙏" [ref=e1320]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e1322]: Obrigada"
+                      - gridcell
+            - row "+55 34 8416-5656 sexta-feira Ok" [ref=e1323]:
+              - gridcell "+55 34 8416-5656 sexta-feira Ok" [ref=e1324]:
+                - generic [ref=e1326] [cursor=pointer]:
+                  - img [ref=e1331]
+                  - generic [ref=e1332]:
+                    - gridcell "+55 34 8416-5656 sexta-feira" [ref=e1333]:
+                      - generic "+55 34 8416-5656" [ref=e1337]
+                      - generic [ref=e1339]: sexta-feira
+                    - generic [ref=e1340]:
+                      - generic "‪Ok‬" [ref=e1342]:
+                        - generic [ref=e1344]:
+                          - img
+                        - generic [ref=e1345]: Ok
+                      - gridcell
+            - row "Lucas sexta-feira Isso" [ref=e1346]:
+              - gridcell "Lucas sexta-feira Isso" [ref=e1347]:
+                - generic [ref=e1349] [cursor=pointer]:
+                  - img [ref=e1354]
+                  - generic [ref=e1355]:
+                    - gridcell "Lucas sexta-feira" [ref=e1356]:
+                      - generic "Lucas" [ref=e1360]
+                      - generic [ref=e1362]: sexta-feira
+                    - generic [ref=e1363]:
+                      - generic "‪Isso‬" [ref=e1365]:
+                        - generic [ref=e1367]:
+                          - img
+                        - generic [ref=e1368]: Isso
+                      - gridcell
+            - row "+55 34 9673-1968 sexta-feira Opa!1 Muito obrigado, pra vocês tbm!!" [ref=e1369]:
+              - gridcell "+55 34 9673-1968 sexta-feira Opa!1 Muito obrigado, pra vocês tbm!!" [ref=e1370]:
+                - generic [ref=e1372] [cursor=pointer]:
+                  - img [ref=e1377]
+                  - generic [ref=e1378]:
+                    - gridcell "+55 34 9673-1968 sexta-feira" [ref=e1379]:
+                      - generic "+55 34 9673-1968" [ref=e1383]
+                      - generic [ref=e1385]: sexta-feira
+                    - generic [ref=e1386]:
+                      - generic "‪Opa!1 Muito obrigado, pra vocês tbm!!‬" [ref=e1388]:
+                        - generic [ref=e1390]:
+                          - img
+                        - generic [ref=e1391]: Opa!1 Muito obrigado, pra vocês tbm!!
+                      - gridcell
+            - row "+55 34 8804-4330 sexta-feira Bom final de semana pra vocês!" [ref=e1392]:
+              - gridcell "+55 34 8804-4330 sexta-feira Bom final de semana pra vocês!" [ref=e1393]:
+                - generic [ref=e1395] [cursor=pointer]:
+                  - img [ref=e1400]
+                  - generic [ref=e1401]:
+                    - gridcell "+55 34 8804-4330 sexta-feira" [ref=e1402]:
+                      - generic "+55 34 8804-4330" [ref=e1406]
+                      - generic [ref=e1408]: sexta-feira
+                    - generic [ref=e1409]:
+                      - generic "‪Bom final de semana pra vocês!‬" [ref=e1411]:
+                        - generic [ref=e1413]:
+                          - img
+                        - generic [ref=e1414]: Bom final de semana pra vocês!
+                      - gridcell
+            - row "+55 34 9671-9182 sexta-feira Hoje tem Pão de Abóbora & Girassol, R$26 e o Grãos, Frutas e Castanhas R$30" [ref=e1415]:
+              - gridcell "+55 34 9671-9182 sexta-feira Hoje tem Pão de Abóbora & Girassol, R$26 e o Grãos, Frutas e Castanhas R$30" [ref=e1416]:
+                - generic [ref=e1418] [cursor=pointer]:
+                  - generic [ref=e1424]:
+                    - img
+                  - generic [ref=e1425]:
+                    - gridcell "+55 34 9671-9182 sexta-feira" [ref=e1426]:
+                      - generic "+55 34 9671-9182" [ref=e1430]
+                      - generic [ref=e1432]: sexta-feira
+                    - generic [ref=e1433]:
+                      - generic "‪Hoje tem Pão de Abóbora & Girassol, R$26 e o Grãos, Frutas e Castanhas R$30‬" [ref=e1435]:
+                        - generic [ref=e1437]:
+                          - img
+                        - generic [ref=e1438]: Hoje tem Pão de Abóbora & Girassol, R$26 e o Grãos, Frutas e Castanhas R$30
+                      - gridcell
+            - 'row "+55 34 9679-9860 sexta-feira Você reagiu com ❤️ a: \" Uai que bão\"" [ref=e1439]':
+              - 'gridcell "+55 34 9679-9860 sexta-feira Você reagiu com ❤️ a: \" Uai que bão\"" [ref=e1440]':
+                - generic [ref=e1442] [cursor=pointer]:
+                  - generic [ref=e1448]:
+                    - img
+                  - generic [ref=e1449]:
+                    - gridcell "+55 34 9679-9860 sexta-feira" [ref=e1450]:
+                      - generic "+55 34 9679-9860" [ref=e1454]
+                      - generic [ref=e1456]: sexta-feira
+                    - generic [ref=e1457]:
+                      - generic "‪Uai que bão‬" [ref=e1459]:
+                        - generic [ref=e1460]:
+                          - text: Você reagiu com
+                          - img "❤️" [ref=e1461]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e1463]: Uai que bão"
+                      - gridcell
+            - row "+55 34 8802-1926 sexta-feira Leticia, o forno tá ligado e o pão de fermentação natural já saiu hoje." [ref=e1464]:
+              - gridcell "+55 34 8802-1926 sexta-feira Leticia, o forno tá ligado e o pão de fermentação natural já saiu hoje." [ref=e1465]:
+                - generic [ref=e1467] [cursor=pointer]:
+                  - img [ref=e1472]
+                  - generic [ref=e1473]:
+                    - gridcell "+55 34 8802-1926 sexta-feira" [ref=e1474]:
+                      - generic "+55 34 8802-1926" [ref=e1478]
+                      - generic [ref=e1480]: sexta-feira
+                    - generic [ref=e1481]:
+                      - generic "‪Leticia, o forno tá ligado e o pão de fermentação natural já saiu hoje.‬" [ref=e1483]:
+                        - generic [ref=e1485]:
+                          - img
+                        - generic [ref=e1486]: Leticia, o forno tá ligado e o pão de fermentação natural já saiu hoje.
+                      - gridcell
+            - row "+55 34 9884-3190 sexta-feira Maria, o forno já está quente e o pão saindo agora." [ref=e1487]:
+              - gridcell "+55 34 9884-3190 sexta-feira Maria, o forno já está quente e o pão saindo agora." [ref=e1488]:
+                - generic [ref=e1490] [cursor=pointer]:
+                  - img [ref=e1495]
+                  - generic [ref=e1496]:
+                    - gridcell "+55 34 9884-3190 sexta-feira" [ref=e1497]:
+                      - generic "+55 34 9884-3190" [ref=e1501]
+                      - generic [ref=e1503]: sexta-feira
+                    - generic [ref=e1504]:
+                      - generic "‪Maria, o forno já está quente e o pão saindo agora.‬" [ref=e1506]:
+                        - generic [ref=e1508]:
+                          - img
+                        - generic [ref=e1509]: Maria, o forno já está quente e o pão saindo agora.
+                      - gridcell
+            - row "Alessandra Barroso sexta-feira Alessandra, o forno tá esquentando pra fornada da tarde, tô até sentindo o cheiro daqui." [ref=e1510]:
+              - gridcell "Alessandra Barroso sexta-feira Alessandra, o forno tá esquentando pra fornada da tarde, tô até sentindo o cheiro daqui." [ref=e1511]:
+                - generic [ref=e1513] [cursor=pointer]:
+                  - img [ref=e1518]
+                  - generic [ref=e1519]:
+                    - gridcell "Alessandra Barroso sexta-feira" [ref=e1520]:
+                      - generic "Alessandra Barroso" [ref=e1524]
+                      - generic [ref=e1526]: sexta-feira
+                    - generic [ref=e1527]:
+                      - generic "‪Alessandra, o forno tá esquentando pra fornada da tarde, tô até sentindo o cheiro daqui.‬" [ref=e1529]:
+                        - generic [ref=e1531]:
+                          - img
+                        - generic [ref=e1532]: Alessandra, o forno tá esquentando pra fornada da tarde, tô até sentindo o cheiro daqui.
+                      - gridcell
+            - row "+55 34 9177-6006 sexta-feira Luiza, o forno acabou de ligar aqui — o cheiro do pão fresco invadiu a tarde." [ref=e1533]:
+              - gridcell "+55 34 9177-6006 sexta-feira Luiza, o forno acabou de ligar aqui — o cheiro do pão fresco invadiu a tarde." [ref=e1534]:
+                - generic [ref=e1536] [cursor=pointer]:
+                  - generic [ref=e1542]:
+                    - img
+                  - generic [ref=e1543]:
+                    - gridcell "+55 34 9177-6006 sexta-feira" [ref=e1544]:
+                      - generic "+55 34 9177-6006" [ref=e1548]
+                      - generic [ref=e1550]: sexta-feira
+                    - generic [ref=e1551]:
+                      - generic "‪Luiza, o forno acabou de ligar aqui — o cheiro do pão fresco invadiu a tarde.‬" [ref=e1553]:
+                        - generic [ref=e1555]:
+                          - img
+                        - generic [ref=e1556]: Luiza, o forno acabou de ligar aqui — o cheiro do pão fresco invadiu a tarde.
+                      - gridcell
+            - row "Ana Carolina sexta-feira Ana, o forno tá ligado e o cheiro de pão quente já tomou a padaria inteira." [ref=e1557]:
+              - gridcell "Ana Carolina sexta-feira Ana, o forno tá ligado e o cheiro de pão quente já tomou a padaria inteira." [ref=e1558]:
+                - generic [ref=e1560] [cursor=pointer]:
+                  - img [ref=e1565]
+                  - generic [ref=e1566]:
+                    - gridcell "Ana Carolina sexta-feira" [ref=e1567]:
+                      - generic "Ana Carolina" [ref=e1571]
+                      - generic [ref=e1573]: sexta-feira
+                    - generic [ref=e1574]:
+                      - generic "‪Ana, o forno tá ligado e o cheiro de pão quente já tomou a padaria inteira.‬" [ref=e1576]:
+                        - generic [ref=e1578]:
+                          - img
+                        - generic [ref=e1579]: Ana, o forno tá ligado e o cheiro de pão quente já tomou a padaria inteira.
+                      - gridcell
+            - row "+55 34 9218-0865 sexta-feira Maria, o cheiro do pão de fermentação natural já tomou a padaria inteira hoje." [ref=e1580]:
+              - gridcell "+55 34 9218-0865 sexta-feira Maria, o cheiro do pão de fermentação natural já tomou a padaria inteira hoje." [ref=e1581]:
+                - generic [ref=e1583] [cursor=pointer]:
+                  - img [ref=e1588]
+                  - generic [ref=e1589]:
+                    - gridcell "+55 34 9218-0865 sexta-feira" [ref=e1590]:
+                      - generic "+55 34 9218-0865" [ref=e1594]
+                      - generic [ref=e1596]: sexta-feira
+                    - generic [ref=e1597]:
+                      - generic "‪Maria, o cheiro do pão de fermentação natural já tomou a padaria inteira hoje.‬" [ref=e1599]:
+                        - generic [ref=e1601]:
+                          - img
+                        - generic [ref=e1602]: Maria, o cheiro do pão de fermentação natural já tomou a padaria inteira hoje.
+                      - gridcell
+            - row "Fabiano sexta-feira Fabiano, hoje o pão de fermentação natural saiu do forno mais cedo — ficou bonito." [ref=e1603]:
+              - gridcell "Fabiano sexta-feira Fabiano, hoje o pão de fermentação natural saiu do forno mais cedo — ficou bonito." [ref=e1604]:
+                - generic [ref=e1606] [cursor=pointer]:
+                  - img [ref=e1611]
+                  - generic [ref=e1612]:
+                    - gridcell "Fabiano sexta-feira" [ref=e1613]:
+                      - generic "Fabiano" [ref=e1617]
+                      - generic [ref=e1619]: sexta-feira
+                    - generic [ref=e1620]:
+                      - generic "‪Fabiano, hoje o pão de fermentação natural saiu do forno mais cedo — ficou bonito.‬" [ref=e1622]:
+                        - generic [ref=e1624]:
+                          - img
+                        - generic [ref=e1625]: Fabiano, hoje o pão de fermentação natural saiu do forno mais cedo — ficou bonito.
+                      - gridcell
+            - row "Celia sexta-feira Celia, o forno acabou de apitar com o pão de fermentação natural bem quentinho." [ref=e1626]:
+              - gridcell "Celia sexta-feira Celia, o forno acabou de apitar com o pão de fermentação natural bem quentinho." [ref=e1627]:
+                - generic [ref=e1629] [cursor=pointer]:
+                  - img [ref=e1634]
+                  - generic [ref=e1635]:
+                    - gridcell "Celia sexta-feira" [ref=e1636]:
+                      - generic "Celia" [ref=e1640]
+                      - generic [ref=e1642]: sexta-feira
+                    - generic [ref=e1643]:
+                      - generic "‪Celia, o forno acabou de apitar com o pão de fermentação natural bem quentinho.‬" [ref=e1645]:
+                        - generic [ref=e1647]:
+                          - img
+                        - generic [ref=e1648]: Celia, o forno acabou de apitar com o pão de fermentação natural bem quentinho.
+                      - gridcell
+            - 'row "Cris Chiang sexta-feira Reagiu com ❤️ a: \" Cristina, o forno está assando o pão e o cheiro tomou conta da padaria de novo.\"" [ref=e1649]':
+              - 'gridcell "Cris Chiang sexta-feira Reagiu com ❤️ a: \" Cristina, o forno está assando o pão e o cheiro tomou conta da padaria de novo.\"" [ref=e1650]':
+                - generic [ref=e1652] [cursor=pointer]:
+                  - img [ref=e1657]
+                  - generic [ref=e1658]:
+                    - gridcell "Cris Chiang sexta-feira" [ref=e1659]:
+                      - generic "Cris Chiang" [ref=e1663]
+                      - generic [ref=e1665]: sexta-feira
+                    - generic [ref=e1666]:
+                      - generic "‪Cristina, o forno está assando o pão e o cheiro tomou conta da padaria de novo.‬" [ref=e1668]:
+                        - generic [ref=e1669]:
+                          - text: Reagiu com
+                          - img "❤️" [ref=e1670]
+                          - text: "a:"
+                        - text: "\""
+                        - generic [ref=e1672]: Cristina, o forno está assando o pão e o cheiro tomou conta da padaria de novo."
+                      - gridcell
+            - row "+55 34 9808-7001 sexta-feira Fabiana, o pão de agora há pouco saiu do forno bem douradinho." [ref=e1673]:
+              - gridcell "+55 34 9808-7001 sexta-feira Fabiana, o pão de agora há pouco saiu do forno bem douradinho." [ref=e1674]:
+                - generic [ref=e1676] [cursor=pointer]:
+                  - generic [ref=e1682]:
+                    - img
+                  - generic [ref=e1683]:
+                    - gridcell "+55 34 9808-7001 sexta-feira" [ref=e1684]:
+                      - generic "+55 34 9808-7001" [ref=e1688]
+                      - generic [ref=e1690]: sexta-feira
+                    - generic [ref=e1691]:
+                      - generic "‪Fabiana, o pão de agora há pouco saiu do forno bem douradinho.‬" [ref=e1693]:
+                        - generic [ref=e1695]:
+                          - img
+                        - generic [ref=e1696]: Fabiana, o pão de agora há pouco saiu do forno bem douradinho.
+                      - gridcell
+            - row "+55 34 9120-9171 sexta-feira Sandra, o forno acabou de liberar o pão branco com cheiro de tarde." [ref=e1697]:
+              - gridcell "+55 34 9120-9171 sexta-feira Sandra, o forno acabou de liberar o pão branco com cheiro de tarde." [ref=e1698]:
+                - generic [ref=e1700] [cursor=pointer]:
+                  - img [ref=e1705]
+                  - generic [ref=e1706]:
+                    - gridcell "+55 34 9120-9171 sexta-feira" [ref=e1707]:
+                      - generic "+55 34 9120-9171" [ref=e1711]
+                      - generic [ref=e1713]: sexta-feira
+                    - generic [ref=e1714]:
+                      - generic "‪Sandra, o forno acabou de liberar o pão branco com cheiro de tarde.‬" [ref=e1716]:
+                        - generic [ref=e1718]:
+                          - img
+                        - generic [ref=e1719]: Sandra, o forno acabou de liberar o pão branco com cheiro de tarde.
+                      - gridcell
+            - row "+55 34 9192-7871 sexta-feira Isso! Geralmente tenho nos dois formatos na quarta!" [ref=e1720]:
+              - gridcell "+55 34 9192-7871 sexta-feira Isso! Geralmente tenho nos dois formatos na quarta!" [ref=e1721]:
+                - generic [ref=e1723] [cursor=pointer]:
+                  - img [ref=e1728]
+                  - generic [ref=e1729]:
+                    - gridcell "+55 34 9192-7871 sexta-feira" [ref=e1730]:
+                      - generic "+55 34 9192-7871" [ref=e1734]
+                      - generic [ref=e1736]: sexta-feira
+                    - generic [ref=e1737]:
+                      - generic "‪Isso! Geralmente tenho nos dois formatos na quarta!‬" [ref=e1739]:
+                        - generic [ref=e1741]:
+                          - img
+                        - generic [ref=e1742]: Isso! Geralmente tenho nos dois formatos na quarta!
+                      - gridcell
+            - row "+55 11 97368-6890 sexta-feira Renata, acabou de sair a fornada quentinha da tarde." [ref=e1743]:
+              - gridcell "+55 11 97368-6890 sexta-feira Renata, acabou de sair a fornada quentinha da tarde." [ref=e1744]:
+                - generic [ref=e1746] [cursor=pointer]:
+                  - img [ref=e1751]
+                  - generic [ref=e1752]:
+                    - gridcell "+55 11 97368-6890 sexta-feira" [ref=e1753]:
+                      - generic "+55 11 97368-6890" [ref=e1757]
+                      - generic [ref=e1759]: sexta-feira
+                    - generic [ref=e1760]:
+                      - generic "‪Renata, acabou de sair a fornada quentinha da tarde.‬" [ref=e1762]:
+                        - generic [ref=e1764]:
+                          - img
+                        - generic [ref=e1765]: Renata, acabou de sair a fornada quentinha da tarde.
+                      - gridcell
+            - row "+55 34 9888-3869 sexta-feira Carol, a fornada da tarde saiu agora e o balcão tá cheio." [ref=e1766]:
+              - gridcell "+55 34 9888-3869 sexta-feira Carol, a fornada da tarde saiu agora e o balcão tá cheio." [ref=e1767]:
+                - generic [ref=e1769] [cursor=pointer]:
+                  - img [ref=e1774]
+                  - generic [ref=e1775]:
+                    - gridcell "+55 34 9888-3869 sexta-feira" [ref=e1776]:
+                      - generic "+55 34 9888-3869" [ref=e1780]
+                      - generic [ref=e1782]: sexta-feira
+                    - generic [ref=e1783]:
+                      - generic "‪Carol, a fornada da tarde saiu agora e o balcão tá cheio.‬" [ref=e1785]:
+                        - generic [ref=e1787]:
+                          - img
+                        - generic [ref=e1788]: Carol, a fornada da tarde saiu agora e o balcão tá cheio.
+                      - gridcell
+    - generic [ref=e3135]:
+      - banner [ref=e3137]:
+        - generic [ref=e3138]:
+          - button "Dados do perfil" [ref=e3139] [cursor=pointer]:
+            - img [ref=e3141]
+          - button "Jonas | Cursos" [ref=e3495] [cursor=pointer]:
+            - generic [ref=e3147]: Jonas | Cursos
+        - generic [ref=e3149]:
+          - button "Etiquetar conversa" [ref=e3152] [cursor=pointer]:
+            - generic [ref=e3153]:
+              - img
+            - generic [ref=e3154]: Etiquetar conversa
+            - generic [ref=e3155]:
+              - img
+          - button "Ligação de vídeo" [ref=e3156] [cursor=pointer]:
+            - generic [ref=e3158]:
+              - generic [ref=e3160]:
+                - img
+              - generic [ref=e3162]:
+                - img
+          - button "Pesquisar" [ref=e3166] [cursor=pointer]:
+            - generic [ref=e3170]:
+              - img
+          - button "Mais opções" [ref=e3174] [cursor=pointer]:
+            - generic [ref=e3178]:
+              - img
+      - generic [ref=e3183]:
+        - button "Sincronizando mensagens mais antigas. Clique para ver o progresso." [ref=e3186] [cursor=pointer]:
+          - generic [ref=e3187]:
+            - generic [ref=e3188]:
+              - img
+            - generic [ref=e3189]: Sincronizando mensagens mais antigas. Clique para ver o progresso.
+        - generic [ref=e3190]:
+          - generic [ref=e3193]: 22/05/2026
+          - generic [ref=e3194]:
+            - 'row "Jonas | Cursos: Abrir imagem 12:57 Encaminhar mídia" [ref=e3196]':
+              - generic [ref=e3201]:
+                - generic [ref=e3202]:
+                  - img
+                - generic [ref=e3203]:
+                  - generic "Jonas | Cursos:"
+                  - generic [ref=e3205]:
+                    - button "Abrir imagem" [ref=e3206] [cursor=pointer]:
+                      - generic [ref=e3207]:
+                        - img [ref=e3209]
+                        - img [ref=e3211]
+                    - generic [ref=e3215]: 12:57
+                - button "Encaminhar mídia" [ref=e3218] [cursor=pointer]:
+                  - generic [ref=e3219]:
+                    - img
+            - 'row "Jonas | Cursos: Abrir imagem 15:55 Encaminhar mídia" [ref=e3221]':
+              - generic [ref=e3226]:
+                - generic [ref=e3227]:
+                  - generic "Jonas | Cursos:"
+                  - generic [ref=e3229]:
+                    - button "Abrir imagem" [ref=e3230] [cursor=pointer]:
+                      - generic [ref=e3231]:
+                        - img [ref=e3233]
+                        - img [ref=e3235]
+                    - generic [ref=e3239]: 15:55
+                - button "Encaminhar mídia" [ref=e3242] [cursor=pointer]:
+                  - generic [ref=e3243]:
+                    - img
+          - 'row "Você: Abrir imagem 16:06 Lida Encaminhar mídia" [ref=e3246]':
+            - generic [ref=e3251]:
+              - generic [ref=e3252]:
+                - img
+              - generic [ref=e3253]:
+                - generic "Você:"
+                - generic [ref=e3255]:
+                  - button "Abrir imagem" [ref=e3256] [cursor=pointer]:
+                    - generic [ref=e3257]:
+                      - img [ref=e3259]
+                      - img [ref=e3261]
+                  - button "16:06 Lida" [ref=e3264] [cursor=pointer]:
+                    - generic [ref=e3265]: 16:06
+                    - generic "Lida" [ref=e3267]:
+                      - img "wds-ic-read"
+              - button "Encaminhar mídia" [ref=e3270] [cursor=pointer]:
+                - generic [ref=e3271]:
+                  - img
+          - generic [ref=e3274]: 26/05/2026
+          - 'row "Você: 34991336399 17:23 Lida" [ref=e3277]':
+            - generic [ref=e3282]:
+              - generic [ref=e3283]:
+                - img
+              - generic [ref=e3284]:
+                - generic "Você:"
+                - generic [ref=e3286]:
+                  - generic [ref=e3290]: "34991336399"
+                  - button "17:23 Lida" [ref=e3293] [cursor=pointer]:
+                    - generic [ref=e3294]: 17:23
+                    - generic "Lida" [ref=e3296]:
+                      - img "wds-ic-read"
+          - generic [ref=e3299]: quinta-feira
+          - 'row "Você: 34988527496 15:24 Lida" [ref=e3302]':
+            - generic [ref=e3307]:
+              - generic [ref=e3308]:
+                - img
+              - generic [ref=e3309]:
+                - generic "Você:"
+                - generic [ref=e3311]:
+                  - generic [ref=e3315]: "34988527496"
+                  - button "15:24 Lida" [ref=e3318] [cursor=pointer]:
+                    - generic [ref=e3319]: 15:24
+                    - generic "Lida" [ref=e3321]:
+                      - img "wds-ic-read"
+          - generic [ref=e3324]: Ontem
+          - 'row "Você: PDF winehome_02JUN26.pdf PDF • 85 KB 13:21 Lida Encaminhar mídia" [ref=e3327]':
+            - generic [ref=e3332]:
+              - generic [ref=e3333]:
+                - img
+              - generic [ref=e3334]:
+                - generic "Você:"
+                - generic [ref=e3335]:
+                  - button "PDF winehome_02JUN26.pdf PDF • 85 KB" [ref=e3336] [cursor=pointer]:
+                    - generic [ref=e3338]:
+                      - generic [ref=e3341]:
+                        - generic [ref=e3342]:
+                          - img
+                        - generic [ref=e3343]: PDF
+                      - generic [ref=e3344]:
+                        - generic [ref=e3345]: winehome_02JUN26.pdf
+                        - generic [ref=e3346]:
+                          - generic "PDF" [ref=e3347]
+                          - generic [ref=e3348]: •
+                          - generic "85 KB" [ref=e3349]
+                  - button "13:21 Lida" [ref=e3351] [cursor=pointer]:
+                    - generic [ref=e3352]: 13:21
+                    - generic "Lida" [ref=e3354]:
+                      - img "wds-ic-read"
+              - button "Encaminhar mídia" [ref=e3357] [cursor=pointer]:
+                - generic [ref=e3358]:
+                  - img
+      - contentinfo [ref=e3359]:
+        - generic [ref=e3365]:
+          - button "Anexar" [ref=e3369] [cursor=pointer]:
+            - generic [ref=e3373]:
+              - img
+          - button "Emojis, GIFs, figurinhas" [ref=e3378] [cursor=pointer]:
+            - generic [ref=e3382]:
+              - img
+          - generic [ref=e3383]:
+            - textbox "Digite uma mensagem para Jonas | Cursos" [active] [ref=e3384]:
+              - paragraph [ref=e3385]
+            - generic: Digite uma mensagem
+          - button "Mensagem de voz" [ref=e3388] [cursor=pointer]:
+            - button "Mensagem de voz" [ref=e3392]:
+              - generic [ref=e3396]:
+                - img
+  - generic [ref=e2303]:
+    - generic [ref=e2304]:
+      - generic [ref=e2305]:
+        - generic [ref=e2307]: Atendimento
+        - generic [ref=e2308]:
+          - button "Menu" [ref=e2309]:
+            - img [ref=e2310]
+          - button "Minimizar" [ref=e2314]:
+            - img [ref=e2315]
+          - button "🤖" [ref=e2316]
+          - button "Fechar" [ref=e2317]:
+            - img [ref=e2318]
+      - generic [ref=e2321]:
+        - generic [ref=e2324]: Sincronizado
+        - button "Atualizar" [ref=e2326]:
+          - img [ref=e2328]
+      - generic [ref=e3398]:
+        - generic [ref=e3401]:
+          - button "Jonas | Cursos Contato" [ref=e3402] [cursor=pointer]:
+            - generic [ref=e3403]:
+              - generic [ref=e3404]: Jonas | Cursos
+              - generic [ref=e3405]: Contato
+          - button "— 📋" [ref=e3407] [cursor=pointer]
+          - generic [ref=e3409]: Sem cadastro
+        - generic [ref=e3410]:
+          - generic [ref=e3411]:
+            - generic [ref=e3413]: Ofertas de hoje
+            - generic [ref=e3415]:
+              - generic [ref=e3416]: Pão Multigrãos R$ 26,00
+              - generic [ref=e3417]:
+                - generic [ref=e3418]: "5.0"
+                - button "+ add" [ref=e3419]
+            - generic [ref=e3420]:
+              - generic [ref=e3421]: Pão de Abóbora & Girassol R$ 26,00
+              - generic [ref=e3422]:
+                - generic [ref=e3423]: "5.0"
+                - button "+ add" [ref=e3424]
+            - generic [ref=e3425]:
+              - generic [ref=e3426]: Pão 100% Integral R$ 32,00
+              - generic [ref=e3427]:
+                - generic [ref=e3428]: "5.0"
+                - button "+ add" [ref=e3429]
+          - generic [ref=e3430]:
+            - button "Enviar resumo no WhatsApp" [ref=e3431]
+            - button "Criar pedido" [ref=e3432]
+        - generic [ref=e3433]:
+          - generic [ref=e3434]:
+            - generic [ref=e3437]: Perfil Ouvinte
+            - generic [ref=e3440]: 0%
+          - generic [ref=e3441]:
+            - generic [ref=e3442]: Preferências
+            - generic [ref=e3443]:
+              - generic [ref=e3444]: —
+              - generic [ref=e3445]: desconhecido
+          - generic [ref=e3446]:
+            - generic [ref=e3447]: Aversões
+            - generic [ref=e3448]:
+              - generic [ref=e3449]: —
+              - generic [ref=e3450]: desconhecido
+          - generic [ref=e3451]:
+            - generic [ref=e3452]: Endereço
+            - generic [ref=e3453]:
+              - generic [ref=e3454]: —
+              - generic [ref=e3455]: desconhecido
+          - generic [ref=e3456]:
+            - generic [ref=e3457]: Forma pgto
+            - generic [ref=e3458]:
+              - generic [ref=e3459]: —
+              - generic [ref=e3460]: desconhecido
+          - generic [ref=e3461]:
+            - generic [ref=e3462]: Urgência
+            - generic [ref=e3463]:
+              - generic [ref=e3464]: —
+              - generic [ref=e3465]: desconhecido
+          - generic [ref=e3466]:
+            - generic [ref=e3467]: Observações
+            - generic [ref=e3468]:
+              - generic [ref=e3469]: —
+              - generic [ref=e3470]: desconhecido
+        - generic [ref=e3472]:
+          - button "Resposta sugerida" [ref=e3473]:
+            - generic [ref=e3474]: Resposta sugerida
+            - img [ref=e3475]
+          - button "Usa conversas passadas como base" [ref=e3477]:
+            - img [ref=e3478]
+        - generic [ref=e3481]:
+          - generic [ref=e3482]:
+            - button "Etiquetas" [ref=e3483]:
+              - generic [ref=e3484]: Etiquetas
+              - img [ref=e3485]
+            - button "Nova lista" [ref=e3487]
+          - generic [ref=e3488]: "Ciclo atual: ainda nao comecou"
+      - generic [ref=e2438]: Mettri v2.0.0
+    - generic [ref=e2439]:
+      - button "Fechar painel" [ref=e2440]:
+        - img [ref=e3116]
+      - button "Atendimento" [ref=e2445]:
+        - img [ref=e2447]
+      - button "Catalogo" [ref=e2449]:
+        - img [ref=e2451]
+      - button "Clientes - Histórico de conversas" [ref=e2454]:
+        - img [ref=e2456]
+      - button "Marketing - Enviar" [ref=e2461]:
+        - img [ref=e2463]
+      - button "Pedidos" [ref=e2466]:
+        - img [ref=e2468]
+      - button "PD" [ref=e2474]:
+        - generic [ref=e2476]: PD
+      - button "Ajuda" [ref=e2477]:
+        - img [ref=e2479]
+      - button "Configurações" [ref=e2482]:
+        - img [ref=e2484]
+      - button "Alternar modo escuro" [ref=e2487]:
+        - img [ref=e2489]
+  - generic [ref=e2491]:
+    - generic [ref=e2492]:
+      - text: 🤖 Agent Inspector
+      - generic [ref=e2493]:
+        - button "⣿" [ref=e2494] [cursor=pointer]
+        - button "🗕" [ref=e2495] [cursor=pointer]
+        - button "🗗" [ref=e2496] [cursor=pointer]
+        - button "✕" [ref=e2497] [cursor=pointer]
+    - generic [ref=e2498]: Nenhuma aba ativa
+    - generic [ref=e2500]:
+      - generic [ref=e2501]: 🤖
+      - generic [ref=e2502]: Aguardando eventos do agente...
+      - generic [ref=e2503]: Os eventos aparecerão aqui em tempo real
