@@ -52,7 +52,7 @@ OPENCODE carrega AGENTS.md → monta system prompt. Verifica: AGENTS.md existe? 
 
 ### Fase 1 — Despertar
 
-Carrega: claims.yaml → trail/{uuid}.md → memory.md (leitura seletiva: só o relevante ao domínio). Apenas leitura. @sonhador anterógrado busca memórias e sabotagens do domínio para enriquecer o contexto.
+Carrega: claims.yaml → trail/{uuid}.md → memory.md (leitura seletiva: só o relevante ao domínio). Apenas leitura.
 
 **Se for PRIMEIRO tick da sessão:** cumprimente e pergunte no que ele quer trabalhar. Não explore sem direção.
 
@@ -69,9 +69,8 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 ### Fase 2 — Despacho
 
 1. Se `tarefa`: **Delega análise ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-despacho" })` — @tarefas faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** o despacho: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
-2. @sonhador anterógrado: carrega SPEC.md + sabotagens/{dominio}.md + memórias relevantes do memory.md
-3. Dispara @implementador: `Task({ agent: "implementador", prompt: "{ spec_path, zen_spec_ref }" })` — o implementador lê SPEC.md direto (ele é o briefing)
-4. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
+2. Dispara @implementador: `Task({ agent: "implementador", prompt: "{ spec_path, zen_spec_ref }" })` — o implementador lê SPEC.md direto (ele é o briefing)
+3. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
 
 **Fenomenologia:** FOCO — o agente escolhe um paciente, prepara o prontuário e o entrega ao cirurgião.
 
