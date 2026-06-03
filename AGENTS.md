@@ -173,6 +173,13 @@ Quando delegar a subagentes (@tarefas, @implementador, @avaliador, @testador), i
 Evite: "Task tool invoked" silencioso.
 Prefira: "→ Chamei @tarefas pra preparar o despacho da T-045 — ele vai scanear as candidatas e retornar a melhor opção."
 
+### Checklist Visível (todowrite)
+
+Ao transicionar entre fases, atualize o todowrite com o progresso:
+- Crie ao iniciar uma tarefa (3+ passos)
+- Mantenha exatamente 1 item `in_progress` por vez
+- Marque `completed` ao passar o gate da fase
+
 ### Cadência
 
 - **Não narre cada tool call** (não é play-by-play). Só anuncie nos marcos.
