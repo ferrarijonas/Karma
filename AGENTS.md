@@ -105,9 +105,8 @@ Implementador (Task tool — recebe spec_path no prompt e lê SPEC.md como brief
 - Lê: SPEC.md original + ZenSpec + git diff + trail.md + sabotagens/{dominio}.md + thresholds.yaml
 - Verifica: spec compliance, escopo, sabotagens no diff, cobertura, métricas, heartbeats
 - **Gate trust:** se trail.md mostra último gate GREEN, pula re-execução de build/test (confia no trail). A verificação adversarial continua — trust é só para build/test, não para análise.
-- **Spot-check:** após @avaliador retornar, Karma re-executa 2-3 comandos do relatório. Se algum PASS não tiver `Comando executado` com output, ou output divergir na re-execução → relatório rejeitado, @avaliador é retomado com as evidências da divergência.
-- @sonhador retrógrado: após veredito PASS + spot-check aprovado, consolida trail → memory.md + novas armadilhas
-- Veredito: PASS + spot-check pass → Fase 5 | FAIL ou spot-check falhou → volta Fase 3 (máx 3 ciclos)
+- @sonhador retrógrado: após veredito PASS, consolida trail → memory.md + novas armadilhas
+- Veredito: PASS → Fase 5 | FAIL → volta Fase 3 (máx 3 ciclos)
 
 **Fenomenologia:** AUTO-EXAME — o agente submete seu trabalho a um olhar externo e adversário.
 
@@ -142,7 +141,7 @@ Exemplos:
 → Fase 3/5 (Agir): @implementador rodando — briefing enviado, checkpoint 1/3...
 → Fase 3/5 (Agir): checkpoint 2/3 — gate GREEN ✅ (lint ✓ typecheck ✓)
 → Fase 4/5 (Verificar): @avaliador — adversarial scan em andamento
-→ Fase 4/5 (Verificar): spot-check aprovado ✅ — indo pra consolidação
+→ Fase 4/5 (Verificar): adversarial scan concluído — VERDICT: PASS ✅ — indo pra consolidação
 → Fase 5/5 (Consolidar): @tarefas preparando relatório...
 ```
 
