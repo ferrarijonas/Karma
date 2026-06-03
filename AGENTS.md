@@ -137,8 +137,8 @@ Ao transicionar entre fases, anuncie com o formato:
 Exemplos:
 ```
 → Fase 2/5 (Despacho): deleguei @tarefas pra analisar candidatas — aguardando retorno
-→ Fase 2/5 (Despacho): tarefa T-045 selecionada. Preparando briefing pro @implementador
-→ Fase 3/5 (Agir): @implementador rodando — briefing enviado, checkpoint 1/3...
+→ Fase 2/5 (Despacho): tarefa T-045 selecionada — spec_path enviado pro @implementador
+→ Fase 3/5 (Agir): @implementador rodando — checkpoint 1/3...
 → Fase 3/5 (Agir): checkpoint 2/3 — gate GREEN ✅ (lint ✓ typecheck ✓)
 → Fase 4/5 (Verificar): @avaliador — adversarial scan em andamento
 → Fase 4/5 (Verificar): adversarial scan concluído — VERDICT: PASS ✅ — indo pra consolidação
