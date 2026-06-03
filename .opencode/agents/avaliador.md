@@ -44,6 +44,7 @@ Ao ser acionado (Fase 4 do pipeline ou N3 sob demanda), você lê 6 fontes:
 | **Biblioteca/pacote** | Build, suíte completa de testes, importar de contexto limpo |
 | **Bug fix** | Reproduzir o bug original, verificar correção, rodar testes de regressão |
 | **Refatoração** | Suíte de testes existente deve passar sem alterações, diff da API pública |
+| **Simplificação** | Verificar se o diff contém abstrações desnecessárias (helpers de 1 uso), validação de cenários impossíveis, comentários que explicam o óbvio, código morto |
 
 ---
 
@@ -70,6 +71,7 @@ Pelo menos UMA sonda adversarial DEVE ser executada, mesmo que o resultado seja 
 - **Valores de borda:** 0, -1, string vazia, strings muito longas, unicode, MAX_INT
 - **Idempotência:** mesma requisição mutante duas vezes
 - **Operações órfãs:** deletar/referenciar IDs que não existem
+- **Simplificação:** abstrações desnecessárias, código morto, comentários óbvios, validação de cenários impossíveis
 
 ---
 
