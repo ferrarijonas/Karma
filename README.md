@@ -7,7 +7,7 @@ Orquestrador de desenvolvimento orientado a tarefas para **opencode**.
 O Karma é um **harness de produtividade** — uma camada de orquestração multi-agente que transforma o opencode em um sistema de pipeline com:
 
 - **5 fases** — Despertar → Triagem → Agir → Verificar → Consolidar
-- **6 agentes especializados** — @gestor, @construtor, @avaliador, @consolidador, @testador, @planejador
+- **6 agentes especializados** — @gerir, @construir, @avaliar, @aprender, @testar, @planejar
 - **Memória cross-sessão** — aprendizados sobrevivem entre execuções via `memory.md`
 - **Auto-cura (N1-N4)** — tratamento progressivo de erros sem perder o fluxo
 - **Claims por domínio** — coordenação para evitar conflitos entre tarefas
@@ -76,9 +76,9 @@ code .karma/.mettri/identidade.md  # persona
 ```
 Fase 0: Portão Duro  (opencode carrega AGENTS.md)
 Fase 1: Despertar    (carga de identidade + memória + contexto)
-Fase 2: Triagem     (@gestor prepara tarefa)
-Fase 3: Agir         (@construtor → gate-runner)
-Fase 4: Verificar    (@avaliador adversarial + @consolidador consolida)
+Fase 2: Triagem     (@gerir prepara tarefa)
+Fase 3: Agir         (@construir → gate-runner)
+Fase 4: Verificar    (@avaliar adversarial + @aprender consolida)
 Fase 5: Consolidar   (merge, PR, memória de longo prazo)
 ```
 
@@ -86,10 +86,10 @@ Fase 5: Consolidar   (merge, PR, memória de longo prazo)
 
 | Agente | Papel | Como invocar |
 |--------|-------|-------------|
-| **@gestor** | Cria, gerencia e despacha tarefas | `Task({ agent: "gestor", ... })` |
-| **@construtor** | Lê briefing, implementa, roda gate | `Task({ agent: "construtor", ... })` |
-| **@consolidador** | Consolida memória pós-tarefa | `Task({ agent: "consolidador", ... })` |
-| **@planejador** | Modo seguro — só lê, pergunta, não executa | `Task({ agent: "planejador", ... })` |
+| **@gerir** | Cria, gerencia e despacha tarefas | `Task({ agent: "gerir", ... })` |
+| **@construir** | Lê briefing, implementa, roda gate | `Task({ agent: "construir", ... })` |
+| **@aprender** | Consolida memória pós-tarefa | `Task({ agent: "aprender", ... })` |
+| **@planejar** | Modo seguro — só lê, pergunta, não executa | `Task({ agent: "planejar", ... })` |
 
 ## Personalização
 
