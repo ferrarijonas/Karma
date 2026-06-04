@@ -47,7 +47,7 @@ permite_mock: false
 
 ## Propósito
 
-O sistema atual depende do @avaliador (outro LLM) para detectar mocks — sem enforcement determinístico. `min_coverage_pct: 0` desativa o gate de cobertura. E 9 testes usam `expect(true).toBe(true)` como placeholder. Esta tarefa introduz 4 camadas de defesa determinística para que o pipeline detecte testes vazios ANTES que um LLM precise "lembrar" de verificar.
+O sistema atual depende do @avaliar (outro LLM) para detectar mocks — sem enforcement determinístico. `min_coverage_pct: 0` desativa o gate de cobertura. E 9 testes usam `expect(true).toBe(true)` como placeholder. Esta tarefa introduz 4 camadas de defesa determinística para que o pipeline detecte testes vazios ANTES que um LLM precise "lembrar" de verificar.
 
 ## Escopo
 
@@ -81,7 +81,7 @@ O sistema atual depende do @avaliador (outro LLM) para detectar mocks — sem en
 
   **`construtor.md`:** Adicionar ao gate-runner: `test:unit` passa a incluir `--coverage`. O construtor deve verificar se a cobertura está ≥ 50%. Se abaixo, o gate é RED (N2 — corrigir adicionando testes).
 
-### Passo 3: Sonda de mutation no @avaliador
+### Passo 3: Sonda de mutation no @avaliar
 
 **`avaliador.md`:** Adicionar à lista de sondas adversariais (após linha 93):
 
@@ -89,7 +89,7 @@ O sistema atual depende do @avaliador (outro LLM) para detectar mocks — sem en
 - **Mutation:** escolha UMA função alterada no diff. Substitua o corpo por `return null`/`return []`/`throw new Error("mutated")`. Rode os testes. Se NENHUM teste quebrar → FAIL (teste tautológico detectado). Restaure o original imediatamente após.
 ```
 
-A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificação — não mutation testing completo.
+A sonda é executada na Fase 4 pelo @avaliar. É UMA função por verificação — não mutation testing completo.
 
 ### Passo 4: Auditoria dos testes fracos
 
@@ -160,7 +160,7 @@ A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificaçã
 > domínio: HARNESS — catálogo: `sabotagens/_global.md`
 
 - ⚠️ **Mock Syndrome** — irony: esta tarefa existe para combatê-lo. O script `check-mocks` é a defesa determinística. → **Antídoto:** o próprio script verifica esta tarefa. Se o construtor tentar mockar algo, o gate quebra.
-- ⚠️ **Overengineering** — tentar fazer mutation testing completo (stryker) em vez de 1 sonda manual. → **Antídoto:** 1 função mutada por verificação do @avaliador. Nada de framework externo.
+- ⚠️ **Overengineering** — tentar fazer mutation testing completo (stryker) em vez de 1 sonda manual. → **Antídoto:** 1 função mutada por verificação do @avaliar. Nada de framework externo.
 - ⚠️ **"Preciso de mais X antes de testar"** — postergar porque "preciso rodar todos os testes de integração primeiro". → **Antídoto:** os testes existentes já passam. As mudanças são incrementais. Rode o gate a cada checkpoint.
 - ⚠️ **Perfeccionismo de threshold** — debater se `min_coverage_pct` deve ser 50, 60, ou 70. → **Antídoto:** 50 agora. O número pode ser ajustado depois com dados reais de tarefas concluídas.
 - ⚠️ **Fazer tudo sozinho** — tentar implementar os 4 passos em 1 checkpoint. → **Antídoto:** 4 checkpoints (1 por passo). Cada checkpoint tem seu próprio gate GREEN.
@@ -172,4 +172,4 @@ A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificaçã
 - **T-041 (Memory System):** `permite_mock: true` com `fake-indexeddb` como polyfill fiel. Serve de exemplo para a reescrita do `message-capturer.test.ts`: usar fake-indexeddb, não `vi.mock`.
 - **T-040 (AgentLoop real):** padrão de implementação em fases (agente → tool → gate). Esta tarefa segue o mesmo padrão: script → threshold → sonda → auditoria.
 - **Viés de Simplificação (HAR-01):** regras do Claude Code injetadas no construtor e avaliador. A sonda de mutation é uma extensão natural dessas regras: "não adicionar features além do pedido" aplicado a testes.
-- **Generator-Evaluator (Anthropic):** separar quem faz de quem avalia. O script `check-mocks` é o "avaliador determinístico" que não depende de LLM — fecha o ciclo que o @avaliador (LLM) não consegue fechar sozinho.
+- **Generator-Evaluator (Anthropic):** separar quem faz de quem avalia. O script `check-mocks` é o "avaliador determinístico" que não depende de LLM — fecha o ciclo que o @avaliar (LLM) não consegue fechar sozinho.

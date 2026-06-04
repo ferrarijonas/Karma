@@ -169,7 +169,7 @@ Quando uma feature tem ambas as partes (Backend + UI), o Karma segue:
 - Descoberto em: SPEC.md de T-019 (sync-html quebrou por causa disso)
 
 ### T-024 — Consolidar manual requer 3 passos (Mon May 11 2026)
-- **Problema:** Ao consolidar manualmente uma tarefa (sem @gestor), movi o diretório e atualizei claims.yaml, mas esqueci de atualizar o `status` no frontmatter do SPEC.md. O sync-html leu o frontmatter (ainda "pendente") e renderizou no lugar errado.
+- **Problema:** Ao consolidar manualmente uma tarefa (sem @gerir), movi o diretório e atualizei claims.yaml, mas esqueci de atualizar o `status` no frontmatter do SPEC.md. O sync-html leu o frontmatter (ainda "pendente") e renderizou no lugar errado.
 - **Regra:** Consolidação manual SEMPRE exige:
   1. SPEC.md: `status: pendente` → `concluido` + adicionar `concluido_em`
   2. Mover diretório `pendentes/{id}` → `concluidas/{id}`
@@ -220,7 +220,7 @@ Quando uma feature tem ambas as partes (Backend + UI), o Karma segue:
 - **O que foi criado:** `memory-db.ts` (MemoryDB com IndexedDB, 4 tipos: cliente|licao|negocio|referencia), `memory-store.ts` (orquestrador com prepararContexto, salvarTurno, atualizarPerfil). `types.ts` refinado. `monta-prompt.ts` estendido com 3 seções de memória no userPrompt. `ouvinte.ts` integrado com 1 chamada ao memoryStore.
 - **IndexedDB pattern:** keyPath + autoIncrement + ensureReady() é o padrão do projeto. fake-indexeddb/auto via setup global. `clearAll()` explícito necessário para isolamento entre testes. (tag: HARNESS.persistencia, HARNESS.testes)
 - **Comunicação via types:** Módulos do harness se comunicam via type-only imports. MemoryStore exporta tipos, monta-prompt importa só o type — sem dependência circular. (tag: HARNESS.comunicacao)
-- **Vazamento de escopo:** Detectável pelo @avaliador via git diff — arquivos de tarefas anteriores vazam no commit. Verificar diff antes de submeter. (tag: HARNESS.escopo)
+- **Vazamento de escopo:** Detectável pelo @avaliar via git diff — arquivos de tarefas anteriores vazam no commit. Verificar diff antes de submeter. (tag: HARNESS.escopo)
 - **Acoplamento resistido:** MemoryStore só conhece MemoryDB + types, sem importar agent-loop ou motor-llm. (tag: HARNESS.acoplamento)
 - **Sabotagens confirmadas no domínio:**
   - Overengineering — keyword match simples (substring), sem embedding. Embedding só quando >50 memórias.
@@ -236,5 +236,5 @@ Quando uma feature tem ambas as partes (Backend + UI), o Karma segue:
 - **Observação:** T-037 (ToolRegistry), T-040 (AgentLoop real) e T-041 (Memory System) formam o core do harness. ToolRegistry fornece ferramentas com validação Zod, MemoryStore fornece contexto persistente (4 tipos), AgentLoop executa o ciclo LLM+tools. Os 3 módulos têm dependências mínimas entre si — comunicação via types e contexto enriquecido.
 - **Hipótese:** A separação atual em 3 módulos pode ser ideal (Unix-style, cada um faz uma coisa) ou pode indicar oportunidade de consolidar em um `harness-core` para reduzir imports cruzados. Investigar acoplamento real vs aparente.
 - **Tarefas analisadas:** T-037 (ToolRegistry), T-040 (AgentLoop real), T-041 (Memory System)
-- **Próximo passo:** @avaliador testará esta hipótese na próxima tarefa do domínio HARNESS
+- **Próximo passo:** @avaliar testará esta hipótese na próxima tarefa do domínio HARNESS
 - **Gerada em:** Wed Jun 03 2026

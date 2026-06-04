@@ -42,7 +42,7 @@ Sistema de memória persistente com 4 tipos taxonômicos (cliente, licao, negoci
 | **typecheck** | ✅ PASS | Sem erros de tipo |
 | **build** | ✅ PASS | Build completo sem erros |
 | **test:unit** | ✅ PASS | 271/271 testes (42 files), 23 novos |
-| **@avaliador** | ✅ PASS | Veredito adversarial: spec compliance, escopo respeitado, sabotagens resistidas |
+| **@avaliar** | ✅ PASS | Veredito adversarial: spec compliance, escopo respeitado, sabotagens resistidas |
 
 ## Aprendizados (para memory.md)
 
@@ -54,7 +54,7 @@ Sistema de memória persistente com 4 tipos taxonômicos (cliente, licao, negoci
 - **Isolamento entre testes**: Necessário `clearAll()` explícito no MemoryDB para evitar contaminação entre testes com fake-indexeddb (tabela única compartilhada).
 
 ### De processo
-- **Commit scoping**: O @avaliador detectou que o commit inicial incluía 7 arquivos de T-040 (vazamento de escopo). Corrigido com reset seletivo. Lição: verificar `git diff` antes de submeter para avaliação.
+- **Commit scoping**: O @avaliar detectou que o commit inicial incluía 7 arquivos de T-040 (vazamento de escopo). Corrigido com reset seletivo. Lição: verificar `git diff` antes de submeter para avaliação.
 - **freshness tracking**: Freshness warning >2 dias é implementado com cálculo de diferença de timestamps na exibição, sem alterar a persistência.
 - **ChatId vazio**: ChatId deve ser normalizado para `''` no IndexedDB quando não especificado, para que a chave composta funcione corretamente em upserts globais.
 
@@ -98,7 +98,7 @@ Sistema de memória persistente com 4 tipos taxonômicos (cliente, licao, negoci
 # .karma/next-id.mjs sync-html (ou ferramenta equivalente)
 ```
 
-## Memórias para Consolidação (@consolidador)
+## Memórias para Consolidação (@aprender)
 
 Sugestão de entradas para memory.md:
 
@@ -112,7 +112,7 @@ Sugestão de entradas para memory.md:
   origem: "T-041"
 
 - tag: HARNESS.escopo
-  aprendizado: "Vazamento de escopo em commits é detectável pelo @avaliador via git diff. Verificar diff antes de submeter."
+  aprendizado: "Vazamento de escopo em commits é detectável pelo @avaliar via git diff. Verificar diff antes de submeter."
   origem: "T-041"
 
 - tag: HARNESS.acoplamento

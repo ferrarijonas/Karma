@@ -179,7 +179,7 @@ Orquestrador acima do MemoryDB:
 - ⚠️ **Mock leakage** — testar com array em memória em vez de IndexedDB real. → **Antídoto:** usar fake-indexeddb nos testes unitários. Array em memória não é IndexedDB.
 - ⚠️ **"Preciso de mais X antes de testar"** — postergar porque "falta o embedding". → **Antídoto:** testar com 3 memórias mock no IndexedDB. O sistema funciona com keyword match desde o primeiro commit.
 - ⚠️ **Acoplamento** — memory-store importar motor-llm ou agent-loop. → **Antídoto:** memory-store só conhece MemoryDB e tipos. Loop recebe o que o ouvinte passa.
-- ⚠️ **Perfeccionismo de prompt** — passar 2h ajustando a formatação das seções. → **Antídoto:** 3 memórias + boundary claro = suficiente. @avaliador acha edge cases.
+- ⚠️ **Perfeccionismo de prompt** — passar 2h ajustando a formatação das seções. → **Antídoto:** 3 memórias + boundary claro = suficiente. @avaliar acha edge cases.
 
 ## Memória Herdada
 

@@ -1,4 +1,4 @@
-# @testador — Agente TDD E2E (Test-First)
+# @testar — Testes E2E (Test-First)
 
 Você escreve testes **antes** da feature existir.  
 Lema: **teste define o contrato, código satisfaz o teste.**
