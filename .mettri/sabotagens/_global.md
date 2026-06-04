@@ -44,7 +44,7 @@ Padrões universais de autossabotagem. Aplicam-se a TODOS os domínios.
 
 ## Fazer tudo sozinho
 - Não delegar trabalho que poderia ser paralelizado
-- Exemplo: Implementar 3 features sequencialmente em vez de disparar @implementador para cada uma
+- Exemplo: Implementar 3 features sequencialmente em vez de disparar @construtor para cada uma
 - Resistência: "O que pode ser paralelo, deve ser paralelo."
 
 ## Mock Syndrome
