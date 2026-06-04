@@ -169,7 +169,7 @@ Quando uma feature tem ambas as partes (Backend + UI), o Karma segue:
 - Descoberto em: SPEC.md de T-019 (sync-html quebrou por causa disso)
 
 ### T-024 — Consolidar manual requer 3 passos (Mon May 11 2026)
-- **Problema:** Ao consolidar manualmente uma tarefa (sem @tarefas), movi o diretório e atualizei claims.yaml, mas esqueci de atualizar o `status` no frontmatter do SPEC.md. O sync-html leu o frontmatter (ainda "pendente") e renderizou no lugar errado.
+- **Problema:** Ao consolidar manualmente uma tarefa (sem @gestor), movi o diretório e atualizei claims.yaml, mas esqueci de atualizar o `status` no frontmatter do SPEC.md. O sync-html leu o frontmatter (ainda "pendente") e renderizou no lugar errado.
 - **Regra:** Consolidação manual SEMPRE exige:
   1. SPEC.md: `status: pendente` → `concluido` + adicionar `concluido_em`
   2. Mover diretório `pendentes/{id}` → `concluidas/{id}`

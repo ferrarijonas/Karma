@@ -10,9 +10,9 @@
       "prompt": "{file:./.opencode/agents/planejador.md}",
       "permission": { "edit": "deny", "bash": "deny" }
     },
-    "tarefas": {
+    "gestor": {
       "description": "Planeja, especifica e gere tarefas — SPEC.md, relatorios, analise",
-      "prompt": "{file:./.opencode/agents/tarefas.md}",
+      "prompt": "{file:./.opencode/agents/gestor.md}",
       "permission": { "edit": { ".mettri/tarefas/**": "allow", ".mettri/claims.yaml": "allow", ".karma/tarefas.html": "allow" }, "write": { ".mettri/tarefas/**/*.md": "allow" }, "bash": { "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow", "task": "deny" }
     },
     "testador": {
