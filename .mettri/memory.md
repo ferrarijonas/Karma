@@ -37,7 +37,7 @@ Se um padrão aparece 3x em 3 sessões → vire spec → remova daqui.
 - Inspirado no Claude Code: função `getSimpleDoingTasksSection()` em `src/constants/prompts.ts` injeta regras de simplificação em **todo** prompt de agente.
 - Regras do Claude Code: não adicionar features além do pedido, não criar abstrações de uso único, não comentar o óbvio, tentar o mais simples primeiro, três linhas similares > uma factory.
 - **O que mudou no Karma:**
-  1. `implementador.md` — nova seção "## Viés de Simplificação" com 6 regras de ouro + auto-detecção antes de cada checkpoint
+  1. `construtor.md` — nova seção "## Viés de Simplificação" com 6 regras de ouro + auto-detecção antes de cada checkpoint
   2. `template-briefing.md` — seção "## Viés de Simplificação" injetada em todo briefing
   3. `avaliador.md` — "Simplificação" adicionada como tipo de verificação + sonda adversarial
 - **Decisão:** Removida a regra `complexity: ['error', 10]` do `eslint.config.js` do Mettri — Claude Code (512K linhas) não usa métrica de complexidade. Preferimos design-driven, não metric-driven.
@@ -182,7 +182,7 @@ Quando uma feature tem ambas as partes (Backend + UI), o Karma segue:
 - **Problema:** SPEC.md de T-001 e T-004 tinham campos inconsistentes (dominio inválido, dependencias vazias mas corpo falava de T-010, prioridade como string)
 - **Solução:** Edição direta nos arquivos YAML frontmatter
 - **Nota:** Na época `.karma/` era gitignorado. Hoje o Karma tem repo próprio em `https://github.com/ferrarijonas/Karma` — correções vão para o git.
-- **Erro cometido:** Commit incluiu 22 arquivos não relacionados porque implementador não verificou o staging area. Commit foi resetado.
+- **Erro cometido:** Commit incluiu 22 arquivos não relacionados porque construtor não verificou o staging area. Commit foi resetado.
 - **Sabotagem vencida:** Overengineering (#1) — edição cirúrgica, sem scripts
 - **Sabotagem vencida:** "Preciso de mais X" (#2) — gate rodou imediatamente
 - **Sabotagem cometida:** Commit descuidado — não verificar staging antes de commitar

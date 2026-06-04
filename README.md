@@ -7,7 +7,7 @@ Orquestrador de desenvolvimento orientado a tarefas para **opencode**.
 O Karma é um **harness de produtividade** — uma camada de orquestração multi-agente que transforma o opencode em um sistema de pipeline com:
 
 - **5 fases** — Despertar → Triagem → Agir → Verificar → Consolidar
-- **6 agentes especializados** — @tarefas, @implementador, @avaliador, @sonhador, @testador, @plan
+- **6 agentes especializados** — @tarefas, @construtor, @avaliador, @consolidador, @testador, @planejador
 - **Memória cross-sessão** — aprendizados sobrevivem entre execuções via `memory.md`
 - **Auto-cura (N1-N4)** — tratamento progressivo de erros sem perder o fluxo
 - **Claims por domínio** — coordenação para evitar conflitos entre tarefas
@@ -58,9 +58,9 @@ code .karma/.mettri/identidade.md  # persona
 │       └── concluidas/{id}/     # Tarefas finalizadas
 ├── .opencode/agents/
 │   ├── tarefas.md               # Gestão de tarefas
-│   ├── implementador.md         # Implementação + gate-runner
+│   ├── construtor.md            # Implementação + gate-runner
 │   ├── avaliador.md             # Verificação adversarial
-│   ├── sonhador.md              # Consolidação de memória + contexto
+│   ├── consolidador.md           # Consolidação de memória + contexto
 │   ├── testador.md              # E2E (Puppeteer + CDP)
 │   └── plan.md                  # Modo planejamento
 ├── scripts/
@@ -77,8 +77,8 @@ code .karma/.mettri/identidade.md  # persona
 Fase 0: Portão Duro  (opencode carrega AGENTS.md)
 Fase 1: Despertar    (carga de identidade + memória + contexto)
 Fase 2: Triagem     (@tarefas prepara tarefa)
-Fase 3: Agir         (@implementador → gate-runner)
-Fase 4: Verificar    (@avaliador adversarial + @sonhador consolida)
+Fase 3: Agir         (@construtor → gate-runner)
+Fase 4: Verificar    (@avaliador adversarial + @consolidador consolida)
 Fase 5: Consolidar   (merge, PR, memória de longo prazo)
 ```
 
@@ -87,11 +87,9 @@ Fase 5: Consolidar   (merge, PR, memória de longo prazo)
 | Agente | Papel | Como invocar |
 |--------|-------|-------------|
 | **@tarefas** | Cria, gerencia e despacha tarefas | `Task({ agent: "tarefas", ... })` |
-| **@implementador** | Lê briefing, implementa, roda gate | `Task({ agent: "implementador", ... })` |
-| **@avaliador** | Verificação adversarial (read-only) | `Task({ agent: "avaliador", ... })` |
-| **@sonhador** | Consolida memória pós-tarefa | `Task({ agent: "sonhador", ... })` |
-| **@testador** | E2E com Puppeteer + CDP | `Task({ agent: "testador", ... })` |
-| **@plan** | Modo planejamento read-only | via `/plan` |
+| **@construtor** | Lê briefing, implementa, roda gate | `Task({ agent: "construtor", ... })` |
+| **@consolidador** | Consolida memória pós-tarefa | `Task({ agent: "consolidador", ... })` |
+| **@planejador** | Modo seguro — só lê, pergunta, não executa | `Task({ agent: "planejador", ... })` |
 
 ## Personalização
 

@@ -23,6 +23,8 @@ escopo:
     - src/modules/harness/tools/retomar-conversa.ts
     - src/modules/harness/memory-store.ts
     - src/modules/index.ts
+    - tests/unit/harness/retomar-conversa.test.ts
+    - tests/unit/harness/memory-store.test.ts
   nao_tocar:
     - src/modules/harness/agent-loop.ts
     - src/modules/harness/ouvinte.ts

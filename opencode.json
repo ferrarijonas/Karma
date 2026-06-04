@@ -5,7 +5,11 @@
   "compaction": { "auto": true, "prune": true, "reserved": 10000 },
   "instructions": [".mettri/identidade.md"],
   "agent": {
-    "plan": { "prompt": "{file:./.opencode/agents/plan.md}", "permission": { "edit": "deny", "bash": "deny" } },
+    "planejador": {
+      "description": "Modo seguro — só lê, analisa, pergunta. Não executa nada.",
+      "prompt": "{file:./.opencode/agents/planejador.md}",
+      "permission": { "edit": "deny", "bash": "deny" }
+    },
     "tarefas": {
       "description": "Planeja, especifica e gere tarefas — SPEC.md, relatorios, analise",
       "prompt": "{file:./.opencode/agents/tarefas.md}",
@@ -16,11 +20,11 @@
       "prompt": "{file:./.opencode/agents/testador.md}",
       "permission": { "edit": { ".karma/e2e-tests/**": "allow", ".karma/.mettri/tarefas/**": "allow", ".karma/.mettri/test-memory.md": "allow" }, "bash": { "taskkill": "allow", "Get-Process": "allow", "node": "allow", "Start-Process": "allow", "cd ..": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
     },
-    "implementador": {
+    "construtor": {
       "description": "Lê briefing → implementa → gate-runner → trail.md",
       "mode": "subagent",
       "hidden": true,
-      "prompt": "{file:./.opencode/agents/implementador.md}",
+      "prompt": "{file:./.opencode/agents/construtor.md}",
       "permission": { "edit": "allow", "bash": { "cd ..": "allow", "npm run build": "allow", "npm run lint": "allow", "npm run type-check": "allow", "npm run test:unit": "allow", "npx vitest": "allow", "git diff": "allow", "git add": "allow", "git commit": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
     },
     "avaliador": {
@@ -30,11 +34,11 @@
       "prompt": "{file:./.opencode/agents/avaliador.md}",
       "permission": { "edit": "deny", "bash": { "git diff": "allow", "npm run lint": "allow", "npm run type-check": "allow", "npm run build": "allow", "npm run test:unit": "allow", "npm run test:unit -- --coverage": "allow", "cd ..": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
     },
-    "sonhador": {
+    "consolidador": {
       "description": "Consolida trails → memory.md + detecta padrões cross-tarefa",
       "mode": "subagent",
       "hidden": true,
-      "prompt": "{file:./.opencode/agents/sonhador.md}",
+      "prompt": "{file:./.opencode/agents/consolidador.md}",
       "permission": { "edit": { ".mettri/**": "allow" }, "bash": "deny", "read": "allow", "glob": "allow", "grep": "allow" }
     }
   },

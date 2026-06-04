@@ -5,10 +5,10 @@ agentes:
     descricao: Agente principal — Karma orquestrador
 dominios:
   HARNESS:
-    lock: karma
-    lease_inicio: '2026-06-04T10:50:00Z'
-    heartbeat: '2026-06-04T10:50:00Z'
-    tarefa: T-044
+    lock: null
+    lease_inicio: null
+    heartbeat: null
+    tarefa: null
 wip_global: 3
 stale_timeout_min: 30
 historico:
@@ -22,5 +22,11 @@ historico:
     inicio: '2026-06-03T21:00:00Z'
     veredito: PASS
     merge: cb10b74
+    dominio: HARNESS
+    agente: karma
+  - tarefa: T-044
+    inicio: '2026-06-04T10:50:00Z'
+    veredito: PASS
+    merge: null
     dominio: HARNESS
     agente: karma

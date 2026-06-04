@@ -21,7 +21,7 @@ timeout_min: 120
 escopo:
   modulos:
     - .karma/AGENTS.md
-    - .karma/.opencode/agents/implementador.md
+    - .karma/.opencode/agents/construtor.md
     - .karma/.opencode/agents/avaliador.md
     - .karma/.mettri/thresholds.yaml
     - .karma/scripts/check-mocks/
@@ -53,7 +53,7 @@ O sistema atual depende do @avaliador (outro LLM) para detectar mocks — sem en
 
 - **Toca:**
   - `.karma/AGENTS.md` — adicionar `check-mocks` na ordem de verificação do gate-runner
-  - `.karma/.opencode/agents/implementador.md` — atualizar fluxo do gate-runner
+  - `.karma/.opencode/agents/construtor.md` — atualizar fluxo do gate-runner
   - `.karma/.opencode/agents/avaliador.md` — adicionar sonda de mutation
   - `.karma/.mettri/thresholds.yaml` — `min_coverage_pct: 0 → 50`
   - `.karma/scripts/check-mocks/` — NOVO: script determinístico anti-mock
@@ -73,61 +73,13 @@ O sistema atual depende do @avaliador (outro LLM) para detectar mocks — sem en
 ## O que já existe
 
 - `AGENTS.md:230` — ordem atual: `lint → type-check → build → test:unit`
-- `implementador.md:15` — gate-runner: `lint → typecheck → build → test:unit`
-- `avaliador.md:86-93` — sondas adversariais (Mock Syndrome na linha 93, mas é prompt, não código)
-- `avaliador.md:137` — critério de cobertura: `≥ thresholds.yaml.min_coverage_pct`
-- `thresholds.yaml:9` — `min_coverage_pct: 0`
-- `template-SPEC.md:27` — `permite_mock: false` como padrão
-- `sabotagens/_global.md:50-58` — Mock Syndrome catalogado com sinais e antídotos
-- `scripts/` — diretório com scripts utilitários (merge-claims, next-id, pulse, etc.), todos Node.js
-- `message-capturer.test.ts:7,14` — 2 `vi.mock()` substituindo módulos internos; linha 48: `expect(true).toBe(true)`
-- 9 ocorrências de `expect(true).toBe(true)` em 5 arquivos de teste (3 são placeholders E2E)
-- Análise cross-codebase (2026-06-03): Claude Code NÃO tem gate determinístico anti-mock nem coverage mínima — ambas seriam vantagens exclusivas do Karma
+- `construtor.md:15` — gate-runner: `lint → typecheck → build → test:unit`
 
-## Onde verificar / input
+  - `.karma/.opencode/agents/construtor.md:15` — fluxo do gate-runner
 
-- `.karma/AGENTS.md:230` — ordem de verificação atual
-- `.karma/.opencode/agents/implementador.md:15` — fluxo do gate-runner
-- `.karma/.opencode/agents/avaliador.md:86-93` — sondas adversariais (adicionar mutation)
-- `.karma/.mettri/thresholds.yaml:9` — `min_coverage_pct: 0`
-- `C:\Mettri4\tests\unit\storage\message-capturer.test.ts` — testes frágeis (mock de DB, `expect(true)`)
-- `C:\Mettri4\tests\unit\rag\orquestrador_indexacao_rag.test.ts` — 100% mockado (spies em fonte, embed_index, guardar)
-- `C:\Mettri4\tests\unit\rag\orquestrador_consulta_rag.test.ts` — 100% dependências injetadas como fakes
-- `C:\Mettri4\tests\unit\rag\vectorIndexLocal.test.ts:40` — `expect(true).toBe(true)`
-- `C:\Mettri4\tests\unit\marketing\retomar\diagnose-retomar-faixas.test.ts:51,60` — `expect(true).toBe(true)`
-- `C:\Mettri4\tests\unit\marketing\retomar\retomar-import-dates-audit.test.ts:45,54` — `expect(true).toBe(true)`
-- `C:\Mettri4\tests\e2e\auto-mapping.spec.ts:17,23,28` — placeholders `expect(true).toBe(true)`
+  - `construtor.md:15` — mesma alteração. Adicionar nota: "check-mocks é determinístico (script, não LLM). Se RED, corrija ANTES de prosseguir."
 
-## O que produzir / output
-
-### Passo 1: Gate determinístico anti-mock
-
-**Script `scripts/check-mocks/index.mjs`:**
-- Lê o SPEC.md da tarefa atual (caminho passado como argumento ou inferido de `claims.yaml`)
-- Extrai `permite_mock` do YAML frontmatter
-- Se `false`: faz grep no `git diff --cached` + `git diff` (staged + unstaged) por estes padrões:
-  - `vi.mock(`, `jest.mock(`, `vi.fn()`, `jest.fn()`, `vi.spyOn(`, `jest.spyOn(`
-  - `mockResolvedValue`, `mockRejectedValue`, `mockImplementation`
-  - `as unknown as` (type-cast mock — indicador forte)
-- Se encontrar QUALQUER padrão → `exit 1` com mensagem listando arquivo:linha:padrão
-- Se `true`: verifica se cada mock tem `// justificado:` no comentário da linha anterior ou mesma linha. Se faltar → `exit 1`
-- Se nenhum mock → `exit 0` silencioso
-
-**Integração no gate-runner:**
-- `AGENTS.md:230` — alterar ordem para: `check-mocks → lint → type-check → build → test:unit`
-- `implementador.md:15` — mesma alteração. Adicionar nota: "check-mocks é determinístico (script, não LLM). Se RED, corrija ANTES de prosseguir."
-- No trail.md, o gate deve incluir: `check-mocks: ✓ | lint: ✓ | typecheck: ✓ | build: ✓ | test:unit: ✓`
-
-### Passo 2: Coverage mínima
-
-**`thresholds.yaml`:**
-```yaml
-min_coverage_pct: 50
-```
-
-**Nota:** O valor 50 é suficientemente baixo para não forçar overengineering, mas alto o suficiente para que um teste que mocka tudo e testa nada produza cobertura real baixa e seja rejeitado pelo @avaliador.
-
-**`implementador.md`:** Adicionar ao gate-runner: `test:unit` passa a incluir `--coverage`. O implementador deve verificar se a cobertura está ≥ 50%. Se abaixo, o gate é RED (N2 — corrigir adicionando testes).
+  **`construtor.md`:** Adicionar ao gate-runner: `test:unit` passa a incluir `--coverage`. O construtor deve verificar se a cobertura está ≥ 50%. Se abaixo, o gate é RED (N2 — corrigir adicionando testes).
 
 ### Passo 3: Sonda de mutation no @avaliador
 
@@ -165,7 +117,7 @@ A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificaçã
 - `.karma/scripts/check-mocks/index.mjs` — NOVO
 - `.karma/scripts/check-mocks/package.json` — NOVO (type: module)
 - `.karma/AGENTS.md` — EDITAR (linha 230: ordem de verificação)
-- `.karma/.opencode/agents/implementador.md` — EDITAR (gate-runner + coverage)
+- `.karma/.opencode/agents/construtor.md` — EDITAR (gate-runner + coverage)
 - `.karma/.opencode/agents/avaliador.md` — EDITAR (sonda mutation, linha 93)
 - `.karma/.mettri/thresholds.yaml` — EDITAR (min_coverage_pct)
 - `../tests/unit/storage/message-capturer.test.ts` — EDITAR (reescrita)
@@ -183,7 +135,7 @@ A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificaçã
 - [ ] `scripts/check-mocks/index.mjs` exige `// justificado:` quando `permite_mock: true`
 - [ ] Gate-runner executa `check-mocks` ANTES de `lint`
 - [ ] `thresholds.yaml` contém `min_coverage_pct: 50`
-- [ ] `implementador.md` inclui `--coverage` no comando `test:unit`
+- [ ] `construtor.md` inclui `--coverage` no comando `test:unit`
 - [ ] `avaliador.md` lista sonda de mutation com instruções claras
 - [ ] `message-capturer.test.ts` não contém `vi.mock`
 - [ ] `message-capturer.test.ts` não contém `expect(true).toBe(true)`
@@ -207,7 +159,7 @@ A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificaçã
 
 > domínio: HARNESS — catálogo: `sabotagens/_global.md`
 
-- ⚠️ **Mock Syndrome** — irony: esta tarefa existe para combatê-lo. O script `check-mocks` é a defesa determinística. → **Antídoto:** o próprio script verifica esta tarefa. Se o implementador tentar mockar algo, o gate quebra.
+- ⚠️ **Mock Syndrome** — irony: esta tarefa existe para combatê-lo. O script `check-mocks` é a defesa determinística. → **Antídoto:** o próprio script verifica esta tarefa. Se o construtor tentar mockar algo, o gate quebra.
 - ⚠️ **Overengineering** — tentar fazer mutation testing completo (stryker) em vez de 1 sonda manual. → **Antídoto:** 1 função mutada por verificação do @avaliador. Nada de framework externo.
 - ⚠️ **"Preciso de mais X antes de testar"** — postergar porque "preciso rodar todos os testes de integração primeiro". → **Antídoto:** os testes existentes já passam. As mudanças são incrementais. Rode o gate a cada checkpoint.
 - ⚠️ **Perfeccionismo de threshold** — debater se `min_coverage_pct` deve ser 50, 60, ou 70. → **Antídoto:** 50 agora. O número pode ser ajustado depois com dados reais de tarefas concluídas.
@@ -219,5 +171,5 @@ A sonda é executada na Fase 4 pelo @avaliador. É UMA função por verificaçã
 
 - **T-041 (Memory System):** `permite_mock: true` com `fake-indexeddb` como polyfill fiel. Serve de exemplo para a reescrita do `message-capturer.test.ts`: usar fake-indexeddb, não `vi.mock`.
 - **T-040 (AgentLoop real):** padrão de implementação em fases (agente → tool → gate). Esta tarefa segue o mesmo padrão: script → threshold → sonda → auditoria.
-- **Viés de Simplificação (HAR-01):** regras do Claude Code injetadas no implementador e avaliador. A sonda de mutation é uma extensão natural dessas regras: "não adicionar features além do pedido" aplicado a testes.
+- **Viés de Simplificação (HAR-01):** regras do Claude Code injetadas no construtor e avaliador. A sonda de mutation é uma extensão natural dessas regras: "não adicionar features além do pedido" aplicado a testes.
 - **Generator-Evaluator (Anthropic):** separar quem faz de quem avalia. O script `check-mocks` é o "avaliador determinístico" que não depende de LLM — fecha o ciclo que o @avaliador (LLM) não consegue fechar sozinho.

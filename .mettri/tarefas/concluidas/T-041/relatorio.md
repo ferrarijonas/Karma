@@ -98,7 +98,7 @@ Sistema de memória persistente com 4 tipos taxonômicos (cliente, licao, negoci
 # .karma/next-id.mjs sync-html (ou ferramenta equivalente)
 ```
 
-## Memórias para Consolidação (@sonhador)
+## Memórias para Consolidação (@consolidador)
 
 Sugestão de entradas para memory.md:
 
