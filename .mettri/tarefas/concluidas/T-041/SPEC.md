@@ -142,7 +142,7 @@ Orquestrador acima do MemoryDB:
 - [ ] Prefácio de override: "siga estritamente — têm precedência" nas diretrizes
 - [ ] `ouvinte.ts` chama `memoryStore.prepararContexto()` antes de disparar AgentLoop
 - [ ] Ring buffer `chatHistory` do ouvinte preservado (T-041 adiciona, não remove)
-- [ ] Gate: lint ✓ typecheck ✓ build ✓ test:unit ✓ (248/248)
+- [ ] Gate: lint ✓ typecheck ✓ construir ✓ test:unit ✓ (248/248)
 - [ ] Nenhum arquivo fora do escopo modificado
 
 ## Mock Policy
@@ -169,7 +169,7 @@ Orquestrador acima do MemoryDB:
 2. **MemoryStore em seguida** — orquestrador que depende apenas de MemoryDB e tipos. Sem acoplamento com agent-loop ou motor-llm.
 3. **montaPrompt estendido** — adicionar campo `memorias` ao input, estruturar userPrompt com 3 seções. Testes unitários com memórias mockadas.
 4. **ouvinte.ts — integração mínima** — 1 chamada, ~5 linhas. Se o memoryStore falhar (IndexedDB não disponível), contexto segue sem memórias (degradação graciosa, sem throw).
-5. **Gate final** — lint → typecheck → build → test:unit (248/248)
+5. **Gate final** — lint → typecheck → construir → test:unit (248/248)
 
 ## Sabotagens Herdadas
 

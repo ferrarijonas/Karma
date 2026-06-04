@@ -7,7 +7,7 @@ concluido_em: "2026-06-03T19:30:00Z"
 criado_em: "2026-06-03"
 iniciado_em: "2026-06-03T14:30:00Z"
 tentativas: 1
-gates: [lint, typecheck, build, test]
+gates: [lint, typecheck, construir, test]
 veredito_avaliador: PASS
 ---
 
@@ -40,7 +40,7 @@ Sistema de memória persistente com 4 tipos taxonômicos (cliente, licao, negoci
 |------|-----------|----------|
 | **lint** | ✅ PASS | 0 erros nos meus arquivos (4 erros pré-existentes em ouvinte.ts ignorados) |
 | **typecheck** | ✅ PASS | Sem erros de tipo |
-| **build** | ✅ PASS | Build completo sem erros |
+| **construir** | ✅ PASS | Construção completa sem erros |
 | **test:unit** | ✅ PASS | 271/271 testes (42 files), 23 novos |
 | **@avaliar** | ✅ PASS | Veredito adversarial: spec compliance, escopo respeitado, sabotagens resistidas |
 

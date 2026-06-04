@@ -82,7 +82,7 @@ Esta é uma SPEC **retroativa** — o código já está implementado, testado e 
 - [x] Auto-scroll para novos eventos
 - [x] Drag para reposicionar, resize para redimensionar
 - [x] CSS injetado no <head> da página, sem Shadow DOM
-- [x] Gate: lint ✓ typecheck ✓ build ✓ test ✓
+- [x] Gate: lint ✓ typecheck ✓ construir ✓ test ✓
 - [ ] Nenhum arquivo fora do escopo modificado
 
 ## Mock Policy

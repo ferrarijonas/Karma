@@ -2,7 +2,7 @@
 id: T-042
 titulo: "Fortalecer defesas anti-mock — gate determinístico, coverage, mutation sonda, auditoria de testes"
 dominio: HARNESS
-status: pendente
+status: concluido
 prioridade: 1
 dependencias: []
 bloqueado_por: []
@@ -13,9 +13,9 @@ nivel_auto_cura: null
 backoff_ms: 10000
 max_backoff_ms: 300000
 criado_em: "2026-06-03"
-iniciado_em: null
-concluido_em: null
-heartbeat_ultimo: null
+iniciado_em: "2026-06-04T12:00:00Z"
+concluido_em: "2026-06-04T14:40:00Z"
+heartbeat_ultimo: "2026-06-04T12:00:00Z"
 estimativa_min: 45
 timeout_min: 120
 escopo:
@@ -71,9 +71,9 @@ O sistema atual depende do @avaliar (outro LLM) para detectar mocks — sem enfo
   - Outros arquivos de teste além dos 6 listados
 
 ## O que já existe
+- `AGENTS.md:230` — ordem atual: `lint → type-check → construir → test:unit`
 
-- `AGENTS.md:230` — ordem atual: `lint → type-check → build → test:unit`
-- `construtor.md:15` — gate-runner: `lint → typecheck → build → test:unit`
+  - `construir.md:15` — gate-runner: `lint → typecheck → construir → test:unit`
 
   - `.karma/.opencode/agents/construtor.md:15` — fluxo do gate-runner
 
@@ -142,7 +142,7 @@ A sonda é executada na Fase 4 pelo @avaliar. É UMA função por verificação 
 - [ ] Nenhum `expect(true).toBe(true)` restante nos 6 arquivos listados
 - [ ] `orquestrador_indexacao_rag.test.ts` tem pelo menos 1 teste de integração
 - [ ] `orquestrador_consulta_rag.test.ts` tem pelo menos 1 teste de integração
-- [ ] Gate-runner completo passa: `check-mocks ✓ | lint ✓ | typecheck ✓ | build ✓ | test:unit ✓`
+- [ ] Gate-runner completo passa: `check-mocks ✓ | lint ✓ | typecheck ✓ | construir ✓ | test:unit ✓`
 - [ ] Cobertura dos arquivos modificados ≥ 50%
 - [ ] Nenhum arquivo fora do escopo modificado
 - [ ] Trail.md mostra gate GREEN com os 5 passos

@@ -36,7 +36,7 @@ heartbeat: 2026-05-11T22:57:00Z — gate: GREEN — tentativa: 1
 ### Aprendizados
 - O claims.yaml tem `version: "2.0"` com aspas duplas; js-yaml dump mudou para aspas simples — válido YAML mas diff cosmético.
 - CATALOGO e CADASTRO ficaram com heartbeat preservado após liberar (side effect dos testes) — comportamento correto conforme spec.
-- Script Node.js puro não passa pelo gate npm (lint/typecheck/build) — gate é `node --check` + testes manuais.
+- Script Node.js puro não passa pelo gate npm (lint/typecheck/construir) — gate é `node --check` + testes manuais.
 
 ### Armadilhas
 - **Overengineering (sabotagem #1):** Resisti à tentação de adicionar validação Zod, configuração externa, ou CLI framework. O script resolve o problema com switch-case simples e Node.js puro.

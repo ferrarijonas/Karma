@@ -6,4 +6,4 @@ timeout_min: 30
 backoff:
   initial_sec: 2
   max_sec: 300
-min_coverage_pct: 0
+min_coverage_pct: 50

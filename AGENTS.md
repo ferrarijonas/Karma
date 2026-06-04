@@ -8,7 +8,7 @@ Orquestrador de desenvolvimento orientado a tarefas. Cada tarefa nasce com contr
 
 - Este diretório (`.karma/`) contém APENAS o harness do Karma — agentes, skills, estado, tarefas
 - O código-fonte do seu projeto deve estar em `../` (um nível acima deste diretório)
-- Configure `../package.json` com seus comandos de build, lint, type-check, test
+- Configure `../package.json` com seus comandos de construir, lint, type-check, test
 - Specs de domínio (ZenSpec ou similar) em `../$SPEC_DIR/`
 - Comandos npm devem rodar a partir de `../` (ex: `cd .. && npm run build`)
 
@@ -36,7 +36,7 @@ O protocolo abaixo é vinculante e precede qualquer proatividade padrão. Nenhum
 4. Human-in-the-loop — IA age, humano valida nos gates de contrato (SPEC) e merge
 5. Se algo quebrar, parar e corrigir (Jidoka)
 6. ZenSpec é contrato moral. Código cumpre contrato. Se divergem, spec vence.
-7. **Sempre buildar e testar sozinho** — rodar build/testes antes de reportar
+7. **Sempre construir e testar sozinho** — rodar construir/testes antes de reportar
 8. **Pode chamar o usuário para testes**
 9. **Não especule, não adicione, não "melhore"** — um bug fix não precisa do código ao redor limpo. Uma feature simples não precisa de config extra. Não projete para requisitos futuros hipotéticos. Três linhas similares é melhor que uma abstração prematura.
 
@@ -80,7 +80,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 @construir (Task tool — recebe spec_path no prompt e lê SPEC.md como briefing):
 
-- LOOP: implementa (read→edit→bash) → gate-runner (lint→type-check→build→test)
+- LOOP: implementa (read→edit→bash) → gate-runner (check-mocks → lint → type-check → construir → test --coverage)
 - **Antes do primeiro edit:** considere reversibilidade e raio de impacto. O custo de pausar para confirmar é baixo. O custo de uma ação indesejada é alto.
 - **Se houver testes em `e2e-tests/T-XXX.mjs` (escritos manualmente pelo @testar):** construtor DEVE consultá-los como referência viva do comportamento esperado
 - A cada checkpoint: append trail.md com heartbeat, ações, gate, aprendizados, armadilhas
@@ -105,7 +105,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 - Lê: SPEC.md original + ZenSpec + git diff + trail.md + sabotagens/{dominio}.md + thresholds.yaml
 - Verifica: spec compliance, escopo, sabotagens no diff, cobertura, métricas, heartbeats
-- **Gate trust:** se trail.md mostra último gate GREEN, pula re-execução de build/test (confia no trail). A verificação adversarial continua — trust é só para build/test, não para análise.
+- **Gate trust:** se trail.md mostra último gate GREEN, pula re-execução de construir/teste (confia no trail). A verificação adversarial continua — trust é só para construir/teste, não para análise.
 - @aprender retrógrado: após veredito PASS, consolida trail → memory.md + novas armadilhas
 - Veredito: PASS → Fase 5 | FAIL → volta Fase 3 (máx 3 ciclos)
 - **Após veredito:** rodar `sync-html` para refletir o novo estado da tarefa no dashboard
@@ -219,17 +219,19 @@ INFRAESTRUTURA
 
 ## Comandos
 
-Configure seus comandos de build e teste. Exemplo:
+Configure seus comandos de construir e teste. Exemplo:
 
 ```bash
-cd .. && npm run build         # build do projeto
-cd .. && npm run dev           # build --watch
+cd .. && npm run build         # construir projeto
+cd .. && npm run dev           # construir --watch
 cd .. && npm run lint          # eslint
 cd .. && npm run type-check    # tsc --noEmit
 cd .. && npm run test:unit     # testes unitários
 ```
 
-**Ordem de verificação:** `lint → type-check → build → test:unit`
+**Ordem de verificação:** `check-mocks → lint → type-check → construir → test:unit --coverage`
+
+> `check-mocks` é o script anti-mock determinístico em `.karma/scripts/check-mocks/index.mjs`. Roda ANTES de qualquer outra verificação. Se RED, corrija os mocks antes de prosseguir. Passa o `spec_path` como argumento: `node .karma/scripts/check-mocks/index.mjs {spec_path}`.
 
 ---
 

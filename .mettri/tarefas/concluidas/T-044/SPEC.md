@@ -130,7 +130,7 @@ toolRegistry.register('retomar_conversa', retomarConversaSchema, retomarConversa
 - [ ] Registrada no ToolRegistry via `modules/index.ts`
 - [ ] Tool respeita limite de dias (não busca histórico além do especificado)
 - [ ] Se `topico` fornecido, filtra resultados por relevância (match simples no texto)
-- [ ] Gate: lint ✓ typecheck ✓ build ✓ test:unit ✓
+- [ ] Gate: lint ✓ typecheck ✓ construir ✓ test:unit ✓
 - [ ] Nenhum arquivo fora do escopo modificado
 
 ## Mock Policy

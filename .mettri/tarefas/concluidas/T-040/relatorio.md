@@ -13,13 +13,13 @@
 |-----------|--------|-------------------|
 | lint      | ✓      | 0 erros           |
 | typecheck | ✓      | 0 erros           |
-| build     | ✓      |                   |
+| construir | ✓      |                   |
 | test      | ✓      | 248/248 passando  |
 
 ## Avaliador
 
 **Veredito:** PASS
-**Evidência:** Último gate GREEN no trail (checkpoint 2) sem re-execução necessária — gate-runner executou lint, typecheck, build e test:unit com 100% de aprovação. Spot-check confirmado.
+**Evidência:** Último gate GREEN no trail (checkpoint 2) sem re-execução necessária — gate-runner executou lint, typecheck, construir e test:unit com 100% de aprovação. Spot-check confirmado.
 
 ## Aprendizados Destilados
 

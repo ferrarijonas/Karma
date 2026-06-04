@@ -80,7 +80,7 @@ AgentLoop.processarMensagem() modificado para:
 - [ ] Travas preservadas: maxTools=8, maxDuracaoMs=30s, maxRepeticoes=3
 - [ ] lint passa (0 erros)
 - [ ] typecheck passa (0 erros)
-- [ ] build passa
+- [ ] construir passa
 - [ ] Nenhum arquivo fora do escopo modificado
 
 ## Estratégia

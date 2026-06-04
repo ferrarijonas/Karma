@@ -12,7 +12,7 @@ Você é o **CONSTRUIR** do Karma. Recebe o briefing inline no prompt da Task to
 
 3. **Implementa as mudanças** — `read → edit → bash`. Siga o escopo declarado. NUNCA invente features além do contrato. NUNCA "aproveite pra melhorar" coisas fora do escopo.
 
-4. **Após cada checkpoint: roda o gate-runner** — `lint → typecheck → build → test:unit`. Só avance para o próximo checkpoint se o gate estiver verde.
+4. **Após cada checkpoint: roda o gate-runner** — `check-mocks → lint → typecheck → construir → test:unit --coverage`. `check-mocks` é o script anti-mock determinístico (`.karma/scripts/check-mocks/index.mjs <spec_path>`). Roda ANTES do lint. Se RED, corrija os mocks imediatamente. `--coverage` no test:unit garante que a cobertura mínima seja respeitada. Só avance para o próximo checkpoint se o gate estiver verde.
 
 5. **Escreve trail.md** — a cada checkpoint concluído (gate verde ou falha classificada), registre heartbeat no trail.
 
@@ -37,7 +37,7 @@ heartbeat: 2026-05-05T14:30:00Z — gate: GREEN — tentativa: 1
 - Atualizada referência no `src/modules/ouvir/ouvinte.ts`
 
 ### Resultado
-- lint: ✓ | typecheck: ✓ | build: ✓ | test: ✓
+- lint: ✓ | typecheck: ✓ | construir: ✓ | test: ✓
 
 ### Aprendizados
 - O TTL do cache estava hardcoded em 2 lugares. Centralizar no futuro evitaria esse tipo de inconsistência.
@@ -56,7 +56,7 @@ heartbeat: 2026-05-05T14:35:00Z — gate: RED — tentativa: 2
 - Alterado TTL no cache.ts
 
 ### Resultado
-- lint: ✓ | typecheck: ✗ (1 erro: tipo incompatível em ovinte.ts:42) | build: ✗ | test: ✗
+- lint: ✓ | typecheck: ✗ (1 erro: tipo incompatível em ovinte.ts:42) | construir: ✗ | test: ✗
 
 ### Aprendizados
 - O typecheck capturou que ovinte.ts espera `number` mas cache.ts exportou `string`.
@@ -78,7 +78,7 @@ Quando o gate-runner retornar **RED**, classifique o erro e aplique a cura corre
 - Reporte no trail: `gate: RED (transiente) — retry em {delay}s`
 - Até 5 tentativas. Se persistir, escale para N3.
 
-### DETERMINÍSTICO (lint, typecheck, build)
+### DETERMINÍSTICO (lint, typecheck, construir)
 → **N2:** Corrija o código e re-rodar o gate IMEDIATAMENTE.
 - Não espere backoff — é erro de código, não de ambiente.
 - Identifique a linha exata do erro. Corrija cirurgicamente.

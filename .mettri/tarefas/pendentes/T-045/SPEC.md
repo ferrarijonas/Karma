@@ -134,7 +134,7 @@ window.dispatchEvent(new CustomEvent('agent:compacting', {
 - [ ] Aviso de compactação é claramente marcado no prompt para o LLM
 - [ ] Evento `agent:compacting` emitido quando `montaPrompt` compacta o histórico
 - [ ] InspectorPopup mostra indicador 🔄 com detalhes da compactação
-- [ ] Gate: lint ✓ typecheck ✓ build ✓ test:unit ✓
+- [ ] Gate: lint ✓ typecheck ✓ construir ✓ test:unit ✓
 - [ ] Nenhum arquivo fora do escopo modificado
 
 ## Mock Policy

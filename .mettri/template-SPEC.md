@@ -63,7 +63,7 @@ permite_mock: false
 - [ ] {critério 2 mensurável}
 - [ ] lint passa (0 erros)
 - [ ] typecheck passa (0 erros)
-- [ ] build passa
+- [ ] construir passa
 - [ ] testes passam
 - [ ] Nenhum arquivo fora do escopo modificado
 

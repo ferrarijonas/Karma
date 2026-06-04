@@ -10,7 +10,7 @@
 - Corrigido `no-inferrable-types` no parâmetro `max` (type annotation removida).
 
 ### Resultado
-- lint (meus arquivos): ✓ 0 erros | typecheck: ✓ | build: ✓ | test: ✓ (248/248)
+- lint (meus arquivos): ✓ 0 erros | typecheck: ✓ | construir: ✓ | test: ✓ (248/248)
 
 ### Aprendizados
 - O padrão IndexedDB do projeto usa `keyPath` + `autoIncrement`, com `ensureReady()` pattern.
@@ -32,7 +32,7 @@
 - Degradação graciosa: try-catch interno — se falhar, retorna contexto vazio.
 
 ### Resultado
-- lint (meus arquivos): ✓ | typecheck: ✓ | build: ✓ | test: ✓
+- lint (meus arquivos): ✓ | typecheck: ✓ | construir: ✓ | test: ✓
 
 ### Aprendizados
 - MemoryStore não importa motor-llm ou agent-loop (só conhece MemoryDB e tipos). Bom combate ao acoplamento.
@@ -58,7 +58,7 @@
 - Cabeçalhos genéricos (multi-negócio), sem referência a padaria.
 
 ### Resultado
-- lint (meus arquivos): ✓ | typecheck: ✓ | build: ✓ | test: ✓
+- lint (meus arquivos): ✓ | typecheck: ✓ | construir: ✓ | test: ✓
 
 ### Aprendizados
 - ContextoMemorias é importado como type-only de `../harness/memory-store`, sem dependência circular.
@@ -82,7 +82,7 @@
 
 ### Resultado
 - lint (meus arquivos): ✓ 0 novos erros (4 erros pré-existentes em ovinte.ts — linhas 45,60,229)
-- typecheck: ✓ | build: ✓ | test: ✓ (40/40 files, 248/248 tests)
+- typecheck: ✓ | construir: ✓ | test: ✓ (40/40 files, 248/248 tests)
 
 ### Aprendizados
 - O ponto de inserção exato é antes do `mettriHarness` check, dentro do `if (result.ok)` block.
@@ -110,7 +110,7 @@
 ### Gate final
 - **lint (meus arquivos):** ✓ 0 erros (4 erros pré-existentes em ouvinte.ts ignorados)
 - **typecheck:** ✓
-- **build:** ✓
+- **construir:** ✓
 - **test:unit:** ✓ (42 files, 271/271 tests — 23 novos)
 
 ### Correções pós-avaliação
