@@ -2,7 +2,7 @@
 id: T-044
 titulo: "Tool retomar_conversa — contexto de conversas anteriores"
 dominio: HARNESS
-status: pendente
+status: em_andamento
 prioridade: 2
 dependencias: [T-041]
 bloqueado_por: []
@@ -13,7 +13,7 @@ nivel_auto_cura: null
 backoff_ms: 10000
 max_backoff_ms: 300000
 criado_em: "2026-06-03"
-iniciado_em: null
+iniciado_em: "2026-06-04T10:50:00Z"
 concluido_em: null
 heartbeat_ultimo: null
 estimativa_min: 30

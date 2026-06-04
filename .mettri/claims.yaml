@@ -5,10 +5,10 @@ agentes:
     descricao: Agente principal — Karma orquestrador
 dominios:
   HARNESS:
-    lock: null
-    lease_inicio: null
-    heartbeat: null
-    tarefa: null
+    lock: karma
+    lease_inicio: '2026-06-04T10:50:00Z'
+    heartbeat: '2026-06-04T10:50:00Z'
+    tarefa: T-044
 wip_global: 3
 stale_timeout_min: 30
 historico:

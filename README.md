@@ -6,7 +6,7 @@ Orquestrador de desenvolvimento orientado a tarefas para **opencode**.
 
 O Karma é um **harness de produtividade** — uma camada de orquestração multi-agente que transforma o opencode em um sistema de pipeline com:
 
-- **5 fases** — Despertar → Despacho → Agir → Verificar → Consolidar
+- **5 fases** — Despertar → Triagem → Agir → Verificar → Consolidar
 - **6 agentes especializados** — @tarefas, @implementador, @avaliador, @sonhador, @testador, @plan
 - **Memória cross-sessão** — aprendizados sobrevivem entre execuções via `memory.md`
 - **Auto-cura (N1-N4)** — tratamento progressivo de erros sem perder o fluxo
@@ -76,7 +76,7 @@ code .karma/.mettri/identidade.md  # persona
 ```
 Fase 0: Portão Duro  (opencode carrega AGENTS.md)
 Fase 1: Despertar    (carga de identidade + memória + contexto)
-Fase 2: Despacho     (@tarefas prepara tarefa)
+Fase 2: Triagem     (@tarefas prepara tarefa)
 Fase 3: Agir         (@implementador → gate-runner)
 Fase 4: Verificar    (@avaliador adversarial + @sonhador consolida)
 Fase 5: Consolidar   (merge, PR, memória de longo prazo)

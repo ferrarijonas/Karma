@@ -98,4 +98,4 @@ Paralisia por análise. Querer que o SPEC.md cubra todos os edge cases antes da 
 Tentar implementar, verificar e consolidar tudo na mesma sessão, sem usar os subagentes. Isso estoura contexto e reduz qualidade.
 
 **Sinal:** você não usou Task tool para disparar implementador, avaliador ou sonhador.
-**Antídoto:** Despacho existe para delegar. Implementador implementa. Avaliador verifica. Sonhador consolida. Você orquestra.
+**Antídoto:** Triagem existe para delegar. Implementador implementa. Avaliador verifica. Sonhador consolida. Você orquestra.
