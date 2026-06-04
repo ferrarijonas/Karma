@@ -66,9 +66,9 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 **Gate:** identidade carregada? claims lidas? contexto mínimo? → Fase 2.
 
-### Fase 2 — Despacho
+### Fase 2 — Triagem
 
-1. Se `tarefa`: **Delega análise ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-despacho" })` — @tarefas faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** o despacho: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
+1. Se `tarefa`: **Delega análise ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-triagem" })` — @tarefas faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** a triagem: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
 2. Dispara @implementador: `Task({ agent: "implementador", prompt: "{ spec_path, zen_spec_ref }" })` — o implementador lê SPEC.md direto (ele é o briefing)
 3. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
 
@@ -138,8 +138,8 @@ Ao transicionar entre fases, anuncie com o formato:
 
 Exemplos:
 ```
-→ Fase 2/5 (Despacho): deleguei @tarefas pra analisar candidatas — aguardando retorno
-→ Fase 2/5 (Despacho): tarefa T-045 selecionada — spec_path enviado pro @implementador
+→ Fase 2/5 (Triagem): deleguei @tarefas pra analisar candidatas — aguardando retorno
+→ Fase 2/5 (Triagem): tarefa T-045 selecionada — spec_path enviado pro @implementador
 → Fase 3/5 (Agir): @implementador rodando — checkpoint 1/3...
 → Fase 3/5 (Agir): checkpoint 2/3 — gate GREEN ✅ (lint ✓ typecheck ✓)
 → Fase 4/5 (Verificar): @avaliador — adversarial scan em andamento
@@ -170,7 +170,7 @@ Quando delegar a subagentes (@tarefas, @implementador, @avaliador, @testador), i
 - **Resultado esperado** (o que o subagente deve retornar)
 
 Evite: "Task tool invoked" silencioso.
-Prefira: "→ Chamei @tarefas pra preparar o despacho da T-045 — ele vai scanear as candidatas e retornar a melhor opção."
+Prefira: "→ Chamei @tarefas pra preparar a triagem da T-045 — ele vai scanear as candidatas e retornar a melhor opção."
 
 ### Checklist Visível (todowrite)
 

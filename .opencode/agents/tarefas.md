@@ -11,7 +11,7 @@ Toda execução (git, branch, scripts, chamar agentes) é feita pelo Karma (orqu
 
 - `criar-tarefa` — Monta um SPEC.md com base nos requisitos do stakeholder
 - `listar-tarefas` — Lista tarefas pendentes/em_andamento/concluídas
-- `preparar-despacho` — Analisa candidatas e retorna a melhor para o Karma executar
+- `preparar-triagem` — Analisa candidatas e retorna a melhor para o Karma executar
 - `consolidar {id}` — Prepara relatório de conclusão
 - `abortar {id}` — Registra aborte no SPEC.md
 - `status` — Resumo geral
