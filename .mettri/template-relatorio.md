@@ -13,7 +13,7 @@
 |-----------|--------|-------------------|
 | lint      | {✓|✗} | {0 warnings}      |
 | typecheck | {✓|✗} | {0 errors}        |
-| build     | {✓|✗} |                   |
+| construir | {✓|✗} |                   |
 | test      | {✓|✗} | {N passando}      |
 
 ## Avaliador

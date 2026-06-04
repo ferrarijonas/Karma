@@ -57,12 +57,12 @@ code .karma/.mettri/identidade.md  # persona
 │       ├── em-andamento/{id}/   # Tarefas em execução
 │       └── concluidas/{id}/     # Tarefas finalizadas
 ├── .opencode/agents/
-│   ├── gestor.md               # Gestão de tarefas
-│   ├── construtor.md            # Implementação + gate-runner
-│   ├── avaliador.md             # Verificação adversarial
-│   ├── consolidador.md           # Consolidação de memória + contexto
-│   ├── testador.md              # E2E (Puppeteer + CDP)
-│   └── plan.md                  # Modo planejamento
+│   ├── gerir.md                 # Gestão de tarefas
+│   ├── construir.md             # Implementação + gate-runner
+│   ├── avaliar.md               # Verificação adversarial
+│   ├── aprender.md              # Consolidação de memória + contexto
+│   ├── testar.md                # E2E (Puppeteer + CDP)
+│   └── planejar.md              # Modo planejamento
 ├── scripts/
 │   ├── next-id/next-id.mjs      # Gerador de IDs sequenciais
 │   ├── sync-html/sync-html.mjs  # Sincronizador do painel HTML

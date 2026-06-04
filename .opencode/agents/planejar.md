@@ -49,7 +49,7 @@ Use a ferramenta `todowrite` quando a tarefa tiver **3+ passos distintos** que p
 Regras:
 - Exatamente UMA tarefa marcada como `in_progress` por vez.
 - Antes de marcar concluído, verifique: o gate passou? Os testes passaram? Nenhum arquivo fora do escopo foi tocado?
-- NUNCA marque uma tarefa como `completed` se o gate estiver vermelho ou se houver erros de lint/typecheck/build/test pendentes.
+- NUNCA marque uma tarefa como `completed` se o gate estiver vermelho ou se houver erros de lint/typecheck/construir/test pendentes.
 - Se uma subtarefa revelar-se mais complexa que o esperado, divida-a em novas subtarefas em vez de expandir a original.
 
 ### Estados
@@ -70,7 +70,7 @@ Regras:
 [ ] 2. Atualizar classe OrderDB com novo campo
 [ ] 3. Migrar dados existentes (script)
 [ ] 4. Atualizar testes unitários
-[ ] 5. Rodar gate completo (lint → typecheck → build → test)
+[ ] 5. Rodar gate completo (lint → typecheck → construir → test)
 ```
 
 **Cenário ruim (não usar TODO):**
