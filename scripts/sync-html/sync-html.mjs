@@ -44,10 +44,19 @@ const DOMINIO_CORES_LIGHT = {
 // ─── Parse Frontmatter ───
 function parseFrontmatter(filePath) {
   if (!existsSync(filePath)) return null;
-  const content = readFileSync(filePath, 'utf-8').replace(/^\ufeff/, '');
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const content = readFileSync(filePath, 'utf-8')
+    .replace(/^\uFEFF/, '')                  // BOM
+    .replace(/\r\n/g, '\n')                  // CRLF → LF
+    .replace(/\r/g, '\n');                   // CR → LF (raro)
+  // Match YAML frontmatter: opening ---, body, closing ---
+  const match = content.match(/^---\n([\s\S]*?)\n---/m);
   if (!match) return null;
-  const raw = yaml.load(match[1]);
+  let raw;
+  try {
+    raw = yaml.load(match[1]);
+  } catch (_) {
+    return null;
+  }
   if (!raw || typeof raw !== 'object') return null;
   return {
     ...raw,

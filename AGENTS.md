@@ -74,7 +74,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 **Fenomenologia:** FOCO — o agente escolhe um paciente, prepara o prontuário e o entrega ao cirurgião.
 
-**Gate:** @tarefas retornou tarefa? spec carregada? WIP ok? → Fase 3.
+**Gate:** @tarefas retornou tarefa? spec carregada? WIP ok? sync-html atualizado? → Fase 3.
 
 ### Fase 3 — Agir
 
@@ -84,6 +84,7 @@ Implementador (Task tool — recebe spec_path no prompt e lê SPEC.md como brief
 - **Antes do primeiro edit:** considere reversibilidade e raio de impacto. O custo de pausar para confirmar é baixo. O custo de uma ação indesejada é alto.
 - **Se houver testes em `e2e-tests/T-XXX.mjs` (escritos manualmente pelo @testador):** implementador DEVE consultá-los como referência viva do comportamento esperado
 - A cada checkpoint: append trail.md com heartbeat, ações, gate, aprendizados, armadilhas
+- **A cada checkpoint com gate GREEN:** rodar `node .karma/scripts/sync-html/sync-html.mjs` — dashboard DEVE refletir progresso real
 - Se gate RED → classifica erro:
   - N1 (transiente): retry imediato (1 tentativa)
   - N2 (determinístico): corrige e re-roda
@@ -107,12 +108,13 @@ Implementador (Task tool — recebe spec_path no prompt e lê SPEC.md como brief
 - **Gate trust:** se trail.md mostra último gate GREEN, pula re-execução de build/test (confia no trail). A verificação adversarial continua — trust é só para build/test, não para análise.
 - @sonhador retrógrado: após veredito PASS, consolida trail → memory.md + novas armadilhas
 - Veredito: PASS → Fase 5 | FAIL → volta Fase 3 (máx 3 ciclos)
+- **Após veredito:** rodar `sync-html` para refletir o novo estado da tarefa no dashboard
 
 **Fenomenologia:** AUTO-EXAME — o agente submete seu trabalho a um olhar externo e adversário.
 
 ### Fase 5 — Consolidar
 
-1. **Delega consolidação ao @tarefas:** `Task({ agent: "tarefas", prompt: "consolidar {id}" })` — @tarefas escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, atualiza HTML. Retorna `{ id, status, relatorio_path }`.
+1. **Delega consolidação ao @tarefas:** `Task({ agent: "tarefas", prompt: "consolidar {id}" })` — @tarefas escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, roda `sync-html` para atualizar dashboard. Retorna `{ id, status, relatorio_path }`.
 2. **Merge se aprovado** — Mostre o resumo (diff contra main + relatório) e pergunte **"Merge autorizado?"**
    - Se sim: Karma cria o PR (`gh pr create --title "T-{id}: {titulo}" --body "$(cat relatorio.md)"`) e faz merge (`gh pr merge --squash` ou `git merge --no-ff` se não houver PR)
    - Se não: branch `tarefa/T-{id}` fica no repositório, aguarda decisão manual

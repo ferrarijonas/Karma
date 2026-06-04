@@ -12,6 +12,7 @@ O Karma é um **harness de produtividade** — uma camada de orquestração mult
 - **Auto-cura (N1-N4)** — tratamento progressivo de erros sem perder o fluxo
 - **Claims por domínio** — coordenação para evitar conflitos entre tarefas
 - **Sabotagens catalogadas** — 9 padrões de falha universais + catálogo por domínio
+- **Dashboard HTML** — painel de visão de tarefas com status em tempo real, claims ativos e detecção de staleness
 
 ## Como usar
 
