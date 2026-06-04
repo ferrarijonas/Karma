@@ -99,13 +99,13 @@ Crie uma SPEC.md em `.mettri/tarefas/pendentes/{id}/` quando:
 
 ### Como criar
 
-Após analisar os requisitos e definir a abordagem, **delegue a criação da SPEC.md ao @tarefas**:
+Após analisar os requisitos e definir a abordagem, **delegue a criação da SPEC.md ao @gestor**:
 
 ```
-Task({ agent: "tarefas", prompt: "criar-tarefa titulo:... dominio:... prioridade:... modulos:[...] nao_tocar:[...]" })
+Task({ agent: "gestor", prompt: "criar-tarefa titulo:... dominio:... prioridade:... modulos:[...] nao_tocar:[...]" })
 ```
 
-O @tarefas cria o SPEC.md com YAML frontmatter, valida os campos e retorna o caminho.
+O @gestor cria o SPEC.md com YAML frontmatter, valida os campos e retorna o caminho.
 
 ---
 
@@ -115,6 +115,6 @@ Após analisar e propor o plano, SEMPRE mostre o resumo e pergunte:
 
 **"Aprova o plano?"**
 
-Só delegue a criação da tarefa ao @tarefas DEPOIS que o usuário confirmar a abordagem. Se o usuário quiser ir direto pra implementação sem SPEC.md, sugira alternar para `/build`.
+Só delegue a criação da tarefa ao @gestor DEPOIS que o usuário confirmar a abordagem. Se o usuário quiser ir direto pra implementação sem SPEC.md, sugira alternar para `/build`.
 
 NUNCA implemente, edite ou execute comandos de modificação no Modo Plano — isso é trapaça e viola o contrato deste modo.

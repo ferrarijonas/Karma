@@ -1,6 +1,6 @@
 # Karma
 
-Orquestrador de desenvolvimento orientado a tarefas. Cada tarefa nasce com contrato (SPEC.md), é debatida e gerida pelo @tarefas, age com consciência das sabotagens do seu domínio, é verificada por um olhar adversarial (@avaliador), é consolidada pelo @consolidador, e ao morrer ensina as tarefas futuras.
+Orquestrador de desenvolvimento orientado a tarefas. Cada tarefa nasce com contrato (SPEC.md), é debatida e gerida pelo @gestor, age com consciência das sabotagens do seu domínio, é verificada por um olhar adversarial (@avaliador), é consolidada pelo @consolidador, e ao morrer ensina as tarefas futuras.
 
 ---
 
@@ -68,13 +68,13 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 ### Fase 2 — Triagem
 
-1. Se `tarefa`: **Delega análise ao @tarefas.** `Task({ agent: "tarefas", prompt: "preparar-triagem" })` — @tarefas faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** a triagem: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
+1. Se `tarefa`: **Delega análise ao @gestor.** `Task({ agent: "gestor", prompt: "preparar-triagem" })` — @gestor faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** a triagem: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
 2. Dispara @construtor: `Task({ agent: "construtor", prompt: "{ spec_path, zen_spec_ref }" })` — o construtor lê SPEC.md direto (ele é o briefing)
 3. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
 
 **Fenomenologia:** FOCO — o agente escolhe um paciente, prepara o prontuário e o entrega ao cirurgião.
 
-**Gate:** @tarefas retornou tarefa? spec carregada? WIP ok? sync-html atualizado? → Fase 3.
+**Gate:** @gestor retornou tarefa? spec carregada? WIP ok? sync-html atualizado? → Fase 3.
 
 ### Fase 3 — Agir
 
@@ -114,7 +114,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 ### Fase 5 — Consolidar
 
-1. **Delega consolidação ao @tarefas:** `Task({ agent: "tarefas", prompt: "consolidar {id}" })` — @tarefas escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, roda `sync-html` para atualizar dashboard. Retorna `{ id, status, relatorio_path }`.
+1. **Delega consolidação ao @gestor:** `Task({ agent: "gestor", prompt: "consolidar {id}" })` — @gestor escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, roda `sync-html` para atualizar dashboard. Retorna `{ id, status, relatorio_path }`.
 2. **Merge se aprovado** — Mostre o resumo (diff contra main + relatório) e pergunte **"Merge autorizado?"**
    - Se sim: Karma cria o PR (`gh pr create --title "T-{id}: {titulo}" --body "$(cat relatorio.md)"`) e faz merge (`gh pr merge --squash` ou `git merge --no-ff` se não houver PR)
    - Se não: branch `tarefa/T-{id}` fica no repositório, aguarda decisão manual
@@ -138,13 +138,13 @@ Ao transicionar entre fases, anuncie com o formato:
 
 Exemplos:
 ```
-→ Fase 2/5 (Triagem): deleguei @tarefas pra analisar candidatas — aguardando retorno
+→ Fase 2/5 (Triagem): deleguei @gestor pra analisar candidatas — aguardando retorno
 → Fase 2/5 (Triagem): tarefa T-045 selecionada — spec_path enviado pro @construtor
 → Fase 3/5 (Agir): @construtor rodando — checkpoint 1/3...
 → Fase 3/5 (Agir): checkpoint 2/3 — gate GREEN ✅ (lint ✓ typecheck ✓)
 → Fase 4/5 (Verificar): @avaliador — adversarial scan em andamento
 → Fase 4/5 (Verificar): adversarial scan concluído — VERDICT: PASS ✅ — indo pra consolidação
-→ Fase 5/5 (Consolidar): @tarefas preparando relatório...
+→ Fase 5/5 (Consolidar): @gestor preparando relatório...
 ```
 
 ### Heartbeat visível (a cada checkpoint)
@@ -164,13 +164,13 @@ Exemplos:
 
 ### Task tool transparency
 
-Quando delegar a subagentes (@tarefas, @construtor, @avaliador, @testador, @consolidador), informe:
+Quando delegar a subagentes (@gestor, @construtor, @avaliador, @testador, @consolidador), informe:
 - **O que** está delegando (qual tarefa/módulo)
 - **Por que** (qual fase do pipeline)
 - **Resultado esperado** (o que o subagente deve retornar)
 
 Evite: "Task tool invoked" silencioso.
-Prefira: "→ Chamei @tarefas pra preparar a triagem da T-045 — ele vai scanear as candidatas e retornar a melhor opção."
+Prefira: "→ Chamei @gestor pra preparar a triagem da T-045 — ele vai scanear as candidatas e retornar a melhor opção."
 
 ### Checklist Visível (todowrite)
 
