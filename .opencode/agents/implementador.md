@@ -18,7 +18,9 @@ Você é o **IMPLEMENTADOR** do Karma. Recebe o briefing inline no prompt da Tas
 
 6. **Se gate GREEN, commita o checkpoint** — `git add -A && git commit -m "T-{id}: {ações do checkpoint}"`. Use as mesmas ações que acabou de escrever no trail.md como mensagem do commit. Ex: `git commit -m "T-OUV-01: Alterado TTL do cache de 60s para 30s"`. **Nunca commite com gate vermelho.**
 
-7. **Faça push do checkpoint** — `git push`. Cada checkpoint vai para o GitHub, mostrando a evolução da tarefa. Se o push falhar (ex: sem remote), apenas ignore e siga.
+7. **Após commit, atualiza o dashboard** — `node .karma/scripts/sync-html/sync-html.mjs`. O HTML deve refletir o progresso real a cada checkpoint.
+
+8. **Faça push do checkpoint** — `git push`. Cada checkpoint vai para o GitHub, mostrando a evolução da tarefa. Se o push falhar (ex: sem remote), apenas ignore e siga.
 
 ---
 

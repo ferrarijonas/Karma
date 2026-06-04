@@ -215,3 +215,26 @@ Quando uma feature tem ambas as partes (Backend + UI), o Karma segue:
 - **Arquivos removidos (do módulo ativo):** `extrator.ts`, `ambiguidade.ts`, `sinais-release.ts`, `decisor-update.ts`, `validador-catalogo.ts` (arquivados), 3 funções mortas removidas de `ouvinte.ts`
 - **Prompt corrigido:** Duplicata `extracao-sistema.md` dentro do módulo sobrescrita pela versão correta (com `respostaSugerida`)
 - **Domínio:** ATENDIMENTO
+
+### T-041 — Memory System (HARNESS) (Wed Jun 03 2026)
+- **O que foi criado:** `memory-db.ts` (MemoryDB com IndexedDB, 4 tipos: cliente|licao|negocio|referencia), `memory-store.ts` (orquestrador com prepararContexto, salvarTurno, atualizarPerfil). `types.ts` refinado. `monta-prompt.ts` estendido com 3 seções de memória no userPrompt. `ouvinte.ts` integrado com 1 chamada ao memoryStore.
+- **IndexedDB pattern:** keyPath + autoIncrement + ensureReady() é o padrão do projeto. fake-indexeddb/auto via setup global. `clearAll()` explícito necessário para isolamento entre testes. (tag: HARNESS.persistencia, HARNESS.testes)
+- **Comunicação via types:** Módulos do harness se comunicam via type-only imports. MemoryStore exporta tipos, monta-prompt importa só o type — sem dependência circular. (tag: HARNESS.comunicacao)
+- **Vazamento de escopo:** Detectável pelo @avaliador via git diff — arquivos de tarefas anteriores vazam no commit. Verificar diff antes de submeter. (tag: HARNESS.escopo)
+- **Acoplamento resistido:** MemoryStore só conhece MemoryDB + types, sem importar agent-loop ou motor-llm. (tag: HARNESS.acoplamento)
+- **Sabotagens confirmadas no domínio:**
+  - Overengineering — keyword match simples (substring), sem embedding. Embedding só quando >50 memórias.
+  - Mock leakage — fake-indexeddb real (polyfill fiel), não array em memória.
+  - Acoplamento — MemoryStore isolado de agent-loop, importa só storage e types.
+  - Perfeccionismo de prompt — 3 seções + bullet `•` + boundary, sem refinamento excessivo.
+- **Arquivos criados:** `src/storage/memory-db.ts`, `src/modules/harness/memory-store.ts`, `tests/unit/storage/memory-db.test.ts`, `tests/unit/harness/memory-store.test.ts`
+- **Arquivos modificados:** `src/modules/harness/types.ts`, `src/modules/ouvir/monta-prompt.ts`, `src/modules/ouvir/ouvinte.ts`
+- **Domínio:** HARNESS
+- **Branch:** `tarefa/T-041` (commit c4f51fb)
+
+### [HIPÓTESE] Core do harness: ToolRegistry + AgentLoop + MemoryStore — confiança: baixa — domínio: HARNESS
+- **Observação:** T-037 (ToolRegistry), T-040 (AgentLoop real) e T-041 (Memory System) formam o core do harness. ToolRegistry fornece ferramentas com validação Zod, MemoryStore fornece contexto persistente (4 tipos), AgentLoop executa o ciclo LLM+tools. Os 3 módulos têm dependências mínimas entre si — comunicação via types e contexto enriquecido.
+- **Hipótese:** A separação atual em 3 módulos pode ser ideal (Unix-style, cada um faz uma coisa) ou pode indicar oportunidade de consolidar em um `harness-core` para reduzir imports cruzados. Investigar acoplamento real vs aparente.
+- **Tarefas analisadas:** T-037 (ToolRegistry), T-040 (AgentLoop real), T-041 (Memory System)
+- **Próximo passo:** @avaliador testará esta hipótese na próxima tarefa do domínio HARNESS
+- **Gerada em:** Wed Jun 03 2026

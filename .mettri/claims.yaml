@@ -4,16 +4,23 @@ agentes:
     tipo: orquestrador
     descricao: Agente principal — Karma orquestrador
 dominios:
-  DOMINIO_A:
-    lock: null
-    lease_inicio: null
-    heartbeat: null
-    tarefa: null
-  DOMINIO_B:
+  HARNESS:
     lock: null
     lease_inicio: null
     heartbeat: null
     tarefa: null
 wip_global: 3
 stale_timeout_min: 30
-historico: []
+historico:
+  - tarefa: T-041
+    inicio: '2026-06-03T19:00:00Z'
+    veredito: PASS
+    merge: cb10b74
+    dominio: HARNESS
+    agente: karma
+  - tarefa: T-043
+    inicio: '2026-06-03T21:00:00Z'
+    veredito: PASS
+    merge: cb10b74
+    dominio: HARNESS
+    agente: karma
