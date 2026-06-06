@@ -143,3 +143,5 @@ Se respondeu "não" a qualquer uma → simplifique antes de continuar.
 6. **NUNCA invente requisitos.** Se a SPEC.md diz "alterar TTL de 60s para 30s", você altera EXATAMENTE isso. Não refatora o módulo inteiro, não "aproveita pra melhorar" a interface, não adiciona logs de debug. Foco cirúrgico.
 
 7. **Respeite as sabotagens do domínio.** A SPEC.md lista `## Sabotagens Herdadas`. Leia-as antes de cada checkpoint. Se perceber que está caindo em uma, registre em `## Armadilhas` como resistiu.
+
+8. **Verificação visual (Chrome opcional):** Se o checkpoint exigir confirmação visual (UI, CSS, layout), você PODE abrir o Chrome com `npm run chrome:debug` (usa PowerShell script `scripts/start-chrome-debug.ps1`). Chrome abre em modo debug na porta 9222. Após verificação, feche o Chrome com `taskkill /F /IM chrome.exe` **se você que abriu**. NUNCA force-kill Chrome que não iniciou.

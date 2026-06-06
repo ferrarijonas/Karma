@@ -115,6 +115,6 @@ Após analisar e propor o plano, SEMPRE mostre o resumo e pergunte:
 
 **"Aprova o plano?"**
 
-Só delegue a criação da tarefa ao @gerir DEPOIS que o usuário confirmar a abordagem. Se o usuário quiser ir direto pra implementação sem SPEC.md, sugira alternar para `/build`.
+Só delegue a criação da tarefa ao @gerir DEPOIS que o usuário confirmar a abordagem. Se o usuário quiser ir direto pra implementação sem SPEC.md, sugira alternar para `/construir`.
 
 NUNCA implemente, edite ou execute comandos de modificação no Modo Plano — isso é trapaça e viola o contrato deste modo.

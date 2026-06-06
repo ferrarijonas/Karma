@@ -5,6 +5,12 @@
   "compaction": { "auto": true, "prune": true, "reserved": 10000 },
   "instructions": [".mettri/identidade.md"],
   "agent": {
+    "build": {
+      "disable": true
+    },
+    "plan": {
+      "disable": true
+    },
     "planejar": {
       "description": "Modo seguro — só lê, analisa, pergunta. Não executa nada.",
       "prompt": "{file:./.opencode/agents/planejar.md}",
@@ -22,8 +28,6 @@
     },
     "construir": {
       "description": "Lê briefing → implementa → gate-runner → trail.md",
-      "mode": "subagent",
-      "hidden": true,
       "prompt": "{file:./.opencode/agents/construir.md}",
       "permission": { "edit": "allow", "bash": { "cd ..": "allow", "npm run build": "allow", "npm run lint": "allow", "npm run type-check": "allow", "npm run test:unit": "allow", "npx vitest": "allow", "git diff": "allow", "git add": "allow", "git commit": "allow", "*": "deny" }, "read": "allow", "glob": "allow", "grep": "allow" }
     },
