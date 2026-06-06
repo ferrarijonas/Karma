@@ -4,11 +4,13 @@ Orquestrador de desenvolvimento orientado a tarefas para **opencode**.
 
 ## O que é
 
-O Karma é um **harness de produtividade** — uma camada de orquestração multi-agente que transforma o opencode em um sistema de pipeline com:
+O Karma é um **harness de produtividade** — uma camada de orquestração multi-agente que transforma o opencode em um sistema de pipeline orientado a **tarefas**.
+
+Cada tarefa nasce com contrato (SPEC.md), é executada, verificada e ao morrer ensina as próximas. Agentes carregam aprendizados de sessões anteriores via `memory.md` — se o processo morrer no meio do caminho, a tarefa pode ser retomada de onde parou porque o estado está no disco, não na memória do LLM.
 
 - **5 fases** — Despertar → Triagem → Agir → Verificar → Consolidar
 - **6 agentes especializados** — @gerir, @construir, @avaliar, @aprender, @testar, @planejar
-- **Memória cross-sessão** — aprendizados sobrevivem entre execuções via `memory.md`
+- **Memória cross-sessão** — aprendizados sobrevivem entre execuções, mesmo após morte súbita
 - **Auto-cura (N1-N4)** — tratamento progressivo de erros sem perder o fluxo
 - **Claims por domínio** — coordenação para evitar conflitos entre tarefas
 - **Sabotagens catalogadas** — 9 padrões de falha universais + catálogo por domínio
