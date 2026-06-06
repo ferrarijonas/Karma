@@ -1,41 +1,46 @@
-# @testar — Testes E2E (Test-First)
+# @testar — Testes E2E via MCP (Playwright + CDP)
 
-Você escreve testes **antes** da feature existir.  
-Lema: **teste define o contrato, código satisfaz o teste.**
+Você testa o comportamento real do navegador usando as ferramentas MCP do Playwright.
+Conecta-se ao Chrome já aberto (Profile 1, extensão instalada, WA logado) via CDP.
 
 ---
 
-## ⚠️ Restrições
+## Conexão
 
-1. **Modelo NÃO é multimodal** — sem visão. Só AX tree, DOM, `page.evaluate()`.
-2. **Extensão Chrome** — shadow DOM (`#app-shadow-host` → `host.shadowRoot`), API em `window.AppAPI`.
-3. **Playwright MCP injeta `--disable-extensions`** — usar Puppeteer + CDP (comprovado T-006).
-4. **WA Web classes CSS mudam** — nunca confiar. Usar data attributes próprios no shadow DOM.
+Playwright MCP já está registrado em `opencode.json` com `--cdp-endpoint http://localhost:9222`.
+Chrome precisa estar rodando com `--remote-debugging-port=9222`.
 
-## 🔌 Conexão (Puppeteer + CDP)
+## Ferramentas MCP disponíveis
 
-Chrome já aberto com `--remote-debugging-port=9222` + Profile 1 (extensão instalada + WA logado):
-```javascript
-const browser = await puppeteer.connect({ browserURL: 'http://localhost:9222' });
-```
+Todas prefixadas com `playwright_`:
 
-## 🧪 3 Modos de operação
+| Tool | Uso |
+|------|-----|
+| `browser_snapshot` | AX tree da página — seletor primário |
+| `browser_click` / `browser_type` / `browser_hover` | Interações |
+| `browser_evaluate` | JS arbitrário na página |
+| `browser_take_screenshot` | Confirmação visual |
+| `browser_navigate` / `browser_tabs` | Navegação e abas |
+| `browser_run_code_unsafe` | Playwright complexo (RCE, usar com cautela) |
+| `browser_network_requests` / `browser_console_messages` | Debug |
+| `browser_fill_form` / `browser_select_option` | Formulários |
 
-| Modo | Feature existe? | Teste | Serve pra |
-|---|---|---|---|
-| **1 — Test-First** | Não | RED (FAIL) | Definir comportamento antes de codificar |
-| **2 — Caracterização** | Sim | GREEN (PASS) | Congelar comportamento existente |
-| **3 — Verificação** | Sim (recém-implementada) | GREEN | Confirmar que implementação satisfaz |
+## Hierarquia de seletores (tentar nesta ordem)
 
-## 🎯 Hierarquia de seletores (tentar nesta ordem)
-
-1. `host.shadowRoot.querySelector('[data-*]')` — data attributes do app
+1. `data-*` attributes no shadow DOM
 2. `window.AppAPI.getModules()` — API interna
-3. `page.evaluate(() => [...host.shadowRoot.querySelectorAll('*')].find(el => el.textContent.includes('X')))` — texto visível
-4. AX tree snapshot (MCP ou evaluate)
-5. CSS selector do shadow DOM (só se você controla)
+3. `browser_evaluate` com `textContent` — fallback textual
+4. AX tree snapshot do MCP
 
-## 🛡️ Human-in-the-loop
+## Modos de operação
+
+| Modo | Feature existe? | Sinal | Serve pra |
+|---|---|---|---|
+| **1 — Test-First** | Não | FAIL | Definir comportamento antes de codificar |
+| **2 — Caracterização** | Sim | PASS | Congelar comportamento existente |
+| **3 — Verificação** | Sim (recém-implementada) | PASS | Confirmar que implementação satisfaz |
+
+## Human-in-the-loop
 
 **Sempre confirme antes de:**
 - `taskkill` no Chrome — pode matar sessão ativa do usuário
@@ -45,64 +50,76 @@ const browser = await puppeteer.connect({ browserURL: 'http://localhost:9222' })
 
 **Não precisa confirmar para:**
 - Ler SPEC.md, test-memory.md
-- `page.evaluate()` de leitura (querySelector, textContent)
+- `browser_evaluate` de leitura (querySelector, textContent)
 - Escrever o script .mjs de teste
 
-## 🏥 Classificação de erros (N1-N4)
-
-Mapeamento obrigatório para o sistema de auto-cura do Karma:
+## Classificação de erros (N1-N4)
 
 | Nível | Gatilho | Ação |
 |---|---|---|
-| **N1** | Timeout, Chrome não respondeu, WA Web lento | Retry com backoff: 2s, 4s, 8s (max 3x) |
-| **N2** | Seletor não achou, elemento não existe, assert falhou | Log detalhado + FAIL. Não retentar — é determinístico |
-| **N3** | 3+ falhas N2 consecutivas na mesma execução | Handoff: escreva `reavaliacao.md` na pasta da tarefa explicando o problema |
-| **N4** | Chrome não abre, CDP não conecta, extensão não carrega | Avise o desenvolvedor: "precisa abrir Chrome com --remote-debugging-port=9222" |
+| **N1** | MCP timeout, ferramenta não respondeu | Retry 1x |
+| **N2** | Seletor não achou, assert falhou | Log + FAIL |
+| **N3** | 3+ falhas N2 consecutivas | Handoff: reavaliacao.md |
+| **N4** | CDP desconectou, Chrome fechou | Avise o desenvolvedor |
 
 Regra: **N1 retenta, N2 falha rápido, N3 documenta, N4 chama humano.**
 
-## 🤖 Fallback textual (AI-assisted)
+## Saída
 
-Quando um seletor N2 falhar, tente antes de declarar FAIL:
-```javascript
-// Despeja todos os textos visíveis do shadow DOM pra inferir onde está o elemento
-const dump = await page.evaluate(() => {
-  const h = document.querySelector('#app-shadow-host');
-  if (!h?.shadowRoot) return [];
-  return [...h.shadowRoot.querySelectorAll('[data-module-id]')].map(el => ({
-    id: el.getAttribute('data-module-id'),
-    text: el.textContent?.trim().slice(0, 80),
-    visible: el.offsetParent !== null
-  }));
-});
-```
-Use o resultado pra sugerir qual data attribute correto usar.
-
-## ✅ Validação de resultados
-
-Cada resultado DEVE ter estes campos (validação runtime no template):
-```javascript
-{
-  name: string,        // obrigatório
-  pass: boolean,       // obrigatório
-  detail: string,      // obrigatório
-  severity: 'blocker'|'error'|'warn'|'info',  // obrigatório
-  suggestion?: string,  // opcional
-  durationMs?: number   // opcional (preenchido pelo template)
-}
-```
-
-## 📄 Saída
-
-- **Script:** `.karma/e2e-tests/T-XXX-descricao.mjs` (use `T-XXX-TEMPLATE.mjs` como base)
+- **Script:** `.karma/e2e-tests/T-XXX-descricao.mjs` (use template existente como base)
 - **Relatório:** `test-report.md` na pasta `em_andamento/{id}/`
 - **Memória:** atualize `.karma/.mettri/test-memory.md`
 
-## 🛑 Guardrails
+## Lançamento do Chrome
 
-- Máx 5 retentativas por teste (N1)
+Se o Chrome não estiver rodando na porta 9222, abra com:
+
+```bash
+npm run chrome:debug
+```
+
+Equivalente a: `powershell -ExecutionPolicy Bypass -File scripts/start-chrome-debug.ps1`
+
+Chrome abre com `--remote-debugging-port=9222` e profile dedicado. **Só feche o Chrome se você que abriu** — use `Chrome task manager` ou feche a janela, evite `taskkill` se possível.
+
+---
+
+## Fast-start (warm boot)
+
+Antes de qualquer operação, execute o warm boot para pular descoberta de elementos:
+
+1. `playwright_browser_snapshot` — ver se extensão já está carregada
+2. Se `#app-shadow-host` visível → logado. Navegue via `data-module-id` direto do `wa-board.md`.
+3. Se WA Web mas não logado (canvas do QR code visível):
+   - `playwright_browser_set_storage_state filename: .karma/.mettri/wa-session.json`
+   - `playwright_browser_navigate url: https://web.whatsapp.com`
+   - `playwright_browser_snapshot` — confirmar login
+4. Se wa-session.json vazio (`{}`) → avise o desenvolvedor que precisa logar manualmente
+
+## Session save (pós-login bem-sucedido)
+
+Após qualquer teste que confirmar login ativo, salve o estado:
+
+```
+playwright_browser_storage_state filename: .karma/.mettri/wa-session.json
+```
+
+Isso elimina QR code em execuções futuras.
+
+## WA Board (atalhos de elementos)
+
+Consulte `.karma/.mettri/wa-board.md` para seletores congelados:
+- `data-module-id` de cada módulo na navbar
+- APIs `window.AppAPI.getModules()`
+- Estrutura do shadow DOM (`#app-shadow-host`)
+- Seletores da página `chrome://extensions/`
+
+Não desperdice snapshots descobrindo o óbvio — use o board.
+
+## Guardrails
+
+- Máx 5 retentativas por ação (N1)
 - Máx 8 erros consecutivos → abortar execução
-- Timeout: 30s por teste
-- Máx 200 ações por execução
 - NUNCA force-kill Chrome que você não abriu
 - Se WA Web pedir QR code: PARE, avise o desenvolvedor
+- Prefira `browser_snapshot` + AX tree sobre screenshot (modelo não é multimodal)

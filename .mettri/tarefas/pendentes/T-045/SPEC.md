@@ -4,8 +4,8 @@ titulo: "Compactação de contexto — sliding window + sumarização de histór
 dominio: HARNESS
 status: pendente
 prioridade: 3
-dependencias: [T-041]
-bloqueado_por: []
+dependencias: [T-041, T-047]
+bloqueado_por: [T-047]
 bloqueia: []
 tentativas: 0
 max_tentativas: 3
