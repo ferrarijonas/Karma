@@ -42,3 +42,21 @@ historico:
     merge: null
     dominio: HARNESS
     agente: karma
+  - tarefa: T-051
+    inicio: '2026-06-12T20:00:00Z'
+    veredito: PASS
+    merge: main
+    dominio: HARNESS
+    agente: karma
+  - tarefa: T-053
+    inicio: '2026-06-16T18:00:00Z'
+    veredito: PASS
+    merge: null
+    dominio: marketing.retomar
+    agente: karma
+  - tarefa: T-054
+    inicio: '2026-06-17T20:00:00Z'
+    veredito: PASS
+    merge: null (revertido)
+    dominio: marketing.retomar
+    agente: karma
