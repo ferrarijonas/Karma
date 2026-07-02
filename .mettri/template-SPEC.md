@@ -79,10 +79,11 @@ cleanup_permite_temp_files: false
 
 ## Modos de Execução
 
-- `modo: {normal | estrito | livre}` — definido no YAML frontmatter
+- `modo: {normal | estrito | relaxado | off}` — definido no YAML frontmatter
 - **normal (padrão):** aplica a Escada de Decisão (Ponytail) integralmente — 7 degraus, sem atalhos. Para a maioria das tarefas.
-- **estrito:** a escada é levada ao extremo — até stdlib é questionada. Prefira APIs do navegador ou syscalls a qualquer abstração. Use quando o código está claramente inflado.
-- **livre:** a escada é relaxada — permite abstrações de até 3 usos e WET (write-every-time) antes de extrair. Use para tarefas de refatoração ou quando a legibilidade exige repetição.
+- **estrito:** a escada é levada ao extremo — até stdlib é questionada. Prefira APIs da plataforma (runtime, SO, navegador) a qualquer abstração. Use quando o código está claramente inflado.
+- **relaxado:** a escada é relaxada — permite abstrações de até 3 usos antes de extrair. Degraus 1-2 obrigatórios, 3-7 são sugestões. Equivalente ao "lite" do Ponytail original.
+- **off:** escada desligada. Para tarefas mecânicas (bump de versão, rename, refatoração com duplicação forçada).
 
 A escada está documentada no briefing do `@construir`. O modo controla o rigor com que cada degrau é aplicado.
 
