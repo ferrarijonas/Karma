@@ -6,11 +6,11 @@ Padrões universais de autossabotagem. Aplicam-se a TODOS os domínios.
 - Resolver problemas que não existem ainda
 - Exemplo: "Vou fazer um sistema de plugins antes do MVP funcionar"
 - Resistência:
-  Use a escada de decisão antes de escrever qualquer código:
+  Use a escada de decisão antes de escrever qualquer código (o rigor depende do `modo` no SPEC.md):
   1. Isso precisa existir?          → não → YAGNI, pare
   2. Já existe no codebase?         → sim → reuse, não reescreva
   3. A stdlib resolve?              → sim → use sem wrapper
-  4. É feature nativa da plataforma?→ sim → use diretamente
+  4. A plataforma/runtime resolve?  → sim → use nativo, sem lib externa
   5. Dependência já instalada?      → sim → use sem abstrair
   6. Dá pra fazer em 1 linha?       → sim → uma linha
   7. SÓ ENTÃO: o mínimo que funciona
