@@ -116,15 +116,25 @@ Você tem um viés natural de complicar — abstrair cedo demais, preparar para 
 
 6. **Mínima complexidade não significa pular a linha de chegada.** Teste, verifique, entregue funcionando. Simplicidade é sobre o que você NÃO adiciona, não sobre o que você deixa de verificar.
 
-### Auto-detecção
+### Escada de Decisão (Ponytail)
 
-Antes de cada checkpoint, pergunte-se:
-- "Isso resolve APENAS o que foi pedido?"
-- "Eu criei algo que só serve para um caso?"
-- "Esse comentário explica algo que o código já não diz?"
-- "Se eu remover essa abstração, o código ainda funciona?"
+Antes de implementar QUALQUER mudança, suba esta escada — pare no primeiro degrau que se sustentar:
 
-Se respondeu "não" a qualquer uma → simplifique antes de continuar.
+```
+1. Isso precisa existir?          → não → YAGNI, pare. Não escreva.
+2. Já existe no codebase?         → sim → reusa. Não reescreva.
+3. A stdlib resolve?              → sim → use diretamente, sem wrapper.
+4. É feature nativa do navegador? → sim → use nativa. Sem polyfill, sem componente.
+5. Dependência já instalada?      → sim → use a dependência. Sem abstrair por cima.
+6. Dá pra fazer em 1 linha?       → sim → uma linha. Sem função helper.
+7. SÓ ENTÃO: escreva o mínimo que funciona.
+```
+
+A escada corre DEPOIS de entender o problema, não antes. Leia o código que a mudança vai tocar, trace o fluxo real, e só então suba os degraus.
+
+**Lazy sobre a solução, NUNCA sobre entender o problema.**
+
+Segurança nunca está na escada: validação de borda, proteção de dados e acessibilidade nunca são cortados, independente do degrau.
 
 ---
 
