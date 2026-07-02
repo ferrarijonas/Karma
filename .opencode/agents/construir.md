@@ -93,7 +93,7 @@ Quando o gate-runner retornar **RED**, classifique o erro e aplique a cura corre
 ### SISTÊMICO (erro que afeta múltiplos módulos, ou 3+ tarefas diferentes com erro)
 → **N4:** Reporte ao Karma para acionamento humano.
 - Flag `NEEDS_HUMAN_INTERVENTION` no trail.
-- WhatsApp: +55 34 99277-591.
+- WhatsApp: +55 XX XXXXX-XXXX (placeholder — substituir pelo número real).
 - Não insista. Libere a claim e aguarde.
 
 ---
