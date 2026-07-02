@@ -35,8 +35,11 @@ if (!SPEC_ARG) {
 }
 
 // ── Caminhos ──────────────────────────────────────────
-const KARMA_DIR = process.cwd();                         // .karma/
-const PROJ_DIR = resolve(KARMA_DIR, '..');               // projeto (Mettri)
+// Detecta se está rodando de dentro do .karma/ ou da raiz do projeto
+const cwd = process.cwd();
+const isInsideKarma = basename(cwd) === '.karma';
+const KARMA_DIR = isInsideKarma ? cwd : join(cwd, '.karma');
+const PROJ_DIR = isInsideKarma ? resolve(cwd, '..') : cwd;
 const SPEC_PATH = resolve(SPEC_ARG);
 const specFile = SPEC_PATH.endsWith('SPEC.md') ? SPEC_PATH : join(SPEC_PATH, 'SPEC.md');
 
@@ -327,7 +330,10 @@ function auditGitignore() {
 }
 
 // ── 8. Executar scans ─────────────────────────────────
-console.log(`[check-cleanup] Iniciando scan${FULL_MODE ? ' completo' : ''}...\n`);
+console.log(`[check-cleanup] Iniciando scan${FULL_MODE ? ' completo' : ''}...`);
+console.log(`[check-cleanup] Projeto: ${PROJ_DIR}`);
+console.log(`[check-cleanup] SPEC: ${SPEC_PATH.replace(PROJ_DIR, '')}`);
+console.log(`[check-cleanup] Flags: dados=${permiteDados} tokens=${permiteTokens} tmp=${permiteTmp}\n`);
 
 scanDadosPessoais();
 scanTokens();
@@ -342,6 +348,7 @@ if (FULL_MODE) {
 if (issues.length === 0) {
   const mode = FULL_MODE ? 'completo (Fase 5)' : 'básico (Fase 3)';
   console.log(`[check-cleanup] ✅ Repositório limpo — modo ${mode}`);
+  console.log(`[check-cleanup] Nenhum dado pessoal, token, arquivo indevido ou branch órfão detectado.`);
   process.exit(0);
 }
 
