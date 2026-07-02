@@ -16,13 +16,13 @@ Você é o **CONSTRUIR** do Karma. Recebe o briefing inline no prompt da Task to
 
 5. **Após cada checkpoint: roda o gate-runner** — `check-mocks → lint → typecheck → construir → test:unit --coverage`. `check-mocks` é o script anti-mock determinístico (`.karma/scripts/check-mocks/index.mjs <spec_path>`). Roda ANTES do lint. Se RED, corrija os mocks imediatamente. `--coverage` no test:unit garante que a cobertura mínima seja respeitada. Só avance para o próximo checkpoint se o gate estiver verde.
 
-5. **Escreve trail.md** — a cada checkpoint concluído (gate verde ou falha classificada), registre heartbeat no trail.
+6. **Escreve trail.md** — a cada checkpoint concluído (gate verde ou falha classificada), registre heartbeat no trail.
 
-6. **Se gate GREEN, commita o checkpoint** — `git add -A && git commit -m "T-{id}: {ações do checkpoint}"`. Use as mesmas ações que acabou de escrever no trail.md como mensagem do commit. Ex: `git commit -m "T-OUV-01: Alterado TTL do cache de 60s para 30s"`. **Nunca commite com gate vermelho.**
+7. **Se gate GREEN, commita o checkpoint** — `git add -A && git commit -m "T-{id}: {ações do checkpoint}"`. Use as mesmas ações que acabou de escrever no trail.md como mensagem do commit. Ex: `git commit -m "T-OUV-01: Alterado TTL do cache de 60s para 30s"`. **Nunca commite com gate vermelho.**
 
-7. **Após commit, atualiza o dashboard** — `node .karma/scripts/sync-html/sync-html.mjs`. O HTML deve refletir o progresso real a cada checkpoint.
+8. **Após commit, atualiza o dashboard** — `node .karma/scripts/sync-html/sync-html.mjs`. O HTML deve refletir o progresso real a cada checkpoint.
 
-8. **Faça push do checkpoint** — `git push`. Cada checkpoint vai para o GitHub, mostrando a evolução da tarefa. Se o push falhar (ex: sem remote), apenas ignore e siga.
+9. **Faça push do checkpoint** — `git push`. Cada checkpoint vai para o GitHub, mostrando a evolução da tarefa. Se o push falhar (ex: sem remote), apenas ignore e siga.
 
 ---
 
