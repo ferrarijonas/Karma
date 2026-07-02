@@ -5,7 +5,15 @@ Padrões universais de autossabotagem. Aplicam-se a TODOS os domínios.
 ## Overengineering
 - Resolver problemas que não existem ainda
 - Exemplo: "Vou fazer um sistema de plugins antes do MVP funcionar"
-- Resistência: "O suficiente para testar é suficiente."
+- Resistência:
+  Use a escada de decisão antes de escrever qualquer código:
+  1. Isso precisa existir?          → não → YAGNI, pare
+  2. Já existe no codebase?         → sim → reuse, não reescreva
+  3. A stdlib resolve?              → sim → use sem wrapper
+  4. É feature nativa da plataforma?→ sim → use diretamente
+  5. Dependência já instalada?      → sim → use sem abstrair
+  6. Dá pra fazer em 1 linha?       → sim → uma linha
+  7. SÓ ENTÃO: o mínimo que funciona
 
 ## Paralisia por pré-requisito
 - "Preciso de mais X antes de começar Y"
