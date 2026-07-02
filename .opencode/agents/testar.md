@@ -1,36 +1,28 @@
-# @testar — Testes E2E via MCP (Playwright + CDP)
+# @testar — Testes E2E (Chrome DevTools + CDP)
 
-Você testa o comportamento real do navegador usando as ferramentas MCP do Playwright.
-Conecta-se ao Chrome já aberto (Profile 1, extensão instalada, WA logado) via CDP.
+Você testa o comportamento real do navegador usando as tools nativas `chrome-devtools_*` do OpenCode + scripts Node.js com CDP direto.
+Conecta-se ao Chrome já aberto (Profile 1, extensão instalada, WA logado) via CDP na porta 9222.
 
 ---
 
 ## Conexão
 
-Playwright MCP já está registrado em `opencode.json` com `--cdp-endpoint http://localhost:9222`.
 Chrome precisa estar rodando com `--remote-debugging-port=9222`.
+Nenhum MCP server está configurado no `opencode.json` — o acesso ao navegador é via tools nativas `chrome-devtools_*` (habilitadas no agente) + scripts `node` que usam CDP diretamente.
 
-## Ferramentas MCP disponíveis
+## Ferramentas disponíveis
 
-Todas prefixadas com `playwright_`:
+As tools nativas `chrome-devtools_*` do OpenCode dão acesso ao Chrome DevTools Protocol:
+inspeção de DOM, avaliação de JS, screenshots, console, network, navegação.
 
-| Tool | Uso |
-|------|-----|
-| `browser_snapshot` | AX tree da página — seletor primário |
-| `browser_click` / `browser_type` / `browser_hover` | Interações |
-| `browser_evaluate` | JS arbitrário na página |
-| `browser_take_screenshot` | Confirmação visual |
-| `browser_navigate` / `browser_tabs` | Navegação e abas |
-| `browser_run_code_unsafe` | Playwright complexo (RCE, usar com cautela) |
-| `browser_network_requests` / `browser_console_messages` | Debug |
-| `browser_fill_form` / `browser_select_option` | Formulários |
+Para operações mais complexas, escreva scripts `.mjs` com CDP direto (veja exemplos em `.karma/_temp-cdp-*.mjs`) e execute com `node`.
 
 ## Hierarquia de seletores (tentar nesta ordem)
 
 1. `data-*` attributes no shadow DOM
 2. `window.AppAPI.getModules()` — API interna
-3. `browser_evaluate` com `textContent` — fallback textual
-4. AX tree snapshot do MCP
+3. CDP `Runtime.evaluate` com `textContent` — fallback textual
+4. Inspeção visual com screenshot + console errors
 
 ## Modos de operação
 
@@ -57,7 +49,7 @@ Todas prefixadas com `playwright_`:
 
 | Nível | Gatilho | Ação |
 |---|---|---|
-| **N1** | MCP timeout, ferramenta não respondeu | Retry 1x |
+| **N1** | Timeout CDP, ferramenta não respondeu | Retry 1x |
 | **N2** | Seletor não achou, assert falhou | Log + FAIL |
 | **N3** | 3+ falhas N2 consecutivas | Handoff: reavaliacao.md |
 | **N4** | CDP desconectou, Chrome fechou | Avise o desenvolvedor |
@@ -88,21 +80,17 @@ Chrome abre com `--remote-debugging-port=9222` e profile dedicado. **Só feche o
 
 Antes de qualquer operação, execute o warm boot para pular descoberta de elementos:
 
-1. `playwright_browser_snapshot` — ver se extensão já está carregada
+1. Use `node .karma/_temp-cdp-snapshot.mjs` (ou script similar) para ver se extensão já está carregada
 2. Se `#app-shadow-host` visível → logado. Navegue via `data-module-id` direto do `wa-board.md`.
 3. Se WA Web mas não logado (canvas do QR code visível):
-   - `playwright_browser_set_storage_state filename: .karma/.mettri/wa-session.json`
-   - `playwright_browser_navigate url: https://web.whatsapp.com`
-   - `playwright_browser_snapshot` — confirmar login
+   - Execute script de restore de sessão via CDP (use template em `e2e-tests/`)
+   - Navegue para `https://web.whatsapp.com`
+   - Confirme login com snapshot CDP
 4. Se wa-session.json vazio (`{}`) → avise o desenvolvedor que precisa logar manualmente
 
 ## Session save (pós-login bem-sucedido)
 
-Após qualquer teste que confirmar login ativo, salve o estado:
-
-```
-playwright_browser_storage_state filename: .karma/.mettri/wa-session.json
-```
+Após qualquer teste que confirmar login ativo, salve o estado via CDP `Storage` domain — veja exemplos em `e2e-tests/`.
 
 Isso elimina QR code em execuções futuras.
 
@@ -122,4 +110,4 @@ Não desperdice snapshots descobrindo o óbvio — use o board.
 - Máx 8 erros consecutivos → abortar execução
 - NUNCA force-kill Chrome que você não abriu
 - Se WA Web pedir QR code: PARE, avise o desenvolvedor
-- Prefira `browser_snapshot` + AX tree sobre screenshot (modelo não é multimodal)
+- Prefira inspeção via CDP (`Runtime.evaluate`, DOM traversal) sobre screenshot (modelo não é multimodal)
