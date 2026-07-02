@@ -130,6 +130,14 @@ Antes de implementar QUALQUER mudança, suba esta escada — pare no primeiro de
 7. SÓ ENTÃO: escreva o mínimo que funciona.
 ```
 
+O rigor da escada é controlado pelo campo **`modo`** no SPEC.md da tarefa:
+
+| modo | comportamento |
+|------|---------------|
+| `normal` (padrão) | Aplica a escada integralmente. Degraus 1-7 são obrigatórios. |
+| `estrito` | Degraus 1-6 são apenas o começo. Questionar também se a stdlib é necessária, se o navegador já faz, se o syscall resolve. Nível "ultra". |
+| `livre` | Degraus 1-2 são obrigatórios (YAGNI + reuso). Degraus 3-7 são sugestões — permitido abstrair se houver 2+ usos. |
+
 A escada corre DEPOIS de entender o problema, não antes. Leia o código que a mudança vai tocar, trace o fluxo real, e só então suba os degraus.
 
 **Lazy sobre a solução, NUNCA sobre entender o problema.**

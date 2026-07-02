@@ -25,6 +25,7 @@ spec_ref: ""
 tipo_output: "codigo"
 migracao_necessaria: false
 permite_mock: false
+modo: normal
 cleanup_permite_dados_pessoais: false
 cleanup_permite_tokens: false
 cleanup_permite_temp_files: false
@@ -75,6 +76,15 @@ cleanup_permite_temp_files: false
 - `permite_mock: {false | true}` — definido no YAML frontmatter
 - **false (padrão):** nenhum mock é permitido. Testes devem usar integração real (bater em endpoint, ler banco de verdade, usar browser). Se precisar mockar, justifique e peça aprovação.
 - **true:** mocks permitidos apenas para: (1) ambiente de CI sem acesso ao recurso real, (2) teste de unidade de função pura que depende de I/O não disponível, (3) simulação de erro externo não reproduzível. Documente cada mock com `// justificado: <motivo>`.
+
+## Modos de Execução
+
+- `modo: {normal | estrito | livre}` — definido no YAML frontmatter
+- **normal (padrão):** aplica a Escada de Decisão (Ponytail) integralmente — 7 degraus, sem atalhos. Para a maioria das tarefas.
+- **estrito:** a escada é levada ao extremo — até stdlib é questionada. Prefira APIs do navegador ou syscalls a qualquer abstração. Use quando o código está claramente inflado.
+- **livre:** a escada é relaxada — permite abstrações de até 3 usos e WET (write-every-time) antes de extrair. Use para tarefas de refatoração ou quando a legibilidade exige repetição.
+
+A escada está documentada no briefing do `@construir`. O modo controla o rigor com que cada degrau é aplicado.
 
 ## Cleanup Policy
 
