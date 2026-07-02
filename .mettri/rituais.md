@@ -58,6 +58,22 @@ Isso permite:
 - Diferenciar outputs de múltiplas sessões
 - Associar logs e trails à tarefa correta
 
+### Encerramento (toda sessão)
+
+Antes de liberar claims e fechar uma sessão, execute o ritual de limpeza. Isso previne que dados pessoais, tokens, branches órfãos e lixo se acumulem no repositório.
+
+```
+□ check-cleanup --full passou?    (node .karma/scripts/check-cleanup/index.mjs <spec> --full)
+□ git branch -a → só main + branches ativos com tarefa aberta?
+□ tmp/ está vazio ou gitignorado?
+□ Nenhum _temp-* ou _diagnose* no git diff?
+□ .gitignore cobre: *.log, tmp/, *.heapsnapshot?
+□ Claims.yaml sem locks stale (>30min)?
+□ git push → remote sincronizado?
+```
+
+**Regra:** Se qualquer item falhar → corrija ANTES de liberar a claim. O repositório só fecha limpo.
+
 ### Morte súbita (timeout, crash, interrupção)
 
 Não há pânico. Há renascimento. O trail sobrevive à morte.

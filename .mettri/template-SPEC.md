@@ -25,6 +25,9 @@ spec_ref: ""
 tipo_output: "codigo"
 migracao_necessaria: false
 permite_mock: false
+cleanup_permite_dados_pessoais: false
+cleanup_permite_tokens: false
+cleanup_permite_temp_files: false
 ---
 
 # {DDMM-001}: {titulo}
@@ -72,6 +75,14 @@ permite_mock: false
 - `permite_mock: {false | true}` — definido no YAML frontmatter
 - **false (padrão):** nenhum mock é permitido. Testes devem usar integração real (bater em endpoint, ler banco de verdade, usar browser). Se precisar mockar, justifique e peça aprovação.
 - **true:** mocks permitidos apenas para: (1) ambiente de CI sem acesso ao recurso real, (2) teste de unidade de função pura que depende de I/O não disponível, (3) simulação de erro externo não reproduzível. Documente cada mock com `// justificado: <motivo>`.
+
+## Cleanup Policy
+
+- `cleanup_permite_dados_pessoais: {false | true}` — **false (padrão):** bloqueia telefones, emails, CPF, CNPJ no diff.
+- `cleanup_permite_tokens: {false | true}` — **false (padrão):** bloqueia CSRF tokens, API keys, wa-session.
+- `cleanup_permite_temp_files: {false | true}` — **false (padrão):** bloqueia currículos, snapshots WhatsApp, `_temp-*`, `_diagnose*`.
+
+**Regra:** Esses flags só devem ser `true` em tarefas de teste que precisam de dados fake. Nunca para dados reais. Se um flag for `true`, documente o motivo no corpo da SPEC.
 
 ---
 

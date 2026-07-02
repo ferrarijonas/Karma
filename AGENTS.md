@@ -80,7 +80,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 @construir (Task tool — recebe spec_path no prompt e lê SPEC.md como briefing):
 
-- LOOP: implementa (read→edit→bash) → gate-runner (check-mocks → lint → type-check → construir → test --coverage)
+- LOOP: implementa (read→edit→bash) → gate-runner (check-mocks → check-cleanup → lint → type-check → construir → test --coverage)
 - **Antes do primeiro edit:** considere reversibilidade e raio de impacto. O custo de pausar para confirmar é baixo. O custo de uma ação indesejada é alto.
 - **Se houver testes em `e2e-tests/T-XXX.mjs` (escritos manualmente pelo @testar):** construtor DEVE consultá-los como referência viva do comportamento esperado
 - A cada checkpoint: append trail.md com heartbeat, ações, gate, aprendizados, armadilhas
@@ -114,11 +114,13 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 ### Fase 5 — Consolidar
 
-1. **Delega consolidação ao @gerir:** `Task({ agent: "gerir", prompt: "consolidar {id}" })` — @gerir escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, roda `sync-html` para atualizar dashboard. Retorna `{ id, status, relatorio_path }`.
-2. **Merge se aprovado** — Mostre o resumo (diff contra main + relatório) e pergunte **"Merge autorizado?"**
+1. **Pré-consolidação:** execute `check-cleanup --full` — verifica branches órfãos, .gitignore e faz scan completo. Se RED, limpe ANTES de consolidar.
+2. **Delega consolidação ao @gerir:** `Task({ agent: "gerir", prompt: "consolidar {id}" })` — @gerir escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, roda `sync-html` para atualizar dashboard. Retorna `{ id, status, relatorio_path }`.
+3. **Merge se aprovado** — Mostre o resumo (diff contra main + relatório) e pergunte **"Merge autorizado?"**
    - Se sim: Karma cria o PR (`gh pr create --title "T-{id}: {titulo}" --body "$(cat relatorio.md)"`) e faz merge (`gh pr merge --squash` ou `git merge --no-ff` se não houver PR)
    - Se não: branch `tarefa/T-{id}` fica no repositório, aguarda decisão manual
-3. @aprender (sob demanda): se N≥3 tarefas concluídas no mesmo domínio → gera hipóteses cross-tarefa
+4. **Pós-merge:** delete o branch da tarefa (`git branch -d tarefa/T-{id}`) e atualize o remote (`git push origin --delete tarefa/T-{id}`).
+5. @aprender (sob demanda): se N≥3 tarefas concluídas no mesmo domínio → gera hipóteses cross-tarefa
 
 **Fenomenologia:** SONO — o agente consolida memórias, libera recursos e se prepara para o próximo paciente.
 
@@ -229,9 +231,11 @@ cd .. && npm run type-check    # tsc --noEmit
 cd .. && npm run test:unit     # testes unitários
 ```
 
-**Ordem de verificação:** `check-mocks → lint → type-check → construir → test:unit --coverage`
+**Ordem de verificação:** `check-mocks → check-cleanup → lint → type-check → construir → test:unit --coverage`
 
 > `check-mocks` é o script anti-mock determinístico em `.karma/scripts/check-mocks/index.mjs`. Roda ANTES de qualquer outra verificação. Se RED, corrija os mocks antes de prosseguir. Passa o `spec_path` como argumento: `node .karma/scripts/check-mocks/index.mjs {spec_path}`.
+
+> `check-cleanup` é o script de limpeza em `.karma/scripts/check-cleanup/index.mjs`. Roda após check-mocks. Detecta: dados pessoais (telefones, emails, CPF, CNPJ), tokens/sessões, arquivos indevidos (currículos, snapshots, _temp-*). Se RED, limpe antes de prosseguir. Passa o `spec_path` como argumento: `node .karma/scripts/check-cleanup/index.mjs {spec_path}`. Na **Fase 5 (Consolidar)**, execute com `--full` para verificar também branches órfãos e .gitignore.
 
 ---
 
