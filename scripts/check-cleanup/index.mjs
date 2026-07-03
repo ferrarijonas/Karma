@@ -78,6 +78,12 @@ function readIfExists(path) {
   try { return readFileSync(path, 'utf-8'); } catch { return ''; }
 }
 
+// Retorna arquivos a escanear: diff (default) ou repo inteiro (--full)
+function getFileList(projDir) {
+  if (FULL_MODE) return listFiles(projDir, 4);
+  return getDiffFiles(projDir);
+}
+
 function listFiles(dir, maxDepth = 3) {
   const results = [];
   function walk(d, depth) {
@@ -96,6 +102,19 @@ function listFiles(dir, maxDepth = 3) {
   }
   walk(dir, 0);
   return results;
+}
+
+// Retorna arquivos modificados no working tree (diff vs HEAD)
+function getDiffFiles(projDir) {
+  try {
+    const output = execSync('git diff --name-only HEAD', {
+      encoding: 'utf-8', cwd: projDir, stdio: ['pipe', 'pipe', 'pipe'],
+    });
+    const files = output.split('\n').map(f => f.trim()).filter(Boolean);
+    return files.map(f => resolve(projDir, f));
+  } catch {
+    return []; // sem diff ou sem git
+  }
 }
 
 // ── 3. Scan de dados pessoais ─────────────────────────
@@ -121,7 +140,7 @@ function scanDadosPessoais() {
     /chrome-debug/, /\.heapsnapshot/,
   ];
 
-  const files = listFiles(PROJ_DIR, 4);
+  const files = getFileList(PROJ_DIR);
 
   for (const file of files) {
     if (skipPatterns.some(p => p.test(file))) continue;
@@ -185,8 +204,8 @@ function scanTokens() {
     { name: 'CSRF Token', regex: /X-CSRF-TOKEN[:\s=]+([\w]{30,})/gi },
     { name: 'API Key exposta', regex: /api[_-]?key["\s:=]+(["']?[a-zA-Z0-9_-]{20,}["']?)/gi },
   ];
+  const files = getFileList(PROJ_DIR);
 
-  const files = listFiles(PROJ_DIR, 3);
   const skipPatterns = [/node_modules/, /\.git/, /dist/, /\.jpg$/, /\.png$/, /\.pdf$/];
 
   for (const file of files) {
@@ -227,7 +246,7 @@ function scanArquivosIndevidos() {
     /\.karma\/\.karma/i,
   ];
 
-  const files = listFiles(PROJ_DIR, 3);
+  const files = getFileList(PROJ_DIR);
 
   for (const file of files) {
     const name = basename(file);
@@ -330,7 +349,7 @@ function auditGitignore() {
 }
 
 // ── 8. Executar scans ─────────────────────────────────
-console.log(`[check-cleanup] Iniciando scan${FULL_MODE ? ' completo' : ''}...`);
+console.log(`[check-cleanup] Escaneando ${FULL_MODE ? 'repositório inteiro (--full)' : 'apenas arquivos do diff'}...`);
 console.log(`[check-cleanup] Projeto: ${PROJ_DIR}`);
 console.log(`[check-cleanup] SPEC: ${SPEC_PATH.replace(PROJ_DIR, '')}`);
 console.log(`[check-cleanup] Flags: dados=${permiteDados} tokens=${permiteTokens} tmp=${permiteTmp}\n`);
@@ -346,7 +365,7 @@ if (FULL_MODE) {
 
 // ── 9. Reportar ───────────────────────────────────────
 if (issues.length === 0) {
-  const mode = FULL_MODE ? 'completo (Fase 5)' : 'básico (Fase 3)';
+  const mode = FULL_MODE ? 'completo (--full, Fase 5)' : 'apenas diff (Fase 3)';
   console.log(`[check-cleanup] ✅ Repositório limpo — modo ${mode}`);
   console.log(`[check-cleanup] Nenhum dado pessoal, token, arquivo indevido ou branch órfão detectado.`);
   process.exit(0);
