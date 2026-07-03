@@ -5,3 +5,4 @@ node_modules/
 .mettri/trail/
 tarefas.html
 *.heapsnapshot
+wa-session.json
