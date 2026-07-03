@@ -38,7 +38,7 @@ O protocolo abaixo é vinculante e precede qualquer proatividade padrão. Nenhum
 6. ZenSpec é contrato moral. Código cumpre contrato. Se divergem, spec vence.
 7. **Sempre construir e testar sozinho** — rodar construir/testes antes de reportar
 8. **Pode chamar o usuário para testes**
-9. **Não especule, não adicione, não "melhore"** — um bug fix não precisa do código ao redor limpo. Uma feature simples não precisa de config extra. Não projete para requisitos futuros hipotéticos. Três linhas similares é melhor que uma abstração prematura.
+9. **Viés de Simplificação** — o fluxo completo de como evitar overengineering está no `construir.md` → Escada de Decisão (Ponytail). O código mínimo que funciona é melhor que abstração genérica.
 
 ---
 
@@ -114,7 +114,7 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 
 ### Fase 5 — Consolidar
 
-1. **Pré-consolidação:** execute `check-cleanup --full` — verifica branches órfãos, .gitignore e faz scan completo. Se RED, limpe ANTES de consolidar.
+1. **Pré-consolidação:** execute o [ritual de encerramento](.mettri/rituais.md) — `check-cleanup --full` + claims stale + git push. Se RED, limpe ANTES de consolidar.
 2. **Delega consolidação ao @gerir:** `Task({ agent: "gerir", prompt: "consolidar {id}" })` — @gerir escreve relatório e atualiza SPEC. **Karma executa:** move diretório, libera claim, desbloqueia dependentes, roda `sync-html` para atualizar dashboard. Retorna `{ id, status, relatorio_path }`.
 3. **Merge se aprovado** — Mostre o resumo (diff contra main + relatório) e pergunte **"Merge autorizado?"**
    - Se sim: Karma cria o PR (`gh pr create --title "T-{id}: {titulo}" --body "$(cat relatorio.md)"`) e faz merge (`gh pr merge --squash` ou `git merge --no-ff` se não houver PR)
@@ -190,14 +190,14 @@ Ao transicionar entre fases, atualize o todowrite com o progresso:
 
 ---
 
-## Auto-Cura (N1-N4)
+## Auto-Cura (N1-N2)
 
 | Nível  | Gatilho                               | Ação                                                      |
 | ------ | ------------------------------------- | --------------------------------------------------------- |
 | **N1** | Erro transiente (timeout, rede)       | Retry imediato (1 tentativa)                              |
 | **N2** | Erro determinístico (lint, typecheck) | Corrige código e re-roda gate imediatamente               |
-| **N3** | 3 falhas N2 consecutivas              | Aborta tarefa, volta pra fila                             |
-| **N4** | Impedimento sistêmico                 | Chama o usuário + flag NEEDS_HUMAN_INTERVENTION           |
+
+> Detalhes operacionais de cada nível (backoff, tentativas) estão em `construir.md` → Auto-Cura.
 
 ---
 
@@ -235,7 +235,7 @@ cd .. && npm run test:unit     # testes unitários
 
 > `check-mocks` é o script anti-mock determinístico em `.karma/scripts/check-mocks/index.mjs`. Roda ANTES de qualquer outra verificação. Se RED, corrija os mocks antes de prosseguir. Passa o `spec_path` como argumento: `node .karma/scripts/check-mocks/index.mjs {spec_path}`.
 
-> `check-cleanup` é o script de limpeza em `.karma/scripts/check-cleanup/index.mjs`. Roda após check-mocks. Detecta: dados pessoais (telefones, emails, CPF, CNPJ), tokens/sessões, arquivos indevidos (currículos, snapshots, _temp-*). Se RED, limpe antes de prosseguir. Passa o `spec_path` como argumento: `node .karma/scripts/check-cleanup/index.mjs {spec_path}`. Na **Fase 5 (Consolidar)**, execute com `--full` para verificar também branches órfãos e .gitignore.
+> `check-cleanup` é o script de limpeza em `.karma/scripts/check-cleanup/index.mjs`. Roda após check-mocks. Escaneia **apenas arquivos modificados** (diff vs HEAD) e detecta: dados pessoais (telefones, emails, CPF, CNPJ), tokens/sessões, arquivos indevidos (currículos, snapshots, _temp-*). Se RED, limpe antes de prosseguir. Passa o `spec_path` como argumento: `node .karma/scripts/check-cleanup/index.mjs {spec_path}`. Na **Fase 5 (Consolidar)**, execute com `--full` para escanear o repositório inteiro + verificar branches órfãos e .gitignore.
 
 ---
 

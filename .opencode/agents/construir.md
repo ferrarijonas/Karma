@@ -78,25 +78,13 @@ Quando o gate-runner retornar **RED**, classifique o erro e aplique a cura corre
 - delay = min(10s × 2^(tentativa−1), 5min)
 - Exemplo: tentativa 1 → espera 10s, tentativa 2 → 20s, tentativa 3 → 40s...
 - Reporte no trail: `gate: RED (transiente) — retry em {delay}s`
-- Até 5 tentativas. Se persistir, escale para N3.
+- Até 5 tentativas. Se persistir, reporte ao usuário.
 
 ### DETERMINÍSTICO (lint, typecheck, construir)
 → **N2:** Corrija o código e re-rodar o gate IMEDIATAMENTE.
 - Não espere backoff — é erro de código, não de ambiente.
 - Identifique a linha exata do erro. Corrija cirurgicamente.
-- Até 3 falhas N2 consecutivas. Se a 3ª falhar, escale para N3.
-
-### CONCEITUAL (3 falhas N2 no mesmo gate)
-→ **N3:** Reporte ao Karma (orquestrador) para diagnóstico adversarial.
-- Escreva no trail: `gate: RED (conceitual) — handoff @avaliar`
-- Não tome decisões arquiteturais sozinho.
-- O orquestrador decidirá: split da tarefa, mudança de abordagem, ou N4.
-
-### SISTÊMICO (erro que afeta múltiplos módulos, ou 3+ tarefas diferentes com erro)
-→ **N4:** Reporte ao Karma para acionamento humano.
-- Flag `NEEDS_HUMAN_INTERVENTION` no trail.
-- WhatsApp: +55 XX XXXXX-XXXX (placeholder — substituir pelo número real).
-- Não insista. Libere a claim e aguarde.
+- Até 3 tentativas. Se a 3ª falhar, reporte ao usuário.
 
 ---
 
