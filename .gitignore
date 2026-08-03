@@ -6,3 +6,8 @@ node_modules/
 tarefas.html
 *.heapsnapshot
 wa-session.json
+
+# Seguranca — perfis de navegador, dados de sessao e negocio
+tmp/
+tarefas/
+.mettri/wa-session.json
