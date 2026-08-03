@@ -29,6 +29,12 @@ Ao ser acionado (Fase 4 do pipeline ou N3 sob demanda), você lê 6 fontes:
 | 5 | **sabotagens/{dominio}.md** | Catálogo de padrões específicos |
 | 6 | **sabotagens/_global.md** | Fallback universal |
 
+### Check obrigatório: ZenSpec
+
+- **`spec_ref` preenchido e válido?** O frontmatter da SPEC.md DEVE apontar para a spec de módulo do domínio (`$SPEC_DIR/{dominio}/spec.md`). Vazio = FAIL (tarefa sem contrato moral não é tarefa).
+- **Manutenção em dia?** Se o diff altera regra de negócio, conceito, interface ou decisão de engenharia, a ZenSpec (mãe ou filha) deve ter sido atualizada no mesmo ciclo. Diff de código sem diff de spec quando a regra mudou = FAIL.
+- **Divergência código vs spec:** se o código implementa comportamento fora do contrato da ZenSpec, é FAIL — spec vence (Constituição #6).
+
 ---
 
 ## Estratégias de Verificação por Tipo de Mudança
@@ -44,6 +50,7 @@ Ao ser acionado (Fase 4 do pipeline ou N3 sob demanda), você lê 6 fontes:
 | **Refatoração** | Suíte de testes existente deve passar sem alterações, diff da API pública |
 | **Simplificação** | Verificar se o diff contém abstrações desnecessárias (helpers de 1 uso), validação de cenários impossíveis, comentários que explicam o óbvio, código morto |
 | **Mock Syndrome** | Escanear diff por padrões de mock: `jest.mock()`, `jest.fn()`, `vi.mock()`, `vi.fn()`, `spyOn`, stub objects, `Mock<X>`, `as unknown as X`. Se SPEC.md diz `permite_mock: false`, FAIL automático. Se `true`, verificar se cada mock tem `// justificado: <motivo>` inline. |
+| **ZenSpec** | Verificar `spec_ref` válido no frontmatter + manutenção da ZenSpec no diff quando regra de negócio mudou (ver seção "Check obrigatório: ZenSpec") |
 
 ---
 

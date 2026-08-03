@@ -21,7 +21,7 @@ timeout_min: 90
 escopo:
   modulos: []
   nao_tocar: []
-spec_ref: ""
+spec_ref: "" # OBRIGATORIO: caminho da ZenSpec do dominio (spec de modulo) — ver template-zenspec.md
 tipo_output: "codigo"
 migracao_necessaria: false
 permite_mock: false
@@ -52,6 +52,14 @@ cleanup_permite_temp_files: false
 
 - {caminho 1} — {o que buscar nesse local}
 - {caminho 2} — {o que buscar nesse local}
+
+## ZenSpec (contrato moral)
+
+> Obrigatório em toda tarefa. Preencher `spec_ref` no frontmatter com o caminho da ZenSpec do domínio (`spec.md` da pasta). Se o domínio não tem spec-mãe, a tarefa deve criar a spec-mãe antes do código (bootstrap greenfield) — ver `template-zenspec.md`.
+
+- **Referência:** {caminho da spec de módulo — ex: `../specs/{dominio}/spec.md`}
+- **Filhas tocadas:** {caminhos das `.zenspec.md` afetadas — preencher se a tarefa altera contrato/pipeline de um componente}
+- **Manutenção:** se esta tarefa alterar regra de negócio, conceito, interface ou decisão de engenharia → **atualizar a ZenSpec no mesmo ciclo**, antes do gate final. Divergência código vs spec → spec vence (Constituição #6).
 
 ## O que produzir / output
 

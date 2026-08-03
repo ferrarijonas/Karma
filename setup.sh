@@ -29,6 +29,10 @@ mkdir -p "$TARGET/.karma/.mettri/trail"
 mkdir -p "$TARGET/.karma/e2e-tests"
 mkdir -p "$TARGET/.karma/trail"
 
+# 3b. Create ZenSpec directory ($SPEC_DIR padrão: specs/)
+SPEC_DIR="${KARMA_SPEC_DIR:-specs}"
+mkdir -p "$TARGET/$SPEC_DIR"
+
 # 4. Create empty tarefas.html if not exists
 if [ ! -f "$TARGET/.karma/tarefas.html" ]; then
   cat > "$TARGET/.karma/tarefas.html" << 'HTMLEOF'
@@ -60,4 +64,9 @@ echo "  2. Edit .karma/AGENTS.md — configure your project structure, commands,
 echo "  3. Edit .karma/.mettri/identidade.md — set your agent's name and persona"
 echo "  4. Edit .karma/.mettri/claims.yaml — add your project domains"
 echo "  5. Add .karma/ to your opencode workspace"
+echo "  6. CREATE YOUR FIRST ZenSpec (greenfield):"
+echo "     - Template: .karma/.mettri/template-zenspec.md"
+echo "     - Save in: $TARGET/$SPEC_DIR/{dominio}/spec.md"
+echo "     - Toda tarefa exige spec_ref válido apontando para essa spec-mãe"
+echo "     - Sem spec-mãe, o código do domínio não inicia (bootstrap greenfield)"
 echo ""

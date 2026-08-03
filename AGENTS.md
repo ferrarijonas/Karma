@@ -10,6 +10,9 @@ Orquestrador de desenvolvimento orientado a tarefas. Cada tarefa nasce com contr
 - O código-fonte do seu projeto deve estar em `../` (um nível acima deste diretório)
 - Configure `../package.json` com seus comandos de construir, lint, type-check, test
 - Specs de domínio (ZenSpec ou similar) em `../$SPEC_DIR/`
+- **`$SPEC_DIR` padrão: `specs/`** (ex: `../specs/{dominio}/spec.md` = spec de módulo; `../specs/{dominio}/{componente}.zenspec.md` = filha). Ajuste o valor se o projeto usa outro caminho.
+- **Todo projeto Karma tem ZenSpec.** Formato canônico: ZenSpecKit (módulo mãe + componente filha). Templates em `.karma/.mettri/template-zenspec.md` e `template-zenspec-componente.md`. O kit de referência vive fora do harness (ex: `../ZenSpecKit/`) — o harness consome por convenção, não por import.
+- **Decisão de formato (2026-08-03):** ZenSpecKit é o formato canônico de specs. Kit alternativo encontrado em `.specify/` (feature/user-story) NÃO é usado pelo pipeline — se um projeto o tiver, arquivar ou migrar para ZenSpec antes de iniciar tarefas.
 - Comandos npm devem rodar a partir de `../` (ex: `cd .. && npm run build`)
 
 ---
@@ -36,9 +39,11 @@ O protocolo abaixo é vinculante e precede qualquer proatividade padrão. Nenhum
 4. Human-in-the-loop — IA age, humano valida nos gates de contrato (SPEC) e merge
 5. Se algo quebrar, parar e corrigir (Jidoka)
 6. ZenSpec é contrato moral. Código cumpre contrato. Se divergem, spec vence.
-7. **Sempre construir e testar sozinho** — rodar construir/testes antes de reportar
-8. **Pode chamar o usuário para testes**
-9. **Viés de Simplificação** — o fluxo completo de como evitar overengineering está no `construir.md` → Escada de Decisão (Ponytail). O código mínimo que funciona é melhor que abstração genérica.
+7. **Toda tarefa exige `spec_ref` válido** — apontar para a spec de módulo do domínio (`$SPEC_DIR/{dominio}/spec.md`). Se não existe, criar a spec-mãe antes do código. Tarefa sem spec_ref não inicia.
+8. **Manutenção de ZenSpec é obrigatória** — se a tarefa alterar regra de negócio, conceito, interface ou decisão de engenharia, a ZenSpec deve ser atualizada no mesmo ciclo, antes do gate final.
+9. **Sempre construir e testar sozinho** — rodar construir/testes antes de reportar
+10. **Pode chamar o usuário para testes**
+11. **Viés de Simplificação** — o fluxo completo de como evitar overengineering está no `construir.md` → Escada de Decisão (Ponytail). O código mínimo que funciona é melhor que abstração genérica.
 
 ---
 
@@ -69,8 +74,9 @@ Classifica intenção: `pergunta` | `tarefa` | `exploracao` | `continuacao`. Se 
 ### Fase 2 — Triagem
 
 1. Se `tarefa`: **Delega análise ao @gerir.** `Task({ agent: "gerir", prompt: "preparar-triagem" })` — @gerir faz scan, filtra, ordena, analisa candidatas e retorna os dados. **Karma executa** a triagem: registra claim, atualiza SPEC, move diretório, cria branch. Retorna `{ id, titulo, dominio, branch, spec_path }`.
-2. Dispara @construir: `Task({ agent: "construir", prompt: "{ spec_path, zen_spec_ref }" })` — o construtor lê SPEC.md direto (ele é o briefing)
-3. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
+2. **Verifica `spec_ref`** — a SPEC deve apontar para a spec de módulo do domínio (`$SPEC_DIR/{dominio}/spec.md`). Se não existe, a tarefa deve criar a spec-mãe antes do código (bootstrap greenfield). Sem spec_ref válido, a tarefa não avança.
+3. Dispara @construir: `Task({ agent: "construir", prompt: "{ spec_path, zen_spec_ref }" })` — o construtor lê SPEC.md direto (ele é o briefing)
+4. Se `continuacao`: lê trail mais recente → retoma tarefa interrompida
 
 **Fenomenologia:** FOCO — o agente escolhe um paciente, prepara o prontuário e o entrega ao cirurgião.
 

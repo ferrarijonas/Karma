@@ -27,6 +27,18 @@ YAML frontmatter com id, titulo, dominio, status, prioridade, escopo é obrigat�
 
 ---
 
+## ZenSpec — regra obrigatória
+
+Toda SPEC.md criada DEVE preencher `spec_ref` no frontmatter apontando para a spec de módulo do domínio (`$SPEC_DIR/{dominio}/spec.md` — padrão `../specs/{dominio}/spec.md`).
+
+- **Se a spec-mãe existe** → `spec_ref: "../specs/{dominio}/spec.md"`.
+- **Se não existe** → a tarefa deve incluir a criação da spec-mãe no escopo (bootstrap greenfield), usando `.mettri/template-zenspec.md`. Código do domínio só inicia depois da spec-mãe.
+- **Se a tarefa altera regra de negócio/conceito/interface/decisão de engenharia** → incluir no escopo a atualização da ZenSpec no mesmo ciclo.
+
+SPEC sem `spec_ref` válido não avança para @construir.
+
+---
+
 ## Critério de Pronto
 - [ ] SPEC.md válido (YAML frontmatter completo)
 - [ ] Nenhum comando executado

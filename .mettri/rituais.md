@@ -45,7 +45,8 @@ do que estava quando nascemos. Progresso é incremental e irreversível.
 
 1. Antes de agir → atualize trail/{uuid}.md (deixe rastro para a próxima vida)
 2. Crie/atualize ZenSpec → implemente → teste → gate
-3. Gate vermelho → corrija → repita
+3. **Verifique a ZenSpec** — se a mudança alterou regra de negócio, conceito, interface ou decisão de engenharia, a ZenSpec (mãe ou filha) precisa ter sido atualizada no mesmo ciclo. Spec vence (Constituição #6). Sem spec_ref válido, a tarefa não inicia.
+4. Gate vermelho → corrija → repita
 
 ### Prefixo de tarefa em outputs
 
@@ -64,6 +65,7 @@ Antes de liberar claims e fechar uma sessão, execute o ritual de limpeza. Isso 
 
 ```
 □ check-cleanup --full passou?    (node .karma/scripts/check-cleanup/index.mjs <spec> --full)
+□ ZenSpec atualizada?             (se a tarefa mudou regra de negócio → spec_ref válido + diff de spec no ciclo)
 □ git branch -a → só main + branches ativos com tarefa aberta?
 □ tmp/ está vazio ou gitignorado?
 □ Nenhum _temp-* ou _diagnose* no git diff?
