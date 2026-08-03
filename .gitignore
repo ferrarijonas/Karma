@@ -11,3 +11,9 @@ wa-session.json
 tmp/
 tarefas/
 .mettri/wa-session.json
+
+# Estado do projeto — nunca versionar no repo publico do harness
+.mettri/tarefas/
+.mettri/memory.md
+.mettri/claims.yaml
+.mettri/wa-board.md
